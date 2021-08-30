@@ -62,10 +62,10 @@
 - 共同研究
 
 ## 設計書
-<...>
+追記予定
 
 ## チャレンジ要素一覧
-<https://docs.google.com/spreadsheets/d/1E4Quehglf9PxM1XTE-ft2X5-hJ5dmoJhsI-UJlgzVmY/edit#gid=0>
+https://docs.google.com/spreadsheets/d/1ZoMtqQ1p0W14MXCz2ZHEhYdD-qLCFfo23flis8dguc0/edit?usp=sharing
 
 ## 開発環境
 - OS：Linux(CentOS)
