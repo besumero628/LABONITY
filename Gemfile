@@ -37,46 +37,46 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 # transrate
-gem "rails-i18n"
+gem 'rails-i18n'
 
-#paginate
-gem "kaminari"
+# paginate
+gem 'kaminari'
 
-#validation
-gem "date_validator"
-gem "valid_email2"
+# validation
+gem 'date_validator'
+gem 'valid_email2'
 
-#html builder
-gem "nokogiri"
+# html builder
+gem 'nokogiri'
 
-#devise
-gem "devise"
-gem 'devise-i18n' #transrate
-gem 'cancancan' #authenticate
+# devise
+gem 'cancancan' # authenticate
+gem 'devise'
+gem 'devise-i18n' # transrate
 
-#activestrage
+# activestrage
 gem 'image_processing', '~> 1.2'
 
-#bootstrap
+# bootstrap
 gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
 
-#refactering
-gem 'rubocop', require:false
-gem 'rubocop-rails', require:false
+# refactering
+gem 'rubocop', require: false
+gem 'rubocop-rails', require: false
 
-#resolve N+1
-gem "bullet"
+# resolve N+1
+gem 'bullet'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
 end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
@@ -88,10 +88,10 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
-  gem "webdrivers"
-  gem "rspec-rails"
-  gem "factory_bot_rails"
+  gem 'factory_bot_rails'
+  gem 'rspec-rails'
+  gem 'webdrivers'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
