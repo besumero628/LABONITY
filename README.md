@@ -1,24 +1,76 @@
-# README
+# LABONITY
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+"研究室","生徒","企業"の3つをつなぐプラットフォームを提供するWebアプリケーションです。<br>
+主体的な機能は以下に記載してあります。
 
-Things you may want to cover:
+1. 研究室
+- 研究室のHPを簡単に作成可能
+- 研究実績（論文・学会・講演・著書）管理
+- 共同研究の募集
 
-* Ruby version
+2. 生徒
+- 研究実績(研究データ、資料)管理
+- タイムカード
+- コミュニティの参加
+- 就活・インターン情報の獲得
 
-* System dependencies
+3. 企業
+- 共同研究先の募集
+- 就職・インターン募集
 
-* Configuration
 
-* Database creation
+### サイトテーマ
+"研究室","生徒","企業"の3つをつなぐプラットフォームを提供します
 
-* Database initialization
+### テーマを選んだ理由
+大学研究室をよりオープンで、夢がある場所にしたいと思ったからです。
+研究室に所属していた3年間（B4-M2）で以下3点に問題意識を感じていました。
 
-* How to run the test suite
+1. 研究室毎のHPのクオリティ
 
-* Services (job queues, cache servers, search engines, etc.)
+　研究室を決める際に、研究室ごとにHPを検索しなおす必要があり、不便だった。<br>
+　また、中には更新が疎かになっている研究室も多く、必要な情報にたどり着けないことも多かった。<br>
 
-* Deployment instructions
+2. 研究実績の管理と就活
 
-* ...
+　研究成果を教授に共有するまでに、時間がかかった。<br>
+　また、就活の際に研究成果を面接だけでなく、実際の資料や成果でも判断してほしいと感じた。<br>
+
+3. 企業と大学の共同研究
+
+　産学連携は研究の発展のために非常に重要であるが、日々の実績までは企業側は確認できない。<br>
+　企業、大学がより密になって共同研究をスムーズに行う場が少ないと感じた。
+
+上記の理由から、研究室の「何をしているのか分からない」感を払拭し、所属生徒の就活支援や、企業との共同研究の推進をしやすくすることで、学問をよりオープンに発展させながら、若い世代のキャリア形成にも貢献できるアプリケーションに利用されれば良いなと思っています。
+
+### ターゲットユーザ
+- 大学生
+- 大学院生
+- アカデミックポジション
+- 企業人事担当
+- 企業研究開発担当
+- 大学職員
+
+### 主な利用シーン
+- 研究室運営
+- 所属生徒支援
+- 学習管理
+- 就職活動
+- 学生コミュニティ
+- OB,OG訪問
+- 共同研究
+
+## 設計書
+追記予定
+
+## チャレンジ要素一覧
+https://docs.google.com/spreadsheets/d/1ZoMtqQ1p0W14MXCz2ZHEhYdD-qLCFfo23flis8dguc0/edit?usp=sharing
+
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
+
