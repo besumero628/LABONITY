@@ -58,7 +58,7 @@ gem 'devise-i18n' # transrate
 gem 'image_processing', '~> 1.2'
 
 # bootstrap
-gem 'bootstrap', '~> 4.1.1'
+gem 'bootstrap-sass'
 gem 'jquery-rails'
 
 # refactering
