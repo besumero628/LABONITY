@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= document_title(yield(:title)) %></title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+
+    <!-- CSS Files -->
+    <link href="/assets/bootstrap.min.css" rel="stylesheet" />
+    <link href="/assets/now-ui-kit.css?v=1.2.0" rel="stylesheet" />
+
+    <%= stylesheet_link_tag 'public', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div id="wrapper">
+      <%= render "shared/header" %>
+      <div id="container">
+        <%= yield %>
+      </div>
+      <%= render "shared/footer" %>
+    </div>
+  </body>
+</html>
+
+<!-- Plugins -->
+
+<!--   Core JS Files   -->
+<script src="/assets/core/jquery.min.js" type="text/javascript"></script>
+<script src="/assets/core/popper.min.js" type="text/javascript"></script>
+<script src="/assets/core/bootstrap.min.js" type="text/javascript"></script>
+
+<!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
+<script src="/assets/plugins/bootstrap-switch.js"></script>
+
+<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+<script src="/assets/plugins/nouislider.min.js" type="text/javascript"></script>
+
+<!--  Plugin for the DatePicker, full documentation here: https://github.com/uxsolutions/bootstrap-datepicker -->
+<script src="/assets/plugins/bootstrap-datepicker.js" type="text/javascript"></script>
+
+<!-- Control Center for Now Ui Kit: parallax effects, scripts for the example pages etc -->
+<script src="/assets/now-ui-kit.js?v=1.2.0" type="text/javascript"></script>

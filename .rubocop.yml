@@ -33,8 +33,8 @@ ClassAndModuleChildren:
 # 文字リテラルのイミュータブル宣言を無視（freezeになるのはRuby3以降）
 Style/FrozenStringLiteralComment:
   Enabled: false
-  
-# Methodの長さを
+
+# Methodの長さを決定
 Metrics/MethodLength:
   Enabled: false
   CountComments: false  # count full line comments?
