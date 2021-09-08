@@ -1,3 +1,4 @@
 /*
- *= require_tree ./company_admin
+  *= require_tree ./shared
+  *= require_tree ./company_admin
  */

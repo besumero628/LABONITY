@@ -69,7 +69,7 @@ gem 'rubocop-rails', require: false
 gem 'bullet'
 
 # react
-gem 'react-rails' 
+gem 'react-rails'
 gem 'webpacker'
 
 group :development, :test do
