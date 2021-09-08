@@ -1,0 +1,14 @@
+@import "colors";
+@import "dimensions";
+
+.news {
+  .btn-show {
+    margin-top: 23px;
+    margin-bottom: 15px;
+    margin-left: 25px;
+    .btn {
+     font-size: 10px; 
+     background-color: $blue;
+    }
+  }
+}

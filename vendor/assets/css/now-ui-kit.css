@@ -2161,7 +2161,7 @@ fieldset[disabled] .btn-danger.active {
 
 .btn-neutral {
   background-color: #FFFFFF;
-  color: #f96332;
+  color: #F9A03F;
 }
 
 .btn-neutral:hover,
@@ -3543,6 +3543,10 @@ h3,
   line-height: 1.4em;
 }
 
+.welcome-text h3 {
+  margin-bottom: 0;
+}
+
 h4,
 .h4 {
   font-size: 1.5em;
@@ -4634,7 +4638,7 @@ Created using IcoMoon - icomoon.io
 
 .navbar .navbar-toggler .navbar-toggler-bar.middle-bar {
   width: 17px;
-  transition: width .2s linear;
+  /*transition: width .2s linear;*/
 }
 
 .navbar .navbar-toggler:hover .navbar-toggler-bar.middle-bar {
@@ -5603,11 +5607,11 @@ img {
 }
 
 .index-page .page-header {
-  height: 125vh;
+  height: 50vh;
 }
 
 .index-page .page-header .container>.content-center {
-  top: 37%;
+  /*top: 37%;*/
 }
 
 .index-page .page-header .category-absolute {
@@ -6016,6 +6020,7 @@ img {
   width: 100%;
   height: 100%;
   z-index: -1;
+  opacity : 0.2;
 }
 
 .page-header .content-center {
@@ -6512,7 +6517,7 @@ img {
     /* For Opera 11.1 to 12.0 */
     background: -moz-linear-gradient(#f96332 0%, #000 80%);
     /* For Firefox 3.6 to 15 */
-    background: linear-gradient(#f96332 0%, #000 80%);
+    background: linear-gradient(#BAE1DE 0%, #000 80%);
     /* Standard syntax (must be last) */
     opacity: 0.76;
     filter: alpha(opacity=76);
