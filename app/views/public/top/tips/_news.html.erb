@@ -7,14 +7,14 @@
       <button class="btn btn-primary btn-round btn-sm", onclick="scrollToDownload()">一覧を見る</button>
     </div>
     <table class="table news-table">
-      <tr>
-        <th>LABONITY 開設のお知らせ</th>
-        <td>2021/09/08</td>
-      </tr>
-      <tr>
-        <th>LABONITY 開設のお知らせ2</th>
-        <td>2021/09/08</td>
-      </tr>
+
+      <% @news.each do |news| %>
+        <tr>
+          <th width="80%"><%= news.title %></th>
+          <td><%= news.release_at.strftime("%Y/%m/%d") %></td>
+        </tr>
+      <% end %>
+      
     </table>
   </div>
 </div>
