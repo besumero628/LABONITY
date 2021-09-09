@@ -1,3 +1,28 @@
 <!--header設定-->
 <%= render "shared/head" %>
 
+<!--news 詳細-->
+<div class="container per-news">
+  <!--タイトルとリリース日-->
+  <div class="row news-head">
+      <h3 class="news-title"><%= @news.title %></h3>
+      <div class="news-release">
+        <p class="release-date">release: <%= @news.release_at.strftime("%Y/%m/%d") %></p>
+      </div>
+  </div>
+  <!--本文-->
+  <div class="row">
+    <div class="col-12 news-body">
+      <p><%= simple_format(@news.body)  %></p>
+    </div>
+  </div>
+  
+</div>
+
+<!--リンク-->
+<div class="container">
+    <div class="row news-link">
+    <%= link_to "News Release",public_news_index_path %> >
+    <%= @news.title %>
+  </div>
+</div>

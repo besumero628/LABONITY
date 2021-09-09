@@ -1,7 +1,5 @@
 class Public::NewsController < ApplicationController
-  
   def show
     @news = News.find(params[:id])
-  end 
-  
+  end
 end
