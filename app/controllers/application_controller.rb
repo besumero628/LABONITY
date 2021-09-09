@@ -1,13 +1,13 @@
 class ApplicationController < ActionController::Base
   layout :set_layout
-  
+
   private
+
   def set_layout
-    if params[:controller].match(%r{\A(public|admin|company_admin)})
+    if params[:controller].match(/\A(public|admin|company_admin)/)
       Regexp.last_match[1]
     else
-      "public"
+      'public'
     end
   end
-  
 end

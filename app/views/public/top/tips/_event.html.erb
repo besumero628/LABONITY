@@ -1,0 +1,86 @@
+<!--thesis-->
+<div class="container">
+  <div class="row">
+    
+    <!-- Swiper -->
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        <!--slide 1-->
+        <div class="swiper-slide">
+          <div class="card" style="width: 20rem;">
+            <img class="card-img-top" src="/assets/public/Top/about-card1" alt="Card image cap">
+            <div class="card-body">
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!--slide 2-->
+        <div class="swiper-slide">
+          <div class="swiper-slide">
+            <div class="card" style="width: 20rem;">
+              <img class="card-img-top" src="/assets/public/Top/about-card2" alt="Card image cap">
+              <div class="card-body">
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!--slide 3-->
+        <div class="swiper-slide">
+          <div class="swiper-slide">
+            <div class="card" style="width: 20rem;">
+              <img class="card-img-top" src="/assets/public/Top/about-card3" alt="Card image cap">
+              <div class="card-body">
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!--slide 4-->
+        <div class="swiper-slide">
+          <div class="swiper-slide">
+            <div class="card" style="width: 20rem;">
+              <img class="card-img-top" src="/assets/public/Top/about-card2" alt="Card image cap">
+              <div class="card-body">
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 3,
+        spaceBetween: 30,
+        autoplay: {
+          delay: 5000,
+          speed: 3000,
+          disableOnInteraction: false,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+      });
+    </script>
+    
+  </div>
+</div>
+

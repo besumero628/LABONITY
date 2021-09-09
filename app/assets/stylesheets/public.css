@@ -1,6 +1,4 @@
-@import "bootstrap-sprockets";
-@import "bootstrap";
-
 /*
- *= require_tree ./public
+  *= require_tree ./shared
+  *= require_tree ./public
  */

@@ -1,2 +1,84 @@
 <% provide(:title,  "ユーザー") %>
-<h1><%= 'ユーザーTOP' %></h1>
+
+<div class="wrapper index-page">
+  <!--TopPage Header-->
+  <div class="page-header clear-filter" filter-color="blue">
+      <div class="page-header clear-filter" filter-color="orange">
+        <div class="page-header-image" data-parallax="true" style="background-image:url('/assets/public/Top/header.jpg');">
+        </div>
+        <div class="container">
+          <div class="content-center brand">
+            <h1 class="h1-seo">LABONITY</h1>
+            <div class="welcome-text">
+              <h3>Let's connect with the world through your research.</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  
+  <!--News Release-->
+  <%= render "public/top/tips/news" %>
+
+  <!--About-->
+  <%= render "public/top/tips/about" %>
+  
+   <!-- Nav tabs -->
+    <div class="card pickup">
+      <div class="card-header">
+        <div class="container">
+          <div class="row">
+            <i class="far fa-2x fa-lightbulb pickup-icon"></i>
+            <h4>Pick Up</h4>
+          </div>
+          
+          <div class="row">
+            <ul class="nav nav-tabs justify-content-center" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#thesis" role="tab">
+                  THESIS
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#community" role="tab">
+                  COMMUNITY
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#event" role="tab">
+                  EVENT
+                </a>
+              </li>
+            </ul>
+          </div>
+          
+          
+        </div>
+        
+      </div>
+      <div class="card-body">
+        <!-- Tab panes -->
+        <div class="tab-content text-center">
+          <!--panel 1-->
+          <div class="tab-pane active" id="thesis" role="tabpanel">
+            <%= render "public/top/tips/thesis" %>
+          </div>
+          
+          <!--panel 2-->
+          <div class="tab-pane" id="community" role="tabpanel">
+            <%= render "public/top/tips/community" %>
+          </div>
+          
+          <!--panel 3-->
+          <div class="tab-pane" id="event" role="tabpanel">
+            <%= render "public/top/tips/event" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+</div>
+
