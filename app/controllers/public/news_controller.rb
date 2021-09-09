@@ -1,8 +1,7 @@
 class Public::NewsController < ApplicationController
   
   def index
-    @news = News.all.order(release_at: :desc).page(params[:page])
-    # @news = News.where(release_at: DateTime.new..Time.current).order(release_at: :desc).page(params[:page])
+    @news = News.where(release_at: DateTime.new..Time.current).order(release_at: :desc).page(params[:page])
   end
   
   def show

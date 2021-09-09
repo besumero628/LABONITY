@@ -3,12 +3,16 @@
 
 <!--news 一覧-->
 <div class="container index-news">
+  
   <!--page-head-->
   <div class="row">
     <i class="far fa-3x fa-newspaper news-icon"></i>
     <h2 class="page-title">News Release</h1>
+    <div class="col-12">
+      <h4 class="page-subtitle">運営からのお知らせ</h4>
+    </div>
   </div>
-
+  
   <!--一覧-->
   <table class="table news-table">
     <thead>
@@ -26,7 +30,13 @@
       <% end %>
     </tbody>
   </table>
-  <%= paginate @news %>
+  
+  <!--Pagination-->
+  <div class="news-paginate">
+    <div class ="col-12 news-page-item">
+      <%= paginate @news %>
+    </div>
+  </div>
 </div>
 
 <!--リンク-->
