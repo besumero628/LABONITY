@@ -18,12 +18,17 @@
 
       .btn {
        font-size: 10px;
-       background-color: $blue;
+       background-color: $orange;
       }
     }
 
     .news-table {
       color: $gray;
+      
+      .news-item {
+        color: $gray;
+      }
+      
     }
 
   }
