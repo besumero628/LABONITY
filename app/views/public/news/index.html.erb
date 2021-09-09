@@ -1,0 +1,54 @@
+<!--header設定-->
+<%= render "shared/head" %>
+
+<!--news 一覧-->
+<div class="container index-news">
+  
+  <!--page-head-->
+  <div class="row">
+    <i class="far fa-3x fa-newspaper news-icon"></i>
+    <h2 class="page-title">News Release</h1>
+    <div class="col-12">
+      <h4 class="page-subtitle">運営からのお知らせ</h4>
+    </div>
+  </div>
+  
+  <!--一覧-->
+  <% if @news == nil %>
+    <h5>お知らせはまだありません。</h4>
+  <% else %>
+    <table class="table news-table">
+      <thead>
+        <tr>
+          <th width="75%">Title</th>
+          <th>release</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @news.each do |news| %>
+        <tr>
+          <th><%= link_to news.title, public_news_path(news.id), class:"news-item" %></th>
+          <td><%= news.release_at.strftime("%Y/%m/%d") %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+  
+  <!--Pagination-->
+  <% if @news != nil %>
+    <div class="news-paginate">
+      <div class ="col-12 news-page-item">
+        <%= paginate @news %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<!--リンク-->
+<div class="container">
+    <div class="row news-link">
+    <%= link_to "LABONITY TOP",public_root_path, class:"news-index-link" %>
+    <%= "　＞　News Release" %>
+  </div>
+</div>

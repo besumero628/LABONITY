@@ -1,5 +1,8 @@
 class Public::TopController < ApplicationController
-  def index; end
+  def index
+    @news = News.where(release_at: DateTime.new..Time.current).order(release_at: :desc).limit(5)
+    # @news = nil
+  end
 
   def ajax
     url = 'http://feeds.nature.com/nmat/rss/current?format=xml'

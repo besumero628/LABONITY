@@ -18,12 +18,22 @@
 
       .btn {
        font-size: 10px;
-       background-color: $blue;
+       background-color: $orange;
+
+       .news-index-link {
+         color: white;
+       }
+
       }
     }
 
     .news-table {
       color: $gray;
+
+      .news-item {
+        color: $gray;
+      }
+
     }
 
   }
@@ -43,7 +53,7 @@
       display: flex;
       justify-content: space-between;
     }
-    
+
     .account-text {
       display: flex;
       justify-content: center;

@@ -7,5 +7,13 @@
     remote:        data-remote
 -%>
 <span class="next">
-  <%= link_to_unless current_page.last?, t('views.pagination.next').html_safe, url, rel: 'next', remote: remote %>
+  <li class="page-item">
+    <% if current_page.last? %>
+      <span class="page-link"><%= t('views.pagination.next').html_safe %></span>
+    <% else %>
+      <%= link_to_unless current_page.last?, t('views.pagination.next').html_safe, url, rel: 'next', remote: remote, class:"page-link" do %>
+        <span aria-hidden="true"></span>
+      <% end %>
+    <% end %>
+  </li>
 </span>
