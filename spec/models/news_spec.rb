@@ -1,5 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe News, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "validation" do
+    example "releaseの日付は現在時刻を超えたものしか登録できない。" do
+      news = build(:news, release_at: Time.current)
+    end
+  end
 end
