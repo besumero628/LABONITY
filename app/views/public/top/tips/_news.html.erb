@@ -2,21 +2,28 @@
 <div class="container">
   <div class="row news">
     <i class="far fa-2x fa-newspaper news-icon"></i>
+    <!--タイトル & 一覧ボタン-->
     <h4>News Release</h4>
-    <div class="btn-show">
-      <button class="btn btn-primary btn-round btn-sm", onclick="scrollToDownload()">
-        <%= link_to "一覧を見る", public_news_index_path, class:"news-index-link" %>
-      </button>
-    </div>
-    <table class="table news-table">
-
-      <% @news.each do |news| %>
-        <tr>
-          <th width="80%"><%= link_to news.title, public_news_path(news.id), class:"news-item" %></th>
-          <td><%= news.release_at.strftime("%Y/%m/%d") %></td>
-        </tr>
-      <% end %>
-
-    </table>
+    <% if @news != nil %>
+      <div class="btn-show">
+        <button class="btn btn-primary btn-round btn-sm", onclick="scrollToDownload()">
+          <%= link_to "一覧を見る", public_news_index_path, class:"news-index-link" %>
+        </button>
+      </div>
+    <% end %>
+    
+    <!--news一覧テーブル-->
+    <% if @news != nil %>
+      <table class="table news-table">
+        <% @news.each do |news| %>
+          <tr>
+            <th width="80%"><%= link_to news.title, public_news_path(news.id), class:"news-item" %></th>
+            <td><%= news.release_at.strftime("%Y/%m/%d") %></td>
+          </tr>
+        <% end %>
+      </table>
+    <% else %>
+      <h5 class="col-12">お知らせはありません</h5>
+    <% end %>
   </div>
 </div>

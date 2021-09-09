@@ -14,29 +14,35 @@
   </div>
   
   <!--一覧-->
-  <table class="table news-table">
-    <thead>
-      <tr>
-        <th width="75%">Title</th>
-        <th>release</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @news.each do |news| %>
-      <tr>
-        <th><%= link_to news.title, public_news_path(news.id), class:"news-item" %></th>
-        <td><%= news.release_at.strftime("%Y/%m/%d") %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <% if @news == nil %>
+    <h5>お知らせはまだありません。</h4>
+  <% else %>
+    <table class="table news-table">
+      <thead>
+        <tr>
+          <th width="75%">Title</th>
+          <th>release</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @news.each do |news| %>
+        <tr>
+          <th><%= link_to news.title, public_news_path(news.id), class:"news-item" %></th>
+          <td><%= news.release_at.strftime("%Y/%m/%d") %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
   
   <!--Pagination-->
-  <div class="news-paginate">
-    <div class ="col-12 news-page-item">
-      <%= paginate @news %>
+  <% if @news != nil %>
+    <div class="news-paginate">
+      <div class ="col-12 news-page-item">
+        <%= paginate @news %>
+      </div>
     </div>
-  </div>
+  <% end %>
 </div>
 
 <!--リンク-->

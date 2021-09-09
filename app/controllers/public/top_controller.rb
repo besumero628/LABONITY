@@ -1,6 +1,7 @@
 class Public::TopController < ApplicationController
   def index
-    @news = @news = News.where(release_at: DateTime.new..Time.current).order(release_at: :desc).limit(5)
+    @news = News.where(release_at: DateTime.new..Time.current).order(release_at: :desc).limit(5)
+    # @news = nil
   end
 
   def ajax
