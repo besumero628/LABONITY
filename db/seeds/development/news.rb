@@ -1,4 +1,4 @@
-10.times do |n|
+20.times do |n|
   release_datetime = Time.now + (24 * 60 * 60 *n)
   News.create!(
     title: "LABONITY開設のお知らせ#{n}",

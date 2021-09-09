@@ -16,13 +16,15 @@
       <p><%= simple_format(@news.body)  %></p>
     </div>
   </div>
-  
+
 </div>
 
 <!--リンク-->
 <div class="container">
     <div class="row news-link">
-    <%= link_to "News Release",public_news_index_path %> >
-    <%= @news.title %>
+    <%= link_to "LABONITY TOP",public_root_path, class:"news-index-link" %>
+    <%= "　＞　" %>
+    <%= link_to "News Release",public_news_index_path, class:"news-index-link" %>
+    <%= "　＞　#{@news.title}" %>
   </div>
 </div>

@@ -1,6 +1,24 @@
 @import "colors";
 @import "dimensions";
 
+.index-news {
+  height: 70vh;
+  padding: 50px 0;
+  position: relative;
+  
+  .page-title{
+    font-weight: bold;
+    margin-left: 10px;
+  }
+  
+  .news-table {
+    .news-item {
+      color: $gray;
+    }
+  }
+}
+
+
 .per-news {
   height: 70vh;
   padding: 50px 0;
@@ -27,4 +45,7 @@
 
 .news-link {
   padding-bottom: 30px;
+  .news-index-link {
+    color: $blue;
+  }
 }
