@@ -6,8 +6,7 @@ class Public::NewsController < ApplicationController
   def show
     @news = News.find(params[:id])
     if Time.current < @news.release_at
-      flash[:danger] = '指定のページにアクセスできません'
-      redirect_to public_root_path
+      raise ActiveRecord::RecordNotFound
     end
   end
 end
