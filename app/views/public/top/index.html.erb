@@ -14,13 +14,16 @@
       </div>
     </div>
   </div>
-  
+
+  <!--flash設定-->
+  <%= render "shared/flash" %>
+
   <!--News Release-->
   <%= render "public/top/tips/news" %>
 
   <!--About-->
   <%= render "public/top/tips/about" %>
-  
+
    <!-- Nav tabs -->
     <div class="card pickup">
       <div class="card-header">
@@ -29,7 +32,7 @@
             <i class="far fa-2x fa-lightbulb pickup-icon"></i>
             <h4>Pick Up</h4>
           </div>
-          
+
           <div class="row">
             <ul class="nav nav-tabs justify-content-center" role="tablist">
               <li class="nav-item">
@@ -49,10 +52,10 @@
               </li>
             </ul>
           </div>
-          
-          
+
+
         </div>
-        
+
       </div>
       <div class="card-body">
         <!-- Tab panes -->
@@ -61,12 +64,12 @@
           <div class="tab-pane active" id="thesis" role="tabpanel">
             <%= render "public/top/tips/thesis" %>
           </div>
-          
+
           <!--panel 2-->
           <div class="tab-pane" id="community" role="tabpanel">
             <%= render "public/top/tips/community" %>
           </div>
-          
+
           <!--panel 3-->
           <div class="tab-pane" id="event" role="tabpanel">
             <%= render "public/top/tips/event" %>
@@ -75,8 +78,8 @@
       </div>
     </div>
   </div>
-  
-  
-  
+
+
+
 </div>
 

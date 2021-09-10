@@ -6,9 +6,7 @@
     <h4>News Release</h4>
     <% if @news != nil %>
       <div class="btn-show">
-        <button class="btn btn-primary btn-round btn-sm", onclick="scrollToDownload()">
-          <%= link_to "一覧を見る", public_news_index_path, class:"news-index-link" %>
-        </button>
+          <%= link_to "一覧を見る", public_news_index_path, class:"news-index-link btn btn-primary btn-round btn-sm", onclick: "scrollToDownload()"%>
       </div>
     <% end %>
     
