@@ -1,0 +1,22 @@
+<!--header設定-->
+<%= render "shared/head" %>
+
+<!--error内容-->
+<div class="container">
+  <div class="row error-content">
+    <div id="error">
+      <h2 class="error-name">404 Not Found</h2>
+      
+      <div class="error-img">
+        <img src="/assets/shared/errors/error_404.jpg" alt="エラー忍者">
+      </div>
+      
+      <p>指定されたページは見つかりません。</p>
+      <p class="url"><%= request.env["REQUEST_URI"] %></p>
+    </div>
+  
+    <div class="backup-link col-12">
+      <%= link_to "LABONITY Topへ戻る", public_root_path, class:"btn btn-primary btn-round btn-lg" %>
+    </div>
+  </div>
+</div>
