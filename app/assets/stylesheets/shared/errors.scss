@@ -1,0 +1,36 @@
+@import "colors";
+@import "dimensions";
+
+div#error{
+  width: 100%;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 10px;
+  border: solid 4px $gray;
+  text-align: center;
+  p.url {font-family: monospace;}
+}
+
+.error-content {
+  // height: 70vh;
+  .error-name {
+    border-bottom: 1px solid $gray;
+  }
+
+  .error-img{
+    display: flex;
+    justify-content: center;
+
+    img {
+      height: 30vh;
+      margin-bottom: 30px;
+    }
+  }
+
+  .backup-link {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+}

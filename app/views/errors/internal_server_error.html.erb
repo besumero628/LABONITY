@@ -1,0 +1,21 @@
+<!--header設定-->
+<%= render "shared/head" %>
+
+<!--error内容-->
+<div class="container">
+  <div class="row error-content">
+    <div id="error">
+      <h2 class="error-name">500 Internal Server Error</h2>
+      
+      <div class="error-img">
+        <img src="/assets/shared/errors/error_500.jpg" alt="エラー博士">
+      </div>
+      
+      <p>申し訳ございません。システムエラーが発生しました。</p>
+    </div>
+  
+    <div class="backup-link col-12">
+      <%= link_to "LABONITY Topへ戻る", public_root_path, class:"btn btn-primary btn-round btn-lg" %>
+    </div>
+  </div>
+</div>
