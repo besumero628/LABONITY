@@ -25,6 +25,12 @@ ja:
         unconfirmed_email: 未確認Eメール
         unlock_token: ロック解除用トークン
         updated_at: 更新日
+        login_id: ID
+        family_name: 氏名(姓)
+        given_name: 氏名(名)
+        family_name_kana: フリガナ(姓)
+        given_name_kana: フリガナ(名)
+        post_id: 学年/役職
     models:
       user: ユーザー
   devise:
@@ -37,7 +43,7 @@ ja:
     failure:
       already_authenticated: すでにログインしています。
       inactive: アカウントが有効化されていません。メールに記載された手順にしたがって、アカウントを有効化してください。
-      invalid: "%{authentication_keys}またはパスワードが違います。"
+      invalid: IDまたはパスワードが違います。
       last_attempt: もう一回誤るとアカウントがロックされます。
       locked: アカウントはロックされています。
       not_found_in_database: "%{authentication_keys}またはパスワードが違います。"
