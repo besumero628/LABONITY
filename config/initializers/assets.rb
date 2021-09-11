@@ -13,3 +13,6 @@ Rails.application.config.assets.precompile += %w(public.css admin.css company_ad
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
+
+Rails.application.config.assets.paths << "#{Rails}/vendor/assets/fonts"
+Rails.application.config.assets.precompile += %w( *.eot *.woff *.ttf *.svg *.otf *.png *.jpg *.jpeg *.gif )

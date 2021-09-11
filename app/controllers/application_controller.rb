@@ -1,11 +1,12 @@
 class ApplicationController < ActionController::Base
   layout :set_layout
 
-  class Forbidden < ActionController::ActionControllerError; end
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
+  class Forbidden < ActionController::ActionControllerError; end
   class IpAddressRejected < ActionController::ActionControllerError; end
 
-  include ErrorHandlers #if Rails.env.production?
+  # include ErrorHandlers if Rails.env.production?
 
   private
 
@@ -16,4 +17,9 @@ class ApplicationController < ActionController::Base
       'public'
     end
   end
+
+  def configure_permitted_parameters
+      devise_parameter_sanitizer.permit(:sign_up,keys:[:login_id, :family_name, :given_name, :family_name_kana, :given_name_kana, :email, :post_id])
+  end
+
 end

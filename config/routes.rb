@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   
+  devise_for :users, path: ""
+  
+
   namespace :public, path: "" do
     root "top#index"
+    
+    
     get 'top/ajax'
     
     resources :news, only: [:index, :show]

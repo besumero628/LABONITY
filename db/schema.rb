@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_09_002609) do
+ActiveRecord::Schema.define(version: 2021_09_10_130218) do
 
   create_table "news", force: :cascade do |t|
     t.string "title", null: false
@@ -18,6 +18,28 @@ ActiveRecord::Schema.define(version: 2021_09_09_002609) do
     t.datetime "release_at", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "profile_image_id"
+    t.string "family_name", null: false
+    t.string "given_name", null: false
+    t.string "family_name_kana", null: false
+    t.string "given_name_kana", null: false
+    t.integer "post_id", null: false
+    t.boolean "official_mark_status", default: false
+    t.boolean "suspended", default: false
+    t.string "login_id"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["family_name_kana", "given_name_kana"], name: "index_users_on_family_name_kana_and_given_name_kana"
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end
