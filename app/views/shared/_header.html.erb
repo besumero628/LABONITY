@@ -33,17 +33,31 @@
             </div>
           </li>
           <li class="nav-item ">
-            <a class="nav-link btn btn-neutral btn-sm btn-login" href="#">
-              <!--<i class="now-ui-icons arrows-1_share-66"></i>-->
-              <p>SIGNUP</p>
+            <%= link_to "SIGNUP", new_user_registration_path, class:"nav-link btn btn-neutral btn-sm btn-login" %>
             </a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link btn btn-neutral btn-sm btn-login" href="#">
-              <!--<i class="now-ui-icons arrows-1_share-66"></i>-->
-              <p>LOGIN</p>
-            </a>
-          </li>
+          
+          <% if user_signed_in? %>
+            <li class="nav-item ">
+              <%= link_to "LOGOUT", destroy_user_session_path, class:"nav-link btn btn-neutral btn-sm btn-login", method: :delete %>
+              </a>
+            </li>
+          <% elsif admin_signed_in? %>
+            <li class="nav-item ">
+              <%= link_to "LOGOUT", destroy_admin_session_path, class:"nav-link btn btn-neutral btn-sm btn-login", method: :delete %>
+              </a>
+            </li>
+          <% elsif company_admin_signed_in? %>
+            <li class="nav-item ">
+              <%= link_to "LOGOUT", destroy_company_admin_session_path, class:"nav-link btn btn-neutral btn-sm btn-login", method: :delete %>
+              </a>
+            </li>
+          <% else %>
+            <li class="nav-item ">
+              <%= link_to "LOGIN", new_user_session_path, class:"nav-link btn btn-neutral btn-sm btn-login" %>
+              </a>
+            </li>
+          <% end %>
 
         </ul>
       </div>

@@ -1,0 +1,35 @@
+<!--page名-->
+<% provide(:title,  "[管理者]パスワードを忘れた方") %>
+
+<!--header設定-->
+<%= render "shared/head" %>
+
+<!--password再設定-->
+<div class="devise-background">
+  <div class="container">
+    <div class="session-devise">
+      <div class="row devise-title">
+        <h3 class="title_name col-12">管理者パスワードを忘れた場合</h3>
+      </div>
+      
+      <p class="comment-body">管理者emailにパスワード再設定方法をお送りいたします。</p>
+      
+      <div class="row devise-form">
+      <%= form_with model: @admin, url: admin_password_path, id: 'new_user', class: 'new_user', local: true, method: :post do |f| %>
+        <%= markup do |m|
+            p = DeviseFormPresenter.new(f, self)
+            m << p.text_field_block(:email, "Eメール", {placeholder: "sample.example.com", type:"email"})
+          end %>
+          
+        <div class="actions devise-submit-btn">
+          <%= f.submit "送信する", class:"btn btn-primary col-6"  %>
+        </div>
+      <% end %>
+      </div>
+
+      <div class="row devise-other-link">
+        <%= link_to "管理者ログイン画面はこちら", new_admin_session_path, class:"col-12" %>
+      </div>
+    </div>
+  </div>
+</div>

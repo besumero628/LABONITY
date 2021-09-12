@@ -1,29 +1,42 @@
-<h2><%= t('.sign_up') %></h2>
+<!--page名-->
+<% provide(:title,  "SIGNUP") %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<!--header設定-->
+<%= render "shared/head" %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<!--新規登録-->
+<div class="devise-background">
+  <div class="container">
+    <div class="session-devise">
+      <div class="row devise-title">
+        <h3 class="title_name col-12">新規登録</h3>
+      </div>
+
+      <div class="row devise-form">
+        <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
+          
+          <%= markup do |m|
+            p = DeviseFormPresenter.new(f, self)
+            
+            m << p.text_field_block(:login_id, "ID", {placeholder: "半角英数字で入力してください。"})
+            m << p.full_name_block(:family_name, :given_name, "お名前", {placeholder:"姓"}, {placeholder:"名"})
+            m << p.full_name_block(:family_name_kana, :given_name_kana, "フリガナ", {placeholder:"セイ"}, {placeholder:"メイ"})
+            m << p.text_field_block(:email, "Eメール", {placeholder: "sample.example.com", type:"email"})
+            m << p.password_field_block(:password, "パスワード" + t('devise.shared.minimum_password_length', count: @minimum_password_length), {placeholder: "半角英数字で入力してください"})
+            m << p.password_field_block(:password_confirmation, "パスワード (確認用)", {placeholder: "半角英数字で入力してください"})
+            m << p.text_field_block(:post_id, "学年/役職")
+            
+          end %>
+          
+          <div class="actions devise-submit-btn devise-submit-btn--sign_up">
+            <%= f.submit t('.sign_up'), class:"btn btn-primary col-6"  %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="row devise-other-link">
+        <%= link_to "既にアカウントをお持ちの方はこちら", new_session_path(resource_name), class:"col-12" %>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit t('.sign_up') %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
