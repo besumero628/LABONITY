@@ -11,12 +11,9 @@
       <div class="row devise-title">
         <h3 class="title_name col-12">管理者パスワードを忘れた場合</h3>
       </div>
-
-      <!--<div class="row devise-comment">-->
-        <p class="comment-body">管理者emailにパスワード再設定方法をお送りいたします。</p>
-      <!--</div>-->
-
-
+      
+      <p class="comment-body">管理者emailにパスワード再設定方法をお送りいたします。</p>
+      
       <div class="row devise-form">
       <%= form_with model: @admin, url: admin_password_path, id: 'new_user', class: 'new_user', local: true, method: :post do |f| %>
         <%= markup do |m|
