@@ -36,9 +36,15 @@
             <%= link_to "SIGNUP", new_user_registration_path, class:"nav-link btn btn-neutral btn-sm btn-login" %>
             </a>
           </li>
+          
           <% if user_signed_in? %>
             <li class="nav-item ">
               <%= link_to "LOGOUT", destroy_user_session_path, class:"nav-link btn btn-neutral btn-sm btn-login", method: :delete %>
+              </a>
+            </li>
+          <% elsif admin_signed_in? %>
+            <li class="nav-item ">
+              <%= link_to "LOGOUT", destroy_admin_session_path, class:"nav-link btn btn-neutral btn-sm btn-login", method: :delete %>
               </a>
             </li>
           <% else %>

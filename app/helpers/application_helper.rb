@@ -10,10 +10,12 @@ module ApplicationHelper
   end
   
   def flash_treatment(message_type)
-    if message_type != 'success' or 'info' or 'warning' or 'danger'
-      return 'danger'
-    else
+    if default_message_type?(message_type)
       return message_type
+    elsif message_type == 'notice'
+      return 'info'
+    else
+      return 'danger'
     end
   end
 
@@ -46,4 +48,14 @@ module ApplicationHelper
       'ERROR '
     end
   end
+  
+  private 
+  def default_message_type?(message_type)
+    if (message_type != 'success') && (message_type != 'info') && (message_type != 'warning') && (message_type != 'danger')
+      return false
+    else
+      return true
+    end
+  end
+  
 end

@@ -18,14 +18,12 @@
 
 
       <div class="row devise-form">
-      <%= form_with model: @user, url: admin_password_path, id: 'new_user', class: 'new_user', local: true, method: :post do |f| %>
-        <%= render "devise/shared/error_messages", resource: resource %>
-
-        <div class="field">
-          <%= f.label :email, class:"label" %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"admin@example.com" %>
-        </div>
-
+      <%= form_with model: @admin, url: admin_password_path, id: 'new_user', class: 'new_user', local: true, method: :post do |f| %>
+        <%= markup do |m|
+            p = DeviseFormPresenter.new(f, self)
+            m << p.text_field_block(:email, "Eメール", {placeholder: "sample.example.com", type:"email"})
+          end %>
+          
         <div class="actions devise-submit-btn">
           <%= f.submit "送信する", class:"btn btn-primary col-6"  %>
         </div>

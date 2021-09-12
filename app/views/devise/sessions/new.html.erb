@@ -4,6 +4,7 @@
 <!--header設定-->
 <%= render "shared/head" %>
 
+<!--flash設定-->
 <%= render "shared/flash" %>
 
 <!--login-->
@@ -12,7 +13,6 @@
     <div class="session-devise">
       <div class="row devise-title">
         <h3 class="title_name col-12"><%= t('.sign_in') %></h3>
-        
       </div>
       
       <div class="row devise-form">
@@ -22,8 +22,8 @@
           <%= markup do |m|
             p = DeviseFormPresenter.new(f, self)
 
-            m << p.text_field_block(:login_id, "ID", {placeholder: "半角英数字で入力してください。"})
-            m << p.password_field_block(:password, "パスワード", {placeholder: "半角英数字で入力してください。"})
+            m << p.text_field_block(:login_id, "ID", {placeholder: "半角英数字で入力してください"})
+            m << p.password_field_block(:password, "パスワード", {placeholder: "半角英数字で入力してください"})
 
           end %>
 
