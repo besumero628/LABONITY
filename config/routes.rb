@@ -22,10 +22,12 @@ Rails.application.routes.draw do
   namespace :public, path: "" do
     root "top#index"
 
-
     get 'top/ajax'
 
     resources :news, only: [:index, :show]
+    
+    get ':login_id/mypage' => 'users#mypage', param: :login_id, as: :mypage
+    resources :users, param: :login_id, path: "", only: [:show, :update]
   end
 
   namespace :company_admin, path: "c_admin" do
