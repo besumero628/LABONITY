@@ -8,6 +8,25 @@ class ApplicationController < ActionController::Base
 
   include ErrorHandlers if Rails.env.production?
 
+
+  def after_sign_in_path_for(resource)
+    case resource
+    when User
+      public_mypage_path(resource)
+    when Admin
+      admin_root_path
+    when CompanyAdmin
+      company_admin_root_path
+    end
+  end
+  
+  def have_authenticate?(user)
+    if current_user.id != user.id
+      raise Forbidden
+    end
+  end
+
+
   private
 
   def set_layout

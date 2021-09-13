@@ -1,0 +1,32 @@
+<!--header設定-->
+<%= render "shared/head" %>
+
+<!--flash設定-->
+<%= render "shared/flash" %>
+
+<div class="container user-showpage">
+  <div class="row user-showpage-profile">
+    <!--Profile-->
+    <%= render "public/users/tips/show/profile" %>
+  </div>
+  
+  <div class="row">
+    <!--Paper-->
+    <div class="col-4 ">
+      <%= render "public/users/tips/show/papers" %>
+    </div>
+    <!--Presentation-->
+    <div class="col-4">
+      <%= render "public/users/tips/show/presentations" %>
+    </div>
+    <!--Books-->
+    <div class="col-4">
+      <%= render "public/users/tips/show/books" %>
+    </div>
+  </div>
+  
+  <div class="row user-show-community">
+    <!--Community-->
+    <%= render "public/users/tips/show/community" %>
+  </div>
+</div>

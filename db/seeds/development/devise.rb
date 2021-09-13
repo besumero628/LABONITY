@@ -13,12 +13,24 @@ CompanyAdmin.create!(
 )
 
 User.create!(
-  login_id: "testuser",
+  login_id: "testuser1",
   family_name: "山田",
   given_name: "太郎",
   family_name_kana: "ヤマダ",
   given_name_kana: "タロウ",
-  email: "company@gmail.com",
+  email: "example1@gmail.com",
   password: "password",
   post_id: 1
+)
+
+User.create!(
+  login_id: "testuser2",
+  family_name: "田中",
+  given_name: "二郎",
+  family_name_kana: "タナカ",
+  given_name_kana: "ジロウ",
+  email: "example2@gmail.com",
+  password: "password",
+  post_id: 1,
+  official_mark_status: true
 )
