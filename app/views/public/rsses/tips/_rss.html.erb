@@ -1,0 +1,9 @@
+<% if current_user.rsses.include?(rss) %>
+  <%= link_to public_user_rss_choice_path(:id => RssChoice.find_by(user_id: current_user.id, rss_id: rss.id).id), method: :delete, remote: true do %>
+    <button class="btn btn-primary btn-round btn-sm">登録</button>
+  <% end %>
+<% else %>
+  <%= link_to public_user_rss_choices_path(:rss_id => rss.id), method: :post, remote: true do %>
+    <button class="btn btn-default btn-round btn-sm">未登録</button>
+  <% end %>
+<% end %>

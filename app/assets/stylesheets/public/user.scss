@@ -51,12 +51,29 @@
       padding-top: 3px;
     }
 
-    .thesis-rss {
+    .paper-rss {
       justify-content: space-between;
       align-items: baseline;
       .rss-title {
         display: flex;
       }
+
+      .rss_feed {
+        .card-body {
+          padding: 0 1.25rem;
+        }
+        td {
+          border-top: none;
+          border-bottom: solid 1px #dee2e6;
+          &:first-child {
+            border-top: solid 1px #dee2e6;
+          }
+          &:nth-child(2) {
+            border-top: solid 1px #dee2e6;
+          }
+        }
+      }
+
     }
 
     .card {
@@ -192,7 +209,7 @@
     margin-bottom: .75rem;
     font-weight: bold;
   }
-  
+
   .user-profile-head {
     display: flex;
     align-items: center;

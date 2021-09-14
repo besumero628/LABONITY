@@ -1,0 +1,38 @@
+<!--header設定-->
+<%= render "shared/head" %>
+
+<!--flash設定-->
+<%= render "shared/flash" %>
+
+<div class="rss-background">
+  <div class="container">
+    <div class="frame-rss">
+      <div class="row rss-choice-title">
+        <h3 class="title_name col-12">論文RSS 登録</h3>
+      </div>
+
+      <table class="table rss-table">
+        <thead>
+          <tr>
+            <th class="col-2">Name</th> <th class="col-8">Introduction</th> <th class="col-2">RSS登録</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @rsses.each do |rss| %>
+            <tr>
+              <th><%= rss.name %></th>
+              <td><%= rss.introduction %></td>
+              <td id="rss_<%= rss.id %>">
+                <%= render "public/rsses/tips/rss", rss: rss %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      
+      <div class="row rss-mypage-link">
+        <%= link_to "マイページに戻る", public_mypage_path(login_id: current_user.login_id), class:"col-12" %>
+      </div>
+    </div>
+  </div>
+</div>

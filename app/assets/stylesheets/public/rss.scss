@@ -1,0 +1,44 @@
+@import "colors";
+@import "dimensions";
+
+.rss-background {
+  background-color: rgba(186, 225, 222, 0.3); //$lightblue
+  
+  .container {
+    padding: $wide * 2;
+    min-height: 70vh;
+    
+    .frame-rss {
+      width: 40vw;
+      min-width: 300px;
+      margin: $wide * 2 auto;
+      padding: $wide * 4;
+      border: solid 4px $gray;
+      border-radius: $wide;
+      background-color: #FFF;
+      
+      .rss-choice-title {
+        text-align: center;
+        .title_name {
+          font-weight: bold;
+          margin-bottom: 16px;
+        }
+      }
+      
+      .rss-table {
+        .btn {
+          width: 100%;
+          margin: 0;
+        }
+      }
+      
+      .rss-mypage-link {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+      }
+      
+    }
+    
+  }
+}

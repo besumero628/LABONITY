@@ -4,8 +4,9 @@ import PropTypes from 'prop-types'
 
 var target_dom = null;
 
-document.addEventListener('DOMContentLoaded', () => {
-  target_dom = document.querySelector('#rss');
+
+document.addEventListener('turbolinks:load', () => {
+  target_dom = document.querySelector('#rss4');
   const url = new URL(location.href);
   let f = url.searchParams.get("name");
   if (f == null){ f = '';}
@@ -13,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function getData(f){
-  let url = "/top/ajax";
+  let url = "/rsses/ajax4";
   if (f != ''){
     url += '?name=' + f;
   }
@@ -37,17 +38,13 @@ function getData(f){
         let data = result.RDF.item[n];
         arr.push(
           <tr>
-            <th><a href={data.link}>{data.title}</a></th>
-            <td class="small">{data.date}</td>
+            <td class="small" width="20%">{data.date}</td>
+            <td align="left"><a href={data.link}>{data.title[1]}</a></td>
           </tr>
         );
       }
       const el = (
         <table class="table mt-4">
-          <thead class="thead-dark">
-            <tr><th><a href={headline.link}>{headline.title}</a></th>
-            <th>Date</th></tr>
-          </thead>
           <tbody>{arr}</tbody>
         </table>
       );

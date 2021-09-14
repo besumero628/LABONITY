@@ -52,13 +52,13 @@
         </div>
 
         <!--RSS-->
-        <div class="row thesis-rss">
+        <div class="row paper-rss">
           <div class="rss-title">
             <i class="fas fa-2x fa-rss user-content-icon"></i>
             <h3>論文 RSS</h3>
           </div>
           
-          <%= link_to "RSS登録はこちら", public_root_path, class:"rss-register-link" %>
+          <%= link_to "RSS登録はこちら", public_user_rsses_path(user_login_id: params[:login_id]), class:"rss-register-link" %>
           <%= render "public/users/tips/mypage/rss" %>
         </div>
 
