@@ -2,35 +2,25 @@
   <div class="card">
     <div class="card-header">
       <ul class="nav nav-tabs nav-tabs-neutral justify-content-center" role="tablist">
-        <li class="nav-item">
-          <a class="rss-btn nav-link active" data-toggle="tab" href="#home" role="tab"><%= @rsses.find(1).name %></a>
-        </li>
-        <li class="nav-item">
-          <a class="rss-btn nav-link" data-toggle="tab" href="#profile1" role="tab"><%= @rsses.find(2).name %></a>
-        </li>
-        <li class="nav-item">
-          <a class="rss-btn nav-link" data-toggle="tab" href="#messages1" role="tab"><%= @rsses.find(3).name %></a>
-        </li>
-        <li class="nav-item">
-          <a class="rss-btn nav-link" data-toggle="tab" href="#settings1" role="tab"><%= @rsses.find(4).name %></a>
-        </li>
+        <% @rsses.each_with_index do |rss, idx| %>
+          <% if rss.users.include?(current_user) %>
+            <li class="nav-item">
+              <a class="rss-btn nav-link <%= "active" if idx == 0 %>" data-toggle="tab" href="#<%= rss.name.gsub(" ", "") %>" role="tab"><%= rss.name %></a>
+            </li>
+          <% end %>
+        <% end %>
+
       </ul>
     </div>
     <div class="card-body">
-      <!-- Tab panes -->
       <div class="tab-content text-center">
-        <div class="tab-pane active" id="home" role="tabpanel">
-          <div id="rss1"></div>
-        </div>
-        <div class="tab-pane" id="profile1" role="tabpanel">
-          <div id="rss2"></div>
-        </div>
-        <div class="tab-pane" id="messages1" role="tabpanel">
-          <div id="rss3"></div>
-        </div>
-        <div class="tab-pane" id="settings1" role="tabpanel">
-          <div id="rss4"></div>
-        </div>
+        <% @rsses.each_with_index do |rss, idx| %>
+          <% if rss.users.include?(current_user) %>
+            <div class="tab-pane active" id="<%= rss.name.gsub(" ", "") %>" role="tabpanel">
+              <div id="rss<%= idx+1 %>"></div>
+            </div>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>

@@ -19,10 +19,16 @@ Rails.application.routes.draw do
   }
 
   # main
+  namespace :company_admin, path: "c_admin" do
+    root "top#index"
+  end
+
+  namespace :admin do
+    root "top#index"
+  end
+  
   namespace :public, path: "" do
     root "top#index"
-
-    get 'top/ajax'
 
     resources :news, only: [:index, :show]
 
@@ -32,19 +38,11 @@ Rails.application.routes.draw do
     get 'rsses/ajax4'
     get 'rsses/ajax5'
 
-    get ':login_id/mypage' => 'users#mypage', param: :login_id, as: :mypage
+    get ':login_id/mypage' => 'users#mypage', param: :login_id, as: :mypage #すべてに反応してしまうので一番最後
     resources :users, param: :login_id, path: "", only: [:show, :update] do
       resources :rsses, only: [:index]
       resources :rss_choices, only: [:create, :destroy]
     end
-  end
-
-  namespace :company_admin, path: "c_admin" do
-    root "top#index"
-  end
-
-  namespace :admin do
-    root "top#index"
   end
 
 end

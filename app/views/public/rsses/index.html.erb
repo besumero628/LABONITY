@@ -1,15 +1,21 @@
+<% provide(:title,  "RSS") %>
+
 <!--header設定-->
 <%= render "shared/head" %>
 
 <!--flash設定-->
 <%= render "shared/flash" %>
 
+<!--RSS登録-->
 <div class="rss-background">
   <div class="container">
     <div class="frame-rss">
       <div class="row rss-choice-title">
         <h3 class="title_name col-12">論文RSS 登録</h3>
       </div>
+      
+      <!--validation設定-->
+      <div id="rss-validation-error"></div>
 
       <table class="table rss-table">
         <thead>

@@ -32,7 +32,6 @@ class User < ApplicationRecord
   validates :family_name, :given_name, presence: true, format: {with: HUMAN_NAME_REGEXP, allow_blank: true}
   validates :family_name_kana, :given_name_kana, presence: true, format: {with: KATAKANA_REGEXP, allow_blank: true}
   validates :post_id, presence: true
-  validate :can_not_create_rss_over_count, on: :create
 
   #urlのdefaultをlogin_idに設定
   def to_param
@@ -52,14 +51,5 @@ class User < ApplicationRecord
     clean_up_passwords
     result
   end
-
-  #rssの個数制限用
-  private
-  def can_not_create_rss_over_count
-    if self.rsses.size > 5
-      errors.add(:user, "選択可能なrssは最大5つまでです。")
-    end
-  end
-
-
+  
 end
