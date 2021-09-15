@@ -26,7 +26,7 @@
             m << p.full_name_block(:family_name, :given_name, "お名前", {placeholder:"姓"}, {placeholder:"名"})
             m << p.full_name_block(:family_name_kana, :given_name_kana, "フリガナ", {placeholder:"セイ"}, {placeholder:"メイ"})
             m << p.text_field_block(:email, "Eメール", {placeholder: "sample.example.com", type:"email"})
-            m << p.text_field_block(:post_id, "学年/役職")
+            m << p.collection_select_block(:post_id, "学年/役職", Post.all, :id, :name)
 
           end %>
 
@@ -35,11 +35,11 @@
           </div>
         <% end %>
       </div>
-      
+
       <div class="row devise-other-link">
         <%= link_to "マイページに戻る", public_mypage_path(current_user.login_id), class:"col-12" %>
       </div>
-      
+
     </div>
   </div>
 </div>
