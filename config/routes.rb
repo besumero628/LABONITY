@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  
+  
   # devise関連
   devise_for :users, path: "", controllers: {
     sessions: 'users/sessions',
@@ -17,6 +19,8 @@ Rails.application.routes.draw do
     passwords: 'admin/passwords',
     registrations: 'admin/registrations'
   }
+  
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   # main
   namespace :company_admin, path: "c_admin" do
