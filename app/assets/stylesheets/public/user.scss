@@ -61,6 +61,11 @@
       .rss_feed {
         .card-body {
           padding: 0 1.25rem;
+
+          .rss-title-detail {
+            margin: 10px 0 0 0;
+            font-weight: bold;
+          }
         }
         td {
           border-top: none;
