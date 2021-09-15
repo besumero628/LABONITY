@@ -1,0 +1,2 @@
+$("#rss_<%= @rss.id %>").html("<%= j(render 'public/rsses/tips/rss', rss: @rss ) %>");
+$("#rss-validation-error").html("<%= j(render 'shared/validation', object: @rss_choice ) %>");

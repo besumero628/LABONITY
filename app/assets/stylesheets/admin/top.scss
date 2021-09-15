@@ -1,0 +1,33 @@
+@import "colors";
+@import "dimensions";
+
+.admin-background {
+  background-color: rgba(186, 225, 222, 0.3); //$lightblue
+
+  .function-index {
+    padding: 50px 0;
+
+    .top-title {
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .top-icon {
+      margin-right: 16px;
+    }
+  }
+
+  .table {
+    background-color: #FFF;
+    text-align: center;
+
+    .blank {
+      background-color: $black;
+    }
+
+    .skip {
+      background-color: $gray;
+    }
+  }
+
+}

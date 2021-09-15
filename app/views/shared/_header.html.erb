@@ -48,6 +48,7 @@
                 <% end %>
               <% end %>
             </li>
+          <% elsif admin_signed_in? %>
           <% else %>
             <li class="nav-item ">
               <%= link_to "SIGNUP", new_user_registration_path, class:"nav-link btn btn-neutral btn-sm btn-login" %>

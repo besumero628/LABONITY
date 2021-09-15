@@ -7,6 +7,11 @@ class User < ApplicationRecord
 
   has_one_attached :profile_image
 
+  #association
+  has_many :rss_choices
+  has_many :rsses, through: :rss_choices, dependent: :destroy
+  # :through => :rss_choices
+
   #正規化
   before_validation do
     self.family_name = normalize_as_name(family_name)
@@ -32,7 +37,8 @@ class User < ApplicationRecord
   def to_param
     login_id
   end
-  
+
+  #user情報変更時にpasswordの入力を不必要にする
   def update_without_current_password(params, *options)
     params.delete(:current_password)
 
@@ -45,5 +51,5 @@ class User < ApplicationRecord
     clean_up_passwords
     result
   end
-
+  
 end

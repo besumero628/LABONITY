@@ -4,6 +4,7 @@ class Public::UsersController < ApplicationController
 
   def mypage
     @news = News.where(release_at: DateTime.new..Time.current).order(release_at: :desc).limit(3)
+    @rsses = User.find(current_user.id).rsses
     have_authenticate?(@user)
   end
 
