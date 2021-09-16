@@ -1,0 +1,45 @@
+<!--page名-->
+<% provide(:title,  "登録情報編集") %>
+
+<!--header設定-->
+<%= render "shared/head" %>
+
+<!--flash設定-->
+<%= render "shared/flash" %>
+
+<!--新規登録-->
+<div class="devise-background">
+  <div class="container">
+    <div class="session-devise">
+      <div class="row devise-title">
+        <h3 class="title_name col-12">登録情報変更</h3>
+      </div>
+
+      <div class="row devise-form">
+        <%= form_with model: @user, url: user_registration_path(@user.login_id), id: 'new_user', class: 'new_user', local: true, method: :patch do |f| %>
+
+          <%= markup do |m|
+            p = DeviseFormPresenter.new(f, self)
+
+            m << p.file_field_block(:profile_image, "Profile Image")
+            m << p.text_field_block(:login_id, "ID", {placeholder: "半角英数字で入力してください。"})
+            m << p.full_name_block(:family_name, :given_name, "お名前", {placeholder:"姓"}, {placeholder:"名"})
+            m << p.full_name_block(:family_name_kana, :given_name_kana, "フリガナ", {placeholder:"セイ"}, {placeholder:"メイ"})
+            m << p.text_field_block(:email, "Eメール", {placeholder: "sample.example.com", type:"email"})
+            m << p.text_field_block(:post_id, "学年/役職")
+
+          end %>
+
+          <div class="actions devise-submit-btn devise-submit-btn--sign_up">
+            <%= f.submit "情報更新", class:"btn btn-primary col-6"  %>
+          </div>
+        <% end %>
+      </div>
+      
+      <div class="row devise-other-link">
+        <%= link_to "マイページに戻る", public_mypage_path(current_user.login_id), class:"col-12" %>
+      </div>
+      
+    </div>
+  </div>
+</div>

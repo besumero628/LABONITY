@@ -1,0 +1,28 @@
+<div class="rss_feed">
+  <div class="card">
+    <div class="card-header">
+      <ul class="nav nav-tabs nav-tabs-neutral justify-content-center" role="tablist">
+        <% @rsses.each_with_index do |rss, idx| %>
+          <% if rss.users.include?(current_user) %>
+            <li class="nav-item">
+              <a class="rss-btn nav-link <%= "active" if idx == 0 %>" data-toggle="tab" href="#<%= rss.name.gsub(" ", "") %>" role="tab"><%= rss.name.truncate(15) %></a>
+            </li>
+          <% end %>
+        <% end %>
+
+      </ul>
+    </div>
+    <div class="card-body">
+      <div class="tab-content text-center">
+        <% @rsses.each_with_index do |rss, idx| %>
+          <% if rss.users.include?(current_user) %>
+            <div class="tab-pane <%= "active" if idx == 0 %>" id="<%= rss.name.gsub(" ", "") %>" role="tabpanel">
+              <p class="rss-title-detail"><%= rss.name %></p>
+              <div id="rss<%= idx+1 %>"></div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

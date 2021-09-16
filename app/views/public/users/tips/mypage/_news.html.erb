@@ -1,0 +1,19 @@
+<div class="col-12 news-head">
+  <i class="far fa-2x fa-newspaper news-icon"></i>
+  <h3 class="news-title">News</h3>
+</div>
+
+
+<table class="table">
+  <% @news.each do |news|%>
+    <tr class="news-tr">
+      <td class="news-td">
+        <%= link_to news.title.truncate(13), public_news_path(news.id), class:"news-item"%>
+        (<%= news.release_at.strftime("%m/%d") %>)
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+
+<%= link_to "お知らせ一覧", public_news_index_path, class:"col-12 mypage-news-link" %>

@@ -1,0 +1,21 @@
+@import "colors";
+@import "dimensions";
+
+.per-page {
+  .page-head {
+    height: 80px;
+  }
+  
+  .page-head-image {
+    position: absolute;
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+    height: 80px;
+    z-index: -1;
+    opacity : 0.2;
+  }
+}
+
+
+

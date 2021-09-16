@@ -1,0 +1,35 @@
+<div class="col-2 user-show-image">
+  <% if @user.profile_image.attached? %>
+    <%= image_tag @user.profile_image, class:"rounded img-raised"%>
+  <% else %>
+    <%= image_tag '/assets/shared/no_image.jpg', class:"rounded img-raised" %>
+  <% end %>
+</div>
+
+<div class="col-9">
+  <div class="user-profile-head">
+  <h3>
+    <%= @user.family_name + @user.given_name %>
+    <% if @user.official_mark_status %>
+      <i class="fas fa-check-circle official_mark"></i>
+    <% end %>
+  </h3>
+  <% if current_user.id == @user.id %>
+    <%= link_to "登録情報編集", edit_user_registration_path(current_user.login_id), class:"btn btn-edit"%>
+  <% end %>
+  </div>
+
+  <table class="table">
+    <tr>
+      <th width="30%">所属</th><td>ooo</td>
+    </tr>
+    <tr>
+      <th>学年/役職</th><td>ooo</td>
+    </tr>
+    <tr>
+      <th>論文数</th><td>ooo</td>
+    </tr>
+  </table>
+
+
+</div>

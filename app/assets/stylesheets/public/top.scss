@@ -1,0 +1,85 @@
+@import "colors";
+@import "dimensions";
+
+.index-page {
+
+  .news {
+
+    .news-icon {
+      margin-top: 30px;
+      margin-bottom: 15px;
+      margin-right: 10px;
+    }
+
+    .btn-show {
+      margin-top: 23px;
+      margin-bottom: 15px;
+      margin-left: 25px;
+
+      .btn {
+       font-size: 10px;
+       background-color: $orange;
+
+       .news-index-link {
+         color: white;
+       }
+
+      }
+    }
+
+    .news-table {
+      color: $gray;
+
+      .news-item {
+        color: $gray;
+      }
+
+    }
+
+  }
+
+  .about {
+    background-color: $light_blue;
+    padding: 3em;
+
+    .about-icon {
+      margin-top: 30px;
+      margin-bottom: 15px;
+      margin-right: 10px;
+    }
+
+    .card-index {
+      margin-top: 30px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .account-text {
+      display: flex;
+      justify-content: center;
+    }
+
+    .account-link {
+      display: flex;
+      justify-content: center;
+      .btn {
+        + .btn{
+          margin-left:60px;
+        }
+      }
+    }
+  }
+
+  .pickup {
+    margin-bottom: 0;
+
+    .pickup-icon {
+      margin-top: 30px;
+      margin-bottom: 15px;
+      margin-right: 10px;
+    }
+
+  }
+
+}
+

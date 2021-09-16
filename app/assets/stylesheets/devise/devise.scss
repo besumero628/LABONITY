@@ -1,0 +1,123 @@
+@import "colors";
+@import "dimensions";
+
+.devise-background {
+  background-color: rgba(186, 225, 222, 0.3); //$lightblue
+
+  .container {
+    padding: $wide * 2;
+    min-height: 70vh;
+
+    .session-devise {
+      width: 40vw;
+      min-width: 300px;
+      margin: $wide * 2 auto;
+      padding: $wide * 4;
+      border: solid 4px $gray;
+      border-radius: $wide;
+      background-color: #FFF;
+
+      .devise-title {
+        text-align: center;
+        .title_name {
+          font-weight: bold;
+          margin-bottom: 0;
+        }
+      }
+      
+      .comment-body {
+        margin: 5px 0;
+          display: block;
+          text-align: center;
+          margin-bottom: 0;
+          font-size: 14px;
+        }
+
+      .devise-form {
+        padding: $wide;
+        display: flex;
+        justify-content: center;
+
+        .new_user {
+          width: 100%;
+          max-width: 300px;
+        }
+
+        .field {
+          + .field {
+            margin-top: 18px;
+          }
+          
+          &-flex{
+            display: flex;
+            
+            input {
+              + input {
+                margin-left: 8px;
+              }
+            }
+          }
+          
+          .field_with_errors {
+            display: inline;
+            padding: 0;
+            label {color: red}
+            input {background-color: pink}
+          }
+          
+          .error-message {
+            color: red;
+            font-size: $small;
+            padding: 0 $very_wide;
+          }
+          
+        }
+
+        .label {
+          font-weight: bold;
+          margin-bottom: 2px;
+        }
+
+        input[type="text"] {
+        width: 100%;
+        padding: 4px 8px;
+        }
+
+        input[type="email"] {
+        width: 100%;
+        padding: 4px 8px;
+        }
+
+        input[type="password"] {
+        width: 100%;
+        padding: 4px 8px;
+        }
+
+        .foget-password-link {
+          display: flex;
+          justify-content: center;
+          text-align: right;
+        }
+
+        .devise-submit-btn {
+          display: flex;
+          justify-content: center;
+          
+          &--sign_up {
+            margin-top: 16px;
+          }
+          
+          .btn {
+            font-weight: bold;
+          }
+        }
+      }
+
+      .devise-other-link {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+      }
+    }
+  }
+}

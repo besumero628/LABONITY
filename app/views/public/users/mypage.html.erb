@@ -1,0 +1,95 @@
+<!--header設定-->
+<%= render "shared/head" %>
+
+<!--flash設定-->
+<%= render "shared/flash" %>
+
+<!--User Mypage-->
+
+  <!--search-->
+  <div class="mypage-search">
+    <div class="container">
+      <div class="row">
+        <%= render "public/users/tips/mypage/search" %>
+      </div>
+    </div>
+  </div>
+
+<!--Main Content-->
+<div class="container mypage-main">
+  <div class="row">
+
+    <!--User Info-->
+    <div class="col-2 user-info">
+
+      <div class="container">
+        <!--User Profile-->
+        <div class="row user-profile">
+          <%= render "public/users/tips/mypage/profile" %>
+        </div>
+
+        <!--所属-->
+        <div class="row">
+          <%= render "public/users/tips/mypage/group" %>
+        </div>
+
+        <!--実績-->
+        <div class="row">
+          thesis1
+        </div>
+      </div>
+
+    </div>
+
+    <!--Rss-->
+    <div class="col-8">
+      <div class="container user-content">
+        <!--研究室からのお知らせ-->
+        <div class="row">
+          <i class="fas fa-2x fa-flag-checkered user-content-icon"></i>
+          <h3>所属研究室からのお知らせ</h3>
+          <%= render "public/users/tips/mypage/notification" %>
+        </div>
+
+        <!--RSS-->
+        <div class="row paper-rss">
+          <div class="rss-title">
+            <i class="fas fa-2x fa-rss user-content-icon"></i>
+            <h3>論文 RSS</h3>
+          </div>
+          
+          <%= link_to "RSS登録はこちら", public_user_rsses_path(user_login_id: params[:login_id]), class:"rss-register-link" %>
+          <%= render "public/users/tips/mypage/rss" %>
+        </div>
+
+        <!--Community-->
+        <div class="row">
+          <i class="far fa-2x fa-comments user-content-icon"></i>
+          <h3 class=>コミュニティ</h3>
+          <%= render "public/users/tips/mypage/community" %>
+        </div>
+      </div>
+    </div>
+
+    <!--labonity func-->
+    <div class="col-2">
+      <div class="container labonity-function">
+        <!--Time Card-->
+        <div class="row timecard-row">
+          <%= render "public/users/tips/mypage/timecard" %>
+        </div>
+        
+        <!--News-->
+        <div class="row news-row">
+          <%= render "public/users/tips/mypage/news" %>
+        </div>
+        
+        <!--Event-->
+        <div class="row">
+          <%= render "public/users/tips/mypage/function" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

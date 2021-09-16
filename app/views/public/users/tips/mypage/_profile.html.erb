@@ -1,0 +1,29 @@
+<table class="table col-12">
+  <!--Image-->
+  <tr class=" user-image">
+    <% if @user.profile_image.attached? %>
+      <td><%= image_tag @user.profile_image, class:"rounded img-raised"%></td>
+    <% else %>
+      <td><%= image_tag '/assets/shared/no_image.jpg', class:"rounded img-raised" %></td>
+    <% end %>
+  </tr>
+  <!--Profile-->
+  <tr class="user-introduction">
+    <td>
+      <h5>
+        <%= link_to @user.family_name + @user.given_name, public_user_path(@user.login_id), class:"introduction-name" %>
+        <% if @user.official_mark_status %>
+          <i class="fas fa-check-circle official_mark"></i>
+        <% end %>
+      </h5>
+    </td>
+  </tr>
+  
+  <tr>
+    <td class="user-show-link">
+      <%= link_to edit_user_registration_path(current_user.login_id), class:"btn btn-default btn-lg" do %>
+        <i class="fas fa-user-cog"> Setting...</i>
+      <% end %>
+    </td>
+  </tr>
+</table>
