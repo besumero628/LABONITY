@@ -3,11 +3,3 @@
   *= require_tree ./devise
   *= require_tree ./public
  */
-
-/*@font-face {*/
-/*  font-family: 'nucleo-outline';*/
-/*  src: url(font-path('nucleo-outline.eot'));*/
-/*  src: url(font-path('nucleo-outline.woff2')) format('woff2'),*/
-/*       url(font-path('nucleo-outline.woff')) format('woff'),*/
-/*       url(font-path('nucleo-outline.ttf')) format('truetype');*/
-/*}*/
