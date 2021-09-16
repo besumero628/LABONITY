@@ -13,6 +13,8 @@
 //= require jquery
 //= require bootstrap-sprockets
 //
+//= jquery.min.js
+
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
