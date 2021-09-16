@@ -16,3 +16,5 @@ Rails.application.config.assets.precompile += %w(public.css admin.css company_ad
 
 Rails.application.config.assets.paths << "#{Rails}/vendor/assets/fonts"
 Rails.application.config.assets.precompile += %w( *.eot *.woff *.ttf *.svg *.otf *.png *.jpg *.jpeg *.gif )
+
+# Rails.application.config.assets.precompile += %w( *.js )
