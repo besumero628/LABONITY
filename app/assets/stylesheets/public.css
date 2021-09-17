@@ -4,8 +4,6 @@
   *= require_tree ./public
  */
 
-/*@import url("now-ui-kit.css");*/
-
 .bootstrap-switch {
   display: inline-block;
   direction: ltr;
