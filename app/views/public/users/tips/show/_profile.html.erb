@@ -2,7 +2,7 @@
   <% if @user.profile_image.attached? %>
     <%= image_tag @user.profile_image, class:"rounded img-raised"%>
   <% else %>
-    <%= image_tag '/assets/shared/no_image.jpg', class:"rounded img-raised" %>
+    <%= image_tag asset_path('no_image.jpg'), class:"rounded img-raised" %>
   <% end %>
 </div>
 

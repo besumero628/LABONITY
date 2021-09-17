@@ -44,7 +44,7 @@
                 <% if current_user.profile_image.attached? %>
                   <td><%= image_tag current_user.profile_image, class:"rounded", size:"50x50"%></td>
                 <% else %>
-                  <td><%= image_tag '/assets/shared/no_image.jpg', class:"rounded", size:"50x50" %></td>
+                  <td><%= image_tag asset_path('no_image.jpg'), class:"rounded", size:"50x50" %></td>
                 <% end %>
               <% end %>
             </li>
