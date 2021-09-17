@@ -10,7 +10,7 @@ class User < ApplicationRecord
   #association
   has_many :rss_choices
   has_many :rsses, through: :rss_choices, dependent: :destroy
-  # :through => :rss_choices
+  belongs_to :post
 
   #正規化
   before_validation do

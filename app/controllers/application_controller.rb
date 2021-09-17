@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   class Forbidden < ActionController::ActionControllerError; end
   class IpAddressRejected < ActionController::ActionControllerError; end
 
-  include ErrorHandlers #if Rails.env.production?
+  include ErrorHandlers if Rails.env.production?
 
 
   def after_sign_in_path_for(resource)
