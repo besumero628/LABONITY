@@ -15,7 +15,7 @@
 
         <!--card 1-->
         <div class="card" style="width: 20rem;">
-          <img class="card-img-top" src="/assets/public/Top/about-card1" alt="Card image cap">
+          <%= image_tag asset_path('about-card1'), class:"card-img-top" %>
           <div class="card-body">
             <h4 class="card-title">Easy set up a laboratory.</h4>
             <div class="card-text">
@@ -34,7 +34,7 @@
         </div>
         <!--card 2-->
         <div class="card" style="width: 20rem;">
-          <img class="card-img-top" src="/assets/public/Top/about-card2" alt="Card image cap">
+          <%= image_tag asset_path('about-card2'), class:"card-img-top" %>
           <div class="card-body">
             <h4 class="card-title">Record your research.</h4>
             <div class="card-text">
@@ -54,7 +54,7 @@
 
         <!--card 3-->
         <div class="card" style="width: 20rem;">
-          <img class="card-img-top" src="/assets/public/Top/about-card3" alt="Card image cap">
+          <%= image_tag asset_path('about-card3'), class:"card-img-top" %>
           <div class="card-body">
             <h4 class="card-title">Connect with partners.</h4>
             <div class="card-text">
@@ -78,11 +78,12 @@
         <div class="col-12 account-text">
           <p>これらの機能を使うためには今すぐ SIGNUP ！</p>
         </div>
-        <div class="col-12 account-link">
+        <div class="col-md-6 account-link">
           <a href="#" class="btn btn-primary btn-lg">個人の方はこちら</a>
+        </div>
+        <div class="col-md-6 account-link">
           <a href="#" class="btn btn-primary btn-lg">企業の方はこちら</a>
         </div>
-
       </div>
     </div>
   </div>

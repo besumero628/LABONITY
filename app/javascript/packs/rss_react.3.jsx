@@ -37,14 +37,14 @@ function getData(f){
       for(let n in result.RDF.item){
         let data = result.RDF.item[n];
         arr.push(
-          <tr>
-            <td class="small" width="20%">{data.date}</td>
+          <tr key={data.title[0]}>
+            <td className="small" width="20%">{data.date}</td>
             <td align="left"><a href={data.link}>{data.title[1]}</a></td>
           </tr>
         );
       }
       const el = (
-        <table class="table mt-4">
+        <table className="table mt-4">
           <tbody>{arr}</tbody>
         </table>
       );

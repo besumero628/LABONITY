@@ -13,6 +13,8 @@
 //= require jquery
 //= require bootstrap-sprockets
 //
+//= require now-ui-kit
+
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks

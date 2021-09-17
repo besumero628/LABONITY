@@ -1,3 +1,7 @@
+<head>
+  <%= javascript_pack_tag 'rss_react' %>
+</head>
+
 <!--header設定-->
 <%= render "shared/head" %>
 
@@ -20,7 +24,7 @@
   <div class="row">
 
     <!--User Info-->
-    <div class="col-2 user-info">
+    <div class="col-md-2 user-info">
 
       <div class="container">
         <!--User Profile-->
@@ -42,7 +46,7 @@
     </div>
 
     <!--Rss-->
-    <div class="col-8">
+    <div class="col-md-8">
       <div class="container user-content">
         <!--研究室からのお知らせ-->
         <div class="row">
@@ -57,7 +61,7 @@
             <i class="fas fa-2x fa-rss user-content-icon"></i>
             <h3>論文 RSS</h3>
           </div>
-          
+
           <%= link_to "RSS登録はこちら", public_user_rsses_path(user_login_id: params[:login_id]), class:"rss-register-link" %>
           <%= render "public/users/tips/mypage/rss" %>
         </div>
@@ -72,18 +76,18 @@
     </div>
 
     <!--labonity func-->
-    <div class="col-2">
+    <div class="col-md-2">
       <div class="container labonity-function">
         <!--Time Card-->
         <div class="row timecard-row">
           <%= render "public/users/tips/mypage/timecard" %>
         </div>
-        
+
         <!--News-->
         <div class="row news-row">
           <%= render "public/users/tips/mypage/news" %>
         </div>
-        
+
         <!--Event-->
         <div class="row">
           <%= render "public/users/tips/mypage/function" %>
