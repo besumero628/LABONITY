@@ -11,7 +11,7 @@ class FormPresenter
     @form_builder = form_builder
     @view_context = view_context
   end
-  
+
   def text_field_block(name, label_text, options={})
     markup(:div, class:"field") do |m|
       m << label(name, label_text, class:"label")
@@ -19,7 +19,7 @@ class FormPresenter
       m << error_messages_for(name)
     end
   end
-  
+
   def password_field_block(name, label_text, options={})
     markup(:div, class:"field") do |m|
       m << label(name, label_text, class:"label")
@@ -27,7 +27,7 @@ class FormPresenter
       m << error_messages_for(name)
     end
   end
-  
+
   def file_field_block(name, label_text, options={})
     markup(:div, class:"field") do |m|
       m << label(name, label_text, class:"label")
@@ -43,7 +43,6 @@ class FormPresenter
       m << error_messages_for(name)
     end
   end
-  
 
   def error_messages_for(name)
     markup do |m|

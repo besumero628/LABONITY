@@ -10,7 +10,6 @@ class User < ApplicationRecord
   #association
   has_many :rss_choices
   has_many :rsses, through: :rss_choices, dependent: :destroy
-  
   belongs_to :post
 
   #正規化
