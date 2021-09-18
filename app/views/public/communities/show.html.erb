@@ -1,0 +1,29 @@
+<!--page名-->
+<% provide(:title,  "#{@community.name}") %>
+
+<!--header設定-->
+<%= render "shared/head" %>
+
+<!--flash設定-->
+<%= render "shared/flash" %>
+
+<div class="container community-show-page">
+  <div class="row community-show-head">
+    <%= render "public/communities/tips/show/profile" %>
+  </div>
+  
+  <div class="row community-news">
+    <i class="far fa-2x fa-newspaper news-icon"></i>
+    <h3 class="page-title">Community News</h3>
+  </div>
+  
+  <div class="row community-main">
+    <div class="col-md-2">
+      <i class="fas fa-users"></i>
+    </div>
+    <div class="col-md-10">
+      
+    </div>
+    
+  </div>
+</div>
