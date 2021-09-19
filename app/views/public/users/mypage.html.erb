@@ -2,6 +2,9 @@
   <%= javascript_pack_tag 'rss_react' %>
 </head>
 
+<!--page名-->
+<% provide(:title,  "#{current_user.login_id}のMypage") %>
+
 <!--header設定-->
 <%= render "shared/head" %>
 

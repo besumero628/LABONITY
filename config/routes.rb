@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-
-  
   
   # devise関連
   devise_for :users, path: "", controllers: {
@@ -35,6 +33,7 @@ Rails.application.routes.draw do
     root "top#index"
 
     resources :news, only: [:index, :show]
+    resources :communities
 
     get 'rsses/ajax1'
     get 'rsses/ajax2'

@@ -19,6 +19,14 @@ class FormPresenter
       m << error_messages_for(name)
     end
   end
+  
+  def text_area_block(name, label_text, options={})
+    markup(:div, class:"field") do |m|
+      m << label(name, label_text, class:"label")
+      m << text_area(name, options)
+      m << error_messages_for(name)
+    end
+  end
 
   def password_field_block(name, label_text, options={})
     markup(:div, class:"field") do |m|

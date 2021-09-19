@@ -1,0 +1,45 @@
+<!--page名-->
+<% provide(:title,  "New Community") %>
+
+<!--header設定-->
+<%= render "shared/head" %>
+
+<!--flash設定-->
+<%= render "shared/flash" %>
+
+<div class="community-background">
+  <div class="container">
+    <div class="community-block">
+      <div class="row community-title">
+        <h3 class="title_name col-12">New Community</h3>
+      </div>
+
+      <div class="row community-form">
+        <%= form_with model: @community, url: public_communities_path, id: 'new_community', class: 'new_community', local: true do |f| %>
+          <%= markup do |m|
+            p = FormPresenter.new(f, self)
+
+            m << p.file_field_block(:image, "Community Image")
+            m << p.text_field_block(:name, "コミュニティ名")
+            m << p.text_area_block(:introduction, "説明", {rows:"10"})
+
+          end %>
+          
+          <div class="actions community-submit-btn community-submit-btn--sign_up">
+            <%= f.submit "登録", class:"btn btn-primary col-6"%>
+          </div>
+          
+        <% end %>
+      </div>
+      
+      <div class="row community-other-link">
+        <%= link_to "community一覧に戻る", public_communities_path, class:"col-12" %>
+      </div>
+      
+      <div class="row community-other-link">
+        <%= link_to "マイページに戻る", public_mypage_path(current_user.login_id), class:"col-12" %>
+      </div>
+      
+    </div>
+  </div>
+</div>

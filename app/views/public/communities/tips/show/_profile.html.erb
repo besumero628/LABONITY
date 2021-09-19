@@ -1,0 +1,24 @@
+<div class="col-md-2 community-show-image">
+  <% if @community.image.attached? %>
+    <%= image_tag @community.image, class:"rounded img-raised"%>
+  <% else %>
+    <%= image_tag asset_path('community-noimage.jpg'), class:"rounded img-raised" %>
+  <% end %>
+</div>
+
+<div class="col-md-9">
+  <div class="community-profile-head">
+  <h3>
+    <%= @community.name %>
+  </h3>
+  </div>
+
+  <table class="table">
+    <tr>
+      <th width="30%">説明</th><td><%= @community.introduction %></td>
+    </tr>
+    <tr>
+      <th>メンバー数</th><td></td>
+    </tr>
+  </table>
+</div>
