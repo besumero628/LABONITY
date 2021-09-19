@@ -1,6 +1,10 @@
 @import "colors";
 @import "dimensions";
 
+.community-icon {
+  margin-right: 16px;
+}
+
 //index
 .community-page {
 
@@ -15,9 +19,7 @@
       padding: 0 0 20px 0;
 
 
-      .community-icon {
-        margin-right: 16px;
-      }
+
 
       .title-name {
         margin: 0;
@@ -178,6 +180,10 @@
 // show
 .community-show-page {
   padding: 16px;
+  
+  h1, h2, h3, h4 {
+    margin: 0;
+  }
 
   .community-show-head {
     min-height: 195px;
@@ -195,7 +201,7 @@
     }
   }
   
-  .community-news {
-    
+  .community-flex {
+   display: flex; 
   }
 }
