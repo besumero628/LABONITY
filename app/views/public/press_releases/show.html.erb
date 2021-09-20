@@ -1,0 +1,35 @@
+<!--header設定-->
+<%= render "shared/head" %>
+
+<!--flash設定-->
+<%= render "shared/flash" %>
+
+<!--menu設定-->
+<%= render "public/laboratories/tips/menu" %>
+
+<div class="container container-page">
+  <div class="row rowbox content-title">
+    <i class="fas fa-3x fa-vial icon"></i>
+    <h2 class="page-title"><%= @press_release.title %></h2>
+  </div>
+
+  <div class="row rowbox">
+    <table class="table">
+      <tr>
+        <td>発行：<%= @set_laboratory.name %></td>
+        <td>発行日：<%= @press_release.created_at.strftime("%Y/%m/%d") %></td>
+        <td>
+          <% if @press_release.linkpath %>
+          関連link：<%= link_to @press_release.linkpath.truncate(30), @press_release.linkpath %>
+          <% else %>
+          関連link：ー
+          <% end %>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <div>
+      <%= @press_release.body %>
+    </div>
+</div>
+

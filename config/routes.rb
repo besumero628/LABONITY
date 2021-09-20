@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   # devise関連
   devise_for :users, path: "", controllers: {
     sessions: 'users/sessions',
@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     passwords: 'admin/passwords',
     registrations: 'admin/registrations'
   }
-  
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   # main
@@ -28,12 +28,18 @@ Rails.application.routes.draw do
   namespace :admin do
     root "top#index"
   end
-  
+
   namespace :public, path: "" do
     root "top#index"
 
     resources :news, only: [:index, :show]
     resources :communities
+
+
+    resources :laboratories do
+      get 'member'
+      resources :press_releases, except:[:index]
+    end
 
     get 'rsses/ajax1'
     get 'rsses/ajax2'

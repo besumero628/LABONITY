@@ -1,0 +1,14 @@
+<div class="content-title">
+  <i class="far fa-3x fa-newspaper icon"></i>
+  <h2 class="page-title">PressRelease</h2>
+</div>
+
+<table class="table">
+  <% @press_releases.each do |release| %>
+    <tr>
+      <td><%= release.created_at.strftime("%Y/%m/%d") %></td>
+      <td><%= link_to release.title, public_laboratory_press_release_path(release.id) %></td>
+    </tr>
+  <% end %>
+</table>
+

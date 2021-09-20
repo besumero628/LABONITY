@@ -1,5 +1,5 @@
 Laboratory.create!(
-  name: "武田片山",
+  name: "武田片山研究室",
   introduction: "光を用いた固体物理学の研究室です。",
   organization_type: "College",
   organization_id: 1,
@@ -36,4 +36,11 @@ LabMember.create!(
   main_status: true,
   flex_status: true,
   permit_status: true,
+)
+
+PressRelease.create!(
+  title: "研究室発足のお知らせ",
+  body: "研究室を発足しました。意欲のある研究生を募集しています。",
+  linkpath: "https://www.nature.com/",
+  laboratory_id: 1
 )

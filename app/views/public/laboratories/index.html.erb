@@ -1,0 +1,33 @@
+<!--header設定-->
+<%= render "shared/head" %>
+
+<!--flash設定-->
+<%= render "shared/flash" %>
+
+<div class="container container-page">
+  <div class="row rowbox content-title">
+    <i class="fas fa-3x fa-vial icon"></i>
+    <h2 class="page-title">Laboratory 一覧</h2>
+  </div>
+
+  <div class="row rowbox">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>研究室名</th>
+          <th>所属</th>
+          <th>メンバー数</th>
+          <th>論文数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @laboratories.each do |laboratory| %>
+          <td><%= laboratory.name %></td>
+          <td><%= laboratory.organization.name %></td>
+          <td><%= LabMember.where(laboratory_id: laboratory.id).size %></td>
+          <td>あとで実装</td>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

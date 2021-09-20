@@ -9,7 +9,7 @@ class Public::UsersController < ApplicationController
   end
 
   def show
-
+    @laboratory = Laboratory.find(LabMember.find_by(user_id: User.find(current_user.id).id, main_status: true).laboratory_id) || false
   end
 
   def edit

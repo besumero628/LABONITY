@@ -1,0 +1,45 @@
+<!--header設定-->
+<%= render "shared/head" %>
+
+<!--flash設定-->
+<%= render "shared/flash" %>
+
+<!--menu設定-->
+<%= render "public/laboratories/tips/menu" %>
+
+<div class="container container-page">
+  <div class="row rowbox content-title">
+    <i class="fas fa-3x fa-vial icon"></i>
+    <h2 class="page-title">Member 一覧</h2>
+  </div>
+
+  <div class="row rowbox">
+    <table class="table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>名前</th>
+          <th>役職</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <% @lab_members.each do |member| %>
+          <% user = User.find(member.user_id) %>
+          <tr>
+            <td width="20%">
+              <% if user.profile_image.attached? %>
+                <%= image_tag user.profile_image.variant(resize:'50x50'), class:"rounded img-raised" %>
+              <% else %>
+                <%= image_tag asset_path('no_image.jpg'), size: "50x50", class:"rounded img-raised" %>
+              <% end %>
+            </td>
+            <td><%= user.family_name + user.given_name %></td>
+            <td><%= user.post.name %></td>
+          </tr>
+
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

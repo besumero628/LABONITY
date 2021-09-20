@@ -1,0 +1,42 @@
+@import "colors";
+@import "dimensions";
+
+.lab-nav {
+  background-color: $light-blue;
+  a {
+    color: $gray;
+  }
+}
+
+.lab-top-image {
+ .swiper {
+   max-height: 70vh;
+
+   .swiper-slide {
+     display: flex;
+     justify-content: center;
+
+      .swiper-image {
+        min-height: 20vh;
+        max-height: 70vh;
+     }
+   }
+ }
+}
+
+.container-page {
+  min-height: 70vh;
+  .content-title {
+    display: flex;
+  }
+
+  .rowbox {
+    padding: 16px;
+  }
+
+  .about {
+    .lab-about {
+      margin-top: 16px;
+    }
+  }
+}

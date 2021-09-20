@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_19_095147) do
+ActiveRecord::Schema.define(version: 2021_09_20_032357) do
 
   create_table "accesses", force: :cascade do |t|
     t.string "organization_type", null: false
@@ -147,6 +147,15 @@ ActiveRecord::Schema.define(version: 2021_09_19_095147) do
 
   create_table "posts", force: :cascade do |t|
     t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "press_releases", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "body", null: false
+    t.text "linkpath"
+    t.integer "laboratory_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
