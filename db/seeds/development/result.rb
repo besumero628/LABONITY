@@ -12,3 +12,13 @@ Confernce.create!(
   linkpath: "https://www.google.com",
   laboratory_id: 1
 )
+
+Project.create!(
+  title: "JSPS 科研費 挑戦的萌芽研究",
+  start_date: Time.now,
+  end_date: Time.now + (24 * 60 * 60),
+  funding: 100000000,
+  position: "研究代表者",
+  linkpath: "https://www.google.com",
+  laboratory_id: 1
+)

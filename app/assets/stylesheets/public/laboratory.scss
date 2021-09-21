@@ -34,43 +34,49 @@
 
 .container-page {
   min-height: 70vh;
-  
+
   .content-top {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    
+
     .content-title {
       display: flex;
-      
+
       &-name {
         font-weight: bold;
       }
-      
+
       &-btn {
         margin-bottom: 8px;
       }
-      
+
     }
-    
+
     .content-new-link {
       .btn {
         font-weight: bold;
       }
     }
   }
-  
+
   .content-main {
     width: 100%;
     &-text {
       word-break: break-all;
       // word-wrap: break-word;
     }
-    
+
     &-figure {
 
       display: flex;
       justify-content: center;
+    }
+
+    &-images {
+      display: flex;
+      flex-wrap : wrap;
+      
     }
   }
 

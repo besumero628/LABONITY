@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_21_022153) do
+ActiveRecord::Schema.define(version: 2021_09_21_034237) do
 
   create_table "accesses", force: :cascade do |t|
     t.string "organization_type", null: false
@@ -95,11 +95,11 @@ ActiveRecord::Schema.define(version: 2021_09_21_022153) do
   end
 
   create_table "confernces", force: :cascade do |t|
-    t.string "name"
-    t.string "title"
-    t.text "abstract"
+    t.string "name", null: false
+    t.string "title", null: false
+    t.text "abstract", null: false
     t.text "linkpath"
-    t.integer "laboratory_id"
+    t.integer "laboratory_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -156,10 +156,10 @@ ActiveRecord::Schema.define(version: 2021_09_21_022153) do
   end
 
   create_table "papers", force: :cascade do |t|
-    t.string "title"
-    t.text "abstract"
+    t.string "title", null: false
+    t.text "abstract", null: false
     t.text "linkpath"
-    t.integer "laboratory_id"
+    t.integer "laboratory_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -173,6 +173,18 @@ ActiveRecord::Schema.define(version: 2021_09_21_022153) do
   create_table "press_releases", force: :cascade do |t|
     t.string "title", null: false
     t.text "body", null: false
+    t.text "linkpath"
+    t.integer "laboratory_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "title", null: false
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.integer "funding"
+    t.string "position"
     t.text "linkpath"
     t.integer "laboratory_id", null: false
     t.datetime "created_at", null: false

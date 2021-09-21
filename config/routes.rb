@@ -41,6 +41,8 @@ Rails.application.routes.draw do
       resources :press_releases, except:[:index]
       resources :papers
       resources :confernces
+      resources :projects, except:[:show]
+      resources :albums
     end
 
     get 'rsses/ajax1'

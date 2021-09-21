@@ -13,10 +13,10 @@
       <%= link_to "Confernce", public_laboratory_confernces_path(@set_laboratory.id), class:"nav-link" %>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Reports</a>
+      <%= link_to "Projects", public_laboratory_projects_path(@set_laboratory.id), class:"nav-link" %>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Album</a>
+      <%= link_to "Albums", public_laboratory_albums_path(@set_laboratory.id), class:"nav-link" %>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="#">Link</a>

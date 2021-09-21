@@ -22,10 +22,10 @@
       </thead>
       <tbody>
         <% @laboratories.each do |laboratory| %>
-          <td><%= laboratory.name %></td>
+          <td><%= link_to laboratory.name, public_laboratory_path(laboratory.id) %></td>
           <td><%= laboratory.organization.name %></td>
-          <td><%= LabMember.where(laboratory_id: laboratory.id).size %></td>
-          <td>あとで実装</td>
+          <td><%= link_to LabMember.where(laboratory_id: laboratory.id).size, public_laboratory_member_path(laboratory_id: laboratory.id) %></td>
+          <td><%= link_to Paper.where(laboratory_id: laboratory.id).size, public_laboratory_papers_path(laboratory_id: laboratory.id) %></td>
         <% end %>
       </tbody>
     </table>

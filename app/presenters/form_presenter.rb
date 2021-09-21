@@ -51,6 +51,14 @@ class FormPresenter
       m << error_messages_for(name)
     end
   end
+  
+  def date_field_block(name, label_text, options={})
+    markup(:div, class:"field") do |m|
+      m << label(name, label_text, class:"label")
+      m << date_field(name, options)
+      m << error_messages_for(name)
+    end
+  end
 
   def error_messages_for(name)
     markup do |m|

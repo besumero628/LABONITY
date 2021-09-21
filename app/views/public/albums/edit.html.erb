@@ -1,0 +1,15 @@
+<!--header設定-->
+<%= render "shared/head" %>
+
+<!--flash設定-->
+<%= render "shared/flash" %>
+
+<!--menu設定-->
+<%= render "public/laboratories/tips/menu" %>
+
+<!--Main-->
+<div class="background-orange">
+  <div class="container general-form">
+    <%= render "public/albums/tips/form", title: "登録内容編集" , path: public_laboratory_album_path(@set_laboratory.id) %>
+  </div>
+</div>
