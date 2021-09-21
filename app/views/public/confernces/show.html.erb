@@ -7,25 +7,25 @@
 <!--menu設定-->
 <%= render "public/laboratories/tips/menu" %>
 
-<!--Paper Show-->
+<!--Conference Show-->
 <div class="container container-page">
   <!--Title-->
   <div class="row show-title content-top underline">
     <div class="content-title col-10">
-      <h3 class="content-title-name"><%= @paper.title %></h3>
+      <h3 class="content-title-name"><%= @confernce.title %></h3>
     </div>
     <% if user_signed_in? && current_user.user_has_edit_status?(@set_laboratory) %>
-      <%= link_to "編集", edit_public_laboratory_paper_path(@set_laboratory.id, @paper.id), class:"btn btn-primary content-title-btn" %>
+      <%= link_to "編集", edit_public_laboratory_confernce_path(@set_laboratory.id, @confernce.id), class:"btn btn-primary content-title-btn" %>
     <% end %>
   </div>
 
   <!--Main-->
   <div class="row rowbox">
     <div class="content-main">
-      <p class="content-main-text"><%= @paper.abstract %></p>
-      <% if @paper.figure.attached? %>
+      <p class="content-main-text"><%= @confernce.abstract %></p>
+      <% if @confernce.figure.attached? %>
         <div class="content-main-figure">
-          <%= image_tag @paper.figure %>
+          <%= image_tag @confernce.figure %>
         </div>
       <% end %>
     </div>
@@ -37,10 +37,10 @@
   <div class="row news-link">
     <%= link_to @set_laboratory.name , public_laboratory_path(@set_laboratory.id), class:"news-index-link" %>
     <%= "　＞　" %>
-    <%= link_to "Paper 一覧", public_laboratory_papers_path(@set_laboratory.id), class:"news-index-link" %>
-    <%= "　＞　#{@paper.title.truncate(30)}" %>
+    <%= link_to "Conference 一覧", public_laboratory_confernces_path(@set_laboratory.id), class:"news-index-link" %>
+    <%= "　＞　#{@confernce.title.truncate(30)}" %>
   </div>
   <div class="content-link-path">
-    link：<%= link_to @paper.linkpath.truncate(30), @paper.linkpath %>
+    link：<%= link_to @confernce.linkpath.truncate(30), @confernce.linkpath %>
   </div>
 </div>

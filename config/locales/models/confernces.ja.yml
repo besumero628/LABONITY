@@ -1,0 +1,5 @@
+ja:
+  activerecord:
+    attributes:
+      confernce:
+        name: 学会名

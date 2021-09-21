@@ -7,16 +7,16 @@
 <!--menu設定-->
 <%= render "public/laboratories/tips/menu" %>
 
-<!--Paper Index-->
+<!--Confernces Index-->
 <div class="container container-page">
   <div class="row rowbox content-top">
     <div class="content-title">
-      <i class="far fa-3x fa-sticky-note icon"></i>
-      <h2 class="content-title-name">Paper 一覧</h2>
+      <i class="fas fa-3x fa-chalkboard icon"></i>
+      <h2 class="content-title-name">Confernce 一覧</h2>
     </div>
     <div class="content-new-link">
       <% if user_signed_in? && current_user.user_has_edit_status?(@set_laboratory) %>
-        <%= link_to "新規作成", new_public_laboratory_paper_path(@set_laboratory.id), class:"btn btn-primary" %>
+        <%= link_to "新規作成", new_public_laboratory_confernce_path(@set_laboratory.id), class:"btn btn-primary" %>
       <% end %>
     </div>
 
@@ -26,8 +26,9 @@
     <table class="table">
       <thead>
         <tr>
-          <th width="20%">title</th>
-          <th width="60%">abstract</th>
+          <th>title</th>
+          <th>abstract</th>
+          <th>confernce</th>
           <th>link</th>
           <% if user_signed_in? && current_user.user_has_edit_status?(@set_laboratory) %>
             <th></th>
@@ -35,13 +36,14 @@
         </tr>
       </thead>
       <tbody>
-        <% @papers.each do |paper| %>
+        <% @confernces.each do |confernce| %>
           <tr>
-            <td><%= link_to paper.title.truncate(20), public_laboratory_paper_path(@set_laboratory.id, paper.id) %></td>
-            <td><%= paper.abstract.truncate(100) %></td>
-            <td><%= link_to paper.linkpath.truncate(20), paper.linkpath %></td>
+            <td><%= link_to confernce.title.truncate(20), public_laboratory_confernce_path(@set_laboratory.id, confernce.id) %></td>
+            <td><%= confernce.abstract.truncate(100) %></td>
+            <td><%= confernce.name %></td>
+            <td><%= link_to confernce.linkpath.truncate(20), confernce.linkpath %></td>
             <% if user_signed_in? && current_user.user_has_edit_status?(@set_laboratory) %>
-              <td><%= link_to "削除", public_laboratory_paper_path(@set_laboratory.id, paper.id), class:"btn btn-default", method: :delete %></td>
+              <td><%= link_to "削除", public_laboratory_confernce_path(@set_laboratory.id, confernce.id), class:"btn btn-default", method: :delete %></td>
             <% end %>
           </tr>
 

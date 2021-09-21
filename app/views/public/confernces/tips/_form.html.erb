@@ -1,13 +1,14 @@
-<!--Paper Form-->
+<!--Confernce Form-->
 <div class="row form-title">
-  <h3 class="form-title-name col-12">Paper <%= title %></h3>
+  <h3 class="form-title-name col-12">Confernce <%= title %></h3>
 </div>
 
 <div class="form-main">
-  <%= form_with model: @paper, url: path, id: 'new_paper', class: 'new_paper', local: true do |f| %>
+  <%= form_with model: @confernce, url: path, id: 'new_confernce', class: 'new_confernce', local: true do |f| %>
     <%= markup do |m|
       p = FormPresenter.new(f, self)
-
+      
+      m << p.text_field_block(:name, "学会名")
       m << p.text_field_block(:title, "Title", {placeholder: "論文タイトル"})
       m << p.text_area_block(:abstract, "Abstract", {rows:10})
       m << p.file_field_block(:figure, "Typical Figure")
@@ -25,5 +26,5 @@
 </div>
 
 <div class="row other-link">
-  <%= link_to "研究室論文一覧に戻る", public_laboratory_papers_path(@set_laboratory.id), class:"col-12" %>
+  <%= link_to "研究室参加学会一覧に戻る", public_laboratory_confernces_path(@set_laboratory.id), class:"col-12" %>
 </div>
