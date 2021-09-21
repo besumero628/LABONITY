@@ -1,0 +1,87 @@
+@import "colors";
+@import "dimensions";
+
+.background-orange {
+  background-color: rgba(249, 160, 63, 0.2);
+  margin: 0;
+  padding: 30px 0;
+}
+
+.general-form {
+  width: 40vw;
+  min-width: 300px;
+  margin: 20px auto;
+  padding: 40px;
+  border: solid 4px #39393A;
+  border-radius: 10px;
+  background-color: #FFF;
+
+  .form-title {
+    text-align: center;
+
+    &-name {
+      font-weight: bold;
+      margin: 0;
+    }
+  }
+
+  .form-main {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+
+    .label {
+      font-weight: bold;
+      margin-bottom: 2px;
+    }
+
+    .field {
+      + .field {
+        margin-top: 18px;
+      }
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 4px 8px;
+    }
+
+    textarea {
+      width: 100%;
+      padding: 4px 8px;
+      row: 10;
+    }
+
+    &-submit {
+      display: flex;
+      justify-content: center;
+
+      .btn {
+        margin-top: 16px;
+        font-weight: bold;
+      }
+    }
+    
+    .field_with_errors {
+      display: inline;
+      padding: 0;
+      label {color: red}
+      input {background-color: pink}
+    }
+    
+    .error-message {
+      color: red;
+      font-size: $small;
+      padding: 0 $very_wide;
+      width: 100%;
+    }
+    
+
+  }
+  
+  .other-link {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+}

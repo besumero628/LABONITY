@@ -2,6 +2,7 @@ class Laboratory < ApplicationRecord
   has_many :lab_members
   has_many :albums
   has_many :press_releases
+  has_many :papers
   belongs_to :major
   belongs_to :organization, polymorphic: true
 

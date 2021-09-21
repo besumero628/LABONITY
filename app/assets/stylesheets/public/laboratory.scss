@@ -1,6 +1,14 @@
 @import "colors";
 @import "dimensions";
 
+.underline {
+  border-bottom: 1px solid #717171;
+}
+
+.show-title {
+  padding-top: 40px;
+}
+
 .lab-nav {
   background-color: $light-blue;
   a {
@@ -10,7 +18,7 @@
 
 .lab-top-image {
  .swiper {
-   max-height: 70vh;
+   max-height: 60vh;
 
    .swiper-slide {
      display: flex;
@@ -18,7 +26,7 @@
 
       .swiper-image {
         min-height: 20vh;
-        max-height: 70vh;
+        max-height: 60vh;
      }
    }
  }
@@ -26,9 +34,46 @@
 
 .container-page {
   min-height: 70vh;
-  .content-title {
+  
+  .content-top {
     display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    
+    .content-title {
+      display: flex;
+      
+      &-name {
+        font-weight: bold;
+      }
+      
+      &-btn {
+        margin-bottom: 8px;
+      }
+      
+    }
+    
+    .content-new-link {
+      .btn {
+        font-weight: bold;
+      }
+    }
   }
+  
+  .content-main {
+    width: 100%;
+    &-text {
+      word-break: break-all;
+      // word-wrap: break-word;
+    }
+    
+    &-figure {
+
+      display: flex;
+      justify-content: center;
+    }
+  }
+
 
   .rowbox {
     padding: 16px;

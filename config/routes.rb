@@ -39,6 +39,7 @@ Rails.application.routes.draw do
     resources :laboratories do
       get 'member'
       resources :press_releases, except:[:index]
+      resources :papers
     end
 
     get 'rsses/ajax1'

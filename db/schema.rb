@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_20_032357) do
+ActiveRecord::Schema.define(version: 2021_09_20_115730) do
 
   create_table "accesses", force: :cascade do |t|
     t.string "organization_type", null: false
@@ -141,6 +141,15 @@ ActiveRecord::Schema.define(version: 2021_09_20_032357) do
     t.string "title", null: false
     t.text "body", null: false
     t.datetime "release_at", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "papers", force: :cascade do |t|
+    t.string "title"
+    t.text "abstract"
+    t.text "linkpath"
+    t.integer "laboratory_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

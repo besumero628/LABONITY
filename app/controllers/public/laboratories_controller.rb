@@ -34,12 +34,4 @@ class Public::LaboratoriesController < ApplicationController
     
   end
   
-  def set_laboratory
-    if params[:laboratory_id]
-      @set_laboratory = Laboratory.find(params[:laboratory_id])
-    elsif params[:id]
-      @set_laboratory = Laboratory.find(params[:id])
-    end
-  end
-  
 end

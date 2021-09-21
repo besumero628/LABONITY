@@ -1,0 +1,40 @@
+<!--header設定-->
+<%= render "shared/head" %>
+
+<!--flash設定-->
+<%= render "shared/flash" %>
+
+<!--menu設定-->
+<%= render "public/laboratories/tips/menu" %>
+
+<div class="container container-page">
+  <!--Title-->
+  <div class="row show-title content-top underline">
+    <div class="content-title col-10">
+      <h3 class="content-title-name"><%= @paper.title %></h3>
+    </div>
+    <%= link_to "編集", edit_public_laboratory_paper_path(@set_laboratory.id, @paper.id), class:"btn btn-primary content-title-btn" %>
+  </div>
+  
+  <!--Main-->
+  <div class="row rowbox">
+    <div class="content-main">
+      <p class="content-main-text"><%= @paper.abstract %></p>
+      <% if @paper.figure.attached? %>
+        <div class="content-main-figure">
+          <%= image_tag @paper.figure %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<!--Link-->
+<div class="container">
+  <div class="row news-link">
+    <%= link_to @set_laboratory.name , public_laboratory_path(@set_laboratory.id), class:"news-index-link" %>
+    <%= "　＞　" %>
+    <%= link_to "Paper 一覧", public_laboratory_papers_path(@set_laboratory.id), class:"news-index-link" %>
+    <%= "　＞　#{@paper.title.truncate(30)}" %>
+  </div>
+</div>

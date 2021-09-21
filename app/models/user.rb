@@ -53,4 +53,8 @@ class User < ApplicationRecord
     result
   end
   
+  def user_has_edit_status?(lab)
+    return LabMember.where(laboratory_id: lab.id, edit_status: true).exists?(user_id: self.id) ? true : false
+  end
+  
 end
