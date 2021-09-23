@@ -1,26 +1,37 @@
-<div class="rss_feed">
+<div class="rss_feed col-12">
   <div class="card">
     <div class="card-header">
       <ul class="nav nav-tabs nav-tabs-neutral justify-content-center" role="tablist">
-        <% @rsses.each_with_index do |rss, idx| %>
-          <% if rss.users.include?(current_user) %>
-            <li class="nav-item">
-              <a class="rss-btn nav-link <%= "active" if idx == 0 %>" data-toggle="tab" href="#<%= rss.name.gsub(" ", "") %>" role="tab"><%= rss.name.truncate(15) %></a>
-            </li>
+        <% if @rsses.size != 0 %>
+          <% @rsses.each_with_index do |rss, idx| %>
+            <% if rss.users.include?(current_user) %>
+              <li class="nav-item">
+                <a class="rss-btn nav-link <%= "active" if idx == 0 %>" data-toggle="tab" href="#<%= rss.name.gsub(" ", "") %>" role="tab"><%= rss.name.truncate(15) %></a>
+              </li>
+            <% end %>
           <% end %>
+        <% else %>
+          <li class="nav-item">
+            <a class="rss-btn nav-link active" data-toggle="tab" href="#none" role="tab">RSS</a>
+          </li>
         <% end %>
-
       </ul>
     </div>
-    <div class="card-body">
+    <div class="card-body col-12">
       <div class="tab-content text-center">
-        <% @rsses.each_with_index do |rss, idx| %>
-          <% if rss.users.include?(current_user) %>
-            <div class="tab-pane <%= "active" if idx == 0 %>" id="<%= rss.name.gsub(" ", "") %>" role="tabpanel">
-              <p class="rss-title-detail"><%= rss.name %></p>
-              <div id="rss<%= idx+1 %>"></div>
-            </div>
+        <% if @rsses.size != 0 %>
+          <% @rsses.each_with_index do |rss, idx| %>
+            <% if rss.users.include?(current_user) %>
+              <div class="tab-pane <%= "active" if idx == 0 %>" id="<%= rss.name.gsub(" ", "") %>" role="tabpanel">
+                <p class="rss-title-detail"><%= rss.name %></p>
+                <div id="rss<%= idx+1 %>"></div>
+              </div>
+            <% end %>
           <% end %>
+        <% else %>
+          <div class="tab-pane active" id="none" role="tabpanel">
+            <p class="rss-title-detail">RSSが未登録です</p>
+          </div>
         <% end %>
       </div>
     </div>

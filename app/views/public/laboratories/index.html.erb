@@ -5,9 +5,16 @@
 <%= render "shared/flash" %>
 
 <div class="container container-page">
-  <div class="row rowbox content-title">
-    <i class="fas fa-3x fa-vial icon"></i>
-    <h2 class="page-title">Laboratory 一覧</h2>
+  <div class="row rowbox content-top">
+    <div class="content-title">
+      <i class="fas fa-3x fa-vial icon"></i>
+      <h2 class="content-title-name">Laboratory 一覧</h2>
+    </div>
+    <div class="content-new-link">
+      <% if user_signed_in? %>
+        <%= link_to "新規作成", new_public_laboratory_path, class:"btn btn-primary" %>
+      <% end %>
+    </div>
   </div>
 
   <div class="row rowbox">
@@ -22,10 +29,12 @@
       </thead>
       <tbody>
         <% @laboratories.each do |laboratory| %>
-          <td><%= link_to laboratory.name, public_laboratory_path(laboratory.id) %></td>
-          <td><%= laboratory.organization.name %></td>
-          <td><%= link_to LabMember.where(laboratory_id: laboratory.id).size, public_laboratory_member_path(laboratory_id: laboratory.id) %></td>
-          <td><%= link_to Paper.where(laboratory_id: laboratory.id).size, public_laboratory_papers_path(laboratory_id: laboratory.id) %></td>
+          <tr>
+            <td><%= link_to laboratory.name, public_laboratory_path(laboratory.id) %></td>
+            <td><%= laboratory.organization.name %></td>
+            <td><%= link_to LabMember.where(laboratory_id: laboratory.id, permit_status: true).size, public_laboratory_member_path(laboratory_id: laboratory.id) %></td>
+            <td><%= link_to Paper.where(laboratory_id: laboratory.id).size, public_laboratory_papers_path(laboratory_id: laboratory.id) %></td>
+          </tr>
         <% end %>
       </tbody>
     </table>

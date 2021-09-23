@@ -1,13 +1,19 @@
 <div class="content-title">
   <i class="far fa-3x fa-newspaper icon"></i>
-  <h2 class="page-title">PressRelease</h2>
+  <h3 class="page-title">PressRelease</h3>
 </div>
 
-<table class="table">
+  <div class="content-new-link">
+    <% if user_signed_in? && current_user.user_has_edit_status?(@set_laboratory) %>
+      <%= link_to "新規作成", new_public_laboratory_press_release_path(@set_laboratory.id), class:"btn btn-primary" %>
+    <% end %>
+  </div>
+
+<table class="table", style="margin-top: 16px;">
   <% @press_releases.each do |release| %>
     <tr>
       <td><%= release.created_at.strftime("%Y/%m/%d") %></td>
-      <td><%= link_to release.title, public_laboratory_press_release_path(release.id) %></td>
+      <td><%= link_to release.title, public_laboratory_press_release_path(@set_laboratory.id, release.id) %></td>
     </tr>
   <% end %>
 </table>

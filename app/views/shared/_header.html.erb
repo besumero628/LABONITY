@@ -3,16 +3,8 @@
   <nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent " color-on-scroll="400">
     <div class="container">
       <div class="navbar-translate">
-        
-        <% if @set_laboratory %>
-          <%= link_to @set_laboratory.name, public_laboratory_path(@set_laboratory.id) %>
-        <% else %>
-          <% if user_signed_in? %>
-            <%= link_to "LABONITY", public_mypage_path(current_user.login_id), class:"navbar-brand" %>
-          <% else %>
-            <%= link_to "LABONITY", public_root_path, class:"navbar-brand" %>
-          <% end %>
-        <% end %>
+        <%= link_to "LABONITY", public_root_path, class:"navbar-brand" %>
+
         <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-bar top-bar"></span>
           <span class="navbar-toggler-bar middle-bar"></span>

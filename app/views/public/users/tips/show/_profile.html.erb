@@ -26,7 +26,7 @@
         <% if @laboratory %>
           <%= link_to @laboratory.name, public_laboratory_path(@laboratory.id) %>
         <% else %>
-          未所属
+          未所属 (<%= link_to "研究室を探す", public_laboratories_path %>)
         <% end %>
       </td>
     </tr>

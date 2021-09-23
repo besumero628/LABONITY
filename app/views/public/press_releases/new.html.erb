@@ -1,0 +1,15 @@
+<!--header設定-->
+<%= render "shared/head" %>
+
+<!--flash設定-->
+<%= render "shared/flash" %>
+
+<!--menu設定-->
+<%= render "public/laboratories/tips/menu" %>
+
+<!--Main-->
+<div class="background-orange">
+  <div class="container general-form">
+    <%= render "public/press_releases/tips/form", title: "新規登録", path: public_laboratory_press_releases_path(@set_laboratory.id) %>
+  </div>
+</div>

@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :rss_choices
   has_many :rsses, through: :rss_choices, dependent: :destroy
   has_many :lab_members
+  has_many :laboratories, through: :lab_members, dependent: :destroy
   belongs_to :post
 
   #正規化

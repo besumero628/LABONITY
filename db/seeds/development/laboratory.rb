@@ -3,15 +3,8 @@ Laboratory.create!(
   introduction: "光を用いた固体物理学の研究室です。",
   organization_type: "College",
   organization_id: 1,
-  major_id: "1",
   official_mark_status: true,
   close_status: false
-)
-
-Album.create!(
-  laboratory_id: 1,
-  name: "歓迎会",
-  introduction: "研究室発足の歓迎会を行いました！"
 )
 
 LabMember.create!(

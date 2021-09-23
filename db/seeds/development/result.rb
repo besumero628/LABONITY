@@ -22,3 +22,9 @@ Project.create!(
   linkpath: "https://www.google.com",
   laboratory_id: 1
 )
+
+LabLink.create!(
+  name: "google",
+  linkpath: "https://www.google.com",
+  laboratory_id: 1
+)

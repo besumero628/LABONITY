@@ -29,6 +29,11 @@
     padding: 10px;
     display: flex;
     justify-content: center;
+    
+    form {
+      width: 100%;
+    }
+    
 
     .label {
       font-weight: bold;
@@ -45,8 +50,13 @@
       width: 100%;
       padding: 4px 8px;
     }
-    
+
     input[type="file"] {
+      width: 100%;
+      padding: 4px 8px;
+    }
+
+    select {
       width: 100%;
       padding: 4px 8px;
     }
@@ -66,27 +76,65 @@
         font-weight: bold;
       }
     }
-    
+
     .field_with_errors {
       display: inline;
       padding: 0;
       label {color: red}
       input {background-color: pink}
     }
-    
+
     .error-message {
       color: red;
       font-size: $small;
       padding: 0 $very_wide;
       width: 100%;
     }
-    
+
 
   }
-  
+
   .other-link {
     display: flex;
     justify-content: center;
     text-align: center;
+  }
+}
+
+.lab-edit {
+
+  &-form {
+    display: flex;
+    padding-bottom: 8px;
+
+    .form-title-name {
+      margin-right: 16px;
+    }
+  }
+
+  &-title {
+    font-weight: bold;
+    padding: 16px 0;
+  }
+
+  &-images {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  &-image {
+      margin-bottom: 8px;
+    }
+    
+  .contents {
+    text-align: center;
+    
+    .btn {
+      margin-bottom: 16px;
+    }
+  }
+
+  textarea {
+    width: 100%;
   }
 }

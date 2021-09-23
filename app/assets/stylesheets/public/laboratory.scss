@@ -9,6 +9,25 @@
   padding-top: 40px;
 }
 
+.row-border {
+  width: 90%;
+  min-width: 300px;
+  margin: 20px auto;
+  padding: 40px;
+  border: solid 2px #39393A;
+  border-radius: 10px;
+  background-color: #FFF;
+}
+
+.v-line {
+  padding: 8px 32px;
+  border-left: 4px solid #000;
+}
+
+.font-bold {
+  font-weight: bold;
+}
+
 .lab-nav {
   background-color: $light-blue;
   a {
@@ -76,7 +95,7 @@
     &-images {
       display: flex;
       flex-wrap : wrap;
-      
+
     }
   }
 
@@ -95,4 +114,33 @@
 .content-link {
   display: flex;
   justify-content: space-between;
+}
+
+.lab-menu {
+  display: flex;
+
+  .lab-top-link {
+    margin-right: 128px;
+    
+    .item-top {
+      display: flex;
+      align-items: center;
+      
+      &-icon {
+        color: #FFF;
+      }
+    }
+    
+    .nav-link-top {
+      font-weight: bold;
+    }
+  }
+
+  li {
+    margin: 0;
+  }
+  
+  .nav-link {
+    color: #FFF;
+  }
 }

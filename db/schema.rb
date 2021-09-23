@@ -10,16 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_21_034237) do
+ActiveRecord::Schema.define(version: 2021_09_21_130822) do
 
   create_table "accesses", force: :cascade do |t|
     t.string "organization_type", null: false
     t.integer "organization_id", null: false
     t.string "postal_code", null: false
-    t.string "prefecture", null: false
+    t.integer "prefecture", null: false
     t.string "city", null: false
     t.string "address1", null: false
     t.string "address2"
+    t.float "latitude"
+    t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["organization_type", "organization_id"], name: "index_accesses_on_organization_type_and_organization_id"
@@ -105,8 +107,15 @@ ActiveRecord::Schema.define(version: 2021_09_21_034237) do
   end
 
   create_table "lab_images", force: :cascade do |t|
-    t.integer "album_id"
-    t.boolean "top_status", default: false
+    t.integer "laboratory_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "lab_links", force: :cascade do |t|
+    t.string "name"
+    t.text "linkpath"
+    t.integer "laboratory_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

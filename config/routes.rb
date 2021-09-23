@@ -38,11 +38,16 @@ Rails.application.routes.draw do
 
     resources :laboratories do
       get 'member'
+      patch 'permit'
       resources :press_releases, except:[:index]
       resources :papers
       resources :confernces
       resources :projects, except:[:show]
       resources :albums
+      resources :lablinks, except:[:show]
+      resources :labmembers, only:[:create]
+      resources :accesses, except:[:show, :destroy]
+      resources :labimages, only:[:create, :destroy]
     end
 
     get 'rsses/ajax1'
