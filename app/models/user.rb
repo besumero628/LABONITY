@@ -10,6 +10,8 @@ class User < ApplicationRecord
   #association
   has_many :rss_choices
   has_many :rsses, through: :rss_choices, dependent: :destroy
+  has_many :lab_members
+  has_many :laboratories, through: :lab_members, dependent: :destroy
   belongs_to :post
 
   #正規化
@@ -50,6 +52,10 @@ class User < ApplicationRecord
     result = update_attributes(params, *options)
     clean_up_passwords
     result
+  end
+  
+  def user_has_edit_status?(lab)
+    return LabMember.where(laboratory_id: lab.id, edit_status: true).exists?(user_id: self.id) ? true : false
   end
   
 end

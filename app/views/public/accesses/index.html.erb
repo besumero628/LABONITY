@@ -1,0 +1,79 @@
+<!--header設定-->
+<%= render "shared/head" %>
+
+<!--flash設定-->
+<%= render "shared/flash" %>
+
+<!--menu設定-->
+<%= render "public/laboratories/tips/menu" %>
+
+<div class="container container-page">
+  <div class="row rowbox content-top">
+    <div class="content-title">
+      <i class="fas fa-3x fa-map-marked-alt icon"></i>
+      <h2 class="content-title-name">Access</h2>
+    </div>
+    <div class="content-new-link">
+      <% if user_signed_in? && current_user.user_has_edit_status?(@set_laboratory) %>
+        <% if Access.find_by(organization_type: "Collage", organization_id: @set_laboratory.id) %>
+          <%= link_to "新規作成", new_public_laboratory_access_path(@set_laboratory.id), class:"btn btn-primary" %>
+        <% else %>
+          <%= link_to "編集", edit_public_laboratory_access_path(@set_laboratory.id, @access.id), class:"btn btn-primary" %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row rowbox">
+    <% if @access %>
+    <p>〒<%= @access.postal_code %></p>
+    <p><%= @access.prefecture + @access.city %></p>
+    <p><%= @access.address1 + @access.address2 %></p>
+    <% else %>
+      <p>登録住所がありません</p>
+    <% end %>
+  </div>
+
+  <div id='map'></div>
+
+
+</div>
+
+<style>
+#map{
+  height: 400px;
+  width: 100%;
+}
+</style>
+
+<script type="text/javascript">
+  function initMap() {
+// latitude,longitudeから位置を特定
+    var test ={lat: <%= @access.latitude if @access %>, lng: <%= @access.longitude if @access %>};
+    var map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 15,
+              center: test
+              });
+    var transitLayer = new google.maps.TransitLayer();
+    transitLayer.setMap(map);
+
+    var contentString = '住所：<%= @access.address if @access %>';
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString
+    });
+
+// #Map上の指定した位置にピンを挿して表示する
+    var marker = new google.maps.Marker({
+                  position:test,
+                  map: map,
+                  title: contentString
+                 });
+
+     marker.addListener('click', function() {
+       infowindow.open(map, marker);
+     });
+  }
+</script>
+<script async defer
+              src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
+</script>

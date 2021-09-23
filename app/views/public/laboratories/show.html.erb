@@ -1,0 +1,36 @@
+<!--header設定-->
+<%= render "shared/head" %>
+
+<!--flash設定-->
+<%= render "shared/flash" %>
+
+<!--menu設定-->
+<%= render "public/laboratories/tips/menu" %>
+
+<div class="container container-page">
+
+  <div class="row rowbox content-top page-title">
+    <h3 class="v-line font-bold"><%= @set_laboratory.name %></h3>
+
+    <div class="content-new-link">
+    <% if user_signed_in? && !LabMember.find_by(laboratory_id: @set_laboratory.id, user_id: current_user.id) %>
+      <%= link_to "メンバー申請", public_laboratory_labmembers_path(@set_laboratory.id), class:"btn btn-primary", method: :post %>
+    <% end %>
+  </div>
+
+  </div>
+
+  <div class="lab-top-image">
+    <%= render "public/laboratories/tips/show/slideshow" %>
+  </div>
+
+  <!--About-->
+  <div class="row rowbox about content-top">
+    <%= render "public/laboratories/tips/show/about" %>
+  </div>
+
+  <!--Press Release-->
+  <div class="row rowbox press-release content-top">
+    <%= render "public/laboratories/tips/show/press_release" %>
+  </div>
+</div>

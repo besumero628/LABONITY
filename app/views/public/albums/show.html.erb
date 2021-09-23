@@ -1,0 +1,45 @@
+<!--header設定-->
+<%= render "shared/head" %>
+
+<!--flash設定-->
+<%= render "shared/flash" %>
+
+<!--menu設定-->
+<%= render "public/laboratories/tips/menu" %>
+
+<!--Album Show-->
+<div class="container container-page">
+  <!--Title-->
+  <div class="row show-title content-top underline">
+    <div class="content-title col-10">
+      <h3 class="content-title-name"><%= @album.name %></h3>
+    </div>
+    <% if user_signed_in? && current_user.user_has_edit_status?(@set_laboratory) %>
+      <%= link_to "編集", edit_public_laboratory_album_path(@set_laboratory.id, @album.id), class:"btn btn-primary content-title-btn" %>
+    <% end %>
+  </div>
+
+  <!--Main-->
+  <div class="row rowbox">
+    <div class="content-main">
+      <p class="content-main-text"><%= @album.introduction %></p>
+      <div class="content-main-images">
+        <% @album.images.each do |image| %>
+          <div class="col-3">
+            <%= image_tag(image)%>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Link-->
+<div class="container content-link">
+  <div class="row news-link">
+    <%= link_to @set_laboratory.name , public_laboratory_path(@set_laboratory.id), class:"news-index-link" %>
+    <%= "　＞　" %>
+    <%= link_to "Album 一覧", public_laboratory_albums_path(@set_laboratory.id), class:"news-index-link" %>
+    <%= "　＞　#{@album.name.truncate(30)}" %>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+<!--header設定-->
+<%= render "shared/head" %>
+
+<!--flash設定-->
+<%= render "shared/flash" %>
+
+<!--menu設定-->
+<%= render "public/laboratories/tips/menu" %>
+
+<!--Albums Index-->
+<div class="container container-page">
+  <div class="row rowbox content-top">
+    <div class="content-title">
+      <i class="fas fa-3x fa-link icon"></i>
+      <h2 class="content-title-name">Link 一覧</h2>
+    </div>
+    <div class="content-new-link">
+      <% if user_signed_in? && current_user.user_has_edit_status?(@set_laboratory) %>
+        <%= link_to "新規作成", new_public_laboratory_lablink_path(@set_laboratory.id), class:"btn btn-primary" %>
+      <% end %>
+    </div>
+
+  </div>
+
+  <div class="row rowbox">
+    <ul>
+      <% @lablinks.each do |lablink| %>
+        <li>
+          <%= link_to lablink.name, lablink.linkpath %>
+          <% if user_signed_in? && current_user.user_has_edit_status?(@set_laboratory) %>
+            <%= link_to "編集", edit_public_laboratory_lablink_path(@set_laboratory.id, lablink.id), class:"btn btn-primary btn-sm" %>
+            <%= link_to "削除", public_laboratory_lablink_path(@set_laboratory.id, lablink.id), class:"btn btn-default btn-sm", method: :delete %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,70 @@
+<!--header設定-->
+<%= render "shared/head" %>
+
+<!--flash設定-->
+<%= render "shared/flash" %>
+
+<!--menu設定-->
+<%= render "public/laboratories/tips/menu" %>
+
+<div class="container container-page">
+  <div class="row rowbox content-top">
+    <div class="content-title">
+      <i class="fas fa-3x fa-users icon"></i>
+      <h2 class="content-title-name">Member 一覧</h2>
+    </div>
+  </div>
+
+  <div class="row rowbox">
+    <table class="table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>名前</th>
+          <th>役職</th>
+          <th></th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <% if LabMember.find_by(user_id: current_user.id, laboratory_id: @set_laboratory, edit_status: true) %>
+          <% @lab_members.each do |member| %>
+            <% user = User.find(member.user_id) %>
+            <tr>
+              <td width="20%">
+                <% if user.profile_image.attached? %>
+                  <%= image_tag user.profile_image.variant(resize:'50x50'), class:"rounded img-raised" %>
+                <% else %>
+                  <%= image_tag asset_path('no_image.jpg'), size: "50x50", class:"rounded img-raised" %>
+                <% end %>
+              </td>
+              <td><%= user.family_name + user.given_name %></td>
+              <td><%= user.post.name %></td>
+              <td>
+                <% if !member.permit_status %>
+                  <%= link_to "申請許可", public_laboratory_permit_path(@set_laboratory.id, key: member.id), class:"btn btn-primary", method: :patch %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        <% else%>
+          <% @lab_members.each do |member| %>
+            <% break if member.permit_status == false %>
+            <% user = User.find(member.user_id) %>
+            <tr>
+              <td width="20%">
+                <% if user.profile_image.attached? %>
+                  <%= image_tag user.profile_image.variant(resize:'50x50'), class:"rounded img-raised" %>
+                <% else %>
+                  <%= image_tag asset_path('no_image.jpg'), size: "50x50", class:"rounded img-raised" %>
+                <% end %>
+              </td>
+              <td><%= user.family_name + user.given_name %></td>
+              <td><%= user.post.name %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

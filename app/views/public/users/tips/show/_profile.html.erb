@@ -21,7 +21,14 @@
 
   <table class="table">
     <tr>
-      <th width="30%">所属</th><td>ooo</td>
+      <th width="30%">所属</th>
+      <td>
+        <% if @laboratory %>
+          <%= link_to @laboratory.name, public_laboratory_path(@laboratory.id) %>
+        <% else %>
+          未所属 (<%= link_to "研究室を探す", public_laboratories_path %>)
+        <% end %>
+      </td>
     </tr>
     <tr>
       <th>学年/役職</th><td><%= @user.post.name %></td>

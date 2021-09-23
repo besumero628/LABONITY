@@ -1,0 +1,31 @@
+<!--Confernce Form-->
+<div class="row form-title">
+  <h3 class="form-title-name col-12">Access <%= title %></h3>
+</div>
+
+<div class="form-main">
+  <%= form_with model: @access, url: path, id: 'new_access', class: 'new_access', local: true do |f| %>
+    <%= markup do |m|
+      p = FormPresenter.new(f, self)
+
+      m << p.text_field_block(:postal_code, "郵便番号", {placeholder: "1008111"})
+      m << p.select_block(:prefecture, "都道府県", Access.prefectures.keys)
+      m << p.text_field_block(:city, "市区町村", {placeholder: "千代田区"})
+      m << p.text_field_block(:address1, "番地", {placeholder: "千代田1-1"})
+      m << p.text_field_block(:address2, "建物名/部屋番号", {placeholder: "皇居研究所1F 101"})
+
+    end %>
+
+    <%= f.hidden_field :organization_type, :value => "College" %>
+    <%= f.hidden_field :organization_id, :value => @set_laboratory.id %>
+
+  <div class="form-main-submit">
+    <%= f.submit "登録", class:"btn btn-primary col-6"%>
+  </div>
+
+  <% end %>
+</div>
+
+<div class="row other-link">
+  <%= link_to "Link一覧に戻る", public_laboratory_lablinks_path(@set_laboratory.id), class:"col-12" %>
+</div>

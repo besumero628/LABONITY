@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_18_031416) do
+ActiveRecord::Schema.define(version: 2021_09_21_130822) do
+
+  create_table "accesses", force: :cascade do |t|
+    t.string "organization_type", null: false
+    t.integer "organization_id", null: false
+    t.string "postal_code", null: false
+    t.integer "prefecture", null: false
+    t.string "city", null: false
+    t.string "address1", null: false
+    t.string "address2"
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organization_type", "organization_id"], name: "index_accesses_on_organization_type_and_organization_id"
+  end
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -45,6 +60,21 @@ ActiveRecord::Schema.define(version: 2021_09_18_031416) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "albums", force: :cascade do |t|
+    t.integer "laboratory_id", null: false
+    t.string "name", null: false
+    t.text "introduction", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "colleges", force: :cascade do |t|
+    t.string "name", null: false
+    t.boolean "official_mark_status", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "communities", force: :cascade do |t|
     t.string "name", null: false
     t.text "introduction", null: false
@@ -66,6 +96,66 @@ ActiveRecord::Schema.define(version: 2021_09_18_031416) do
     t.index ["reset_password_token"], name: "index_company_admins_on_reset_password_token", unique: true
   end
 
+  create_table "confernces", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "title", null: false
+    t.text "abstract", null: false
+    t.text "linkpath"
+    t.integer "laboratory_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "lab_images", force: :cascade do |t|
+    t.integer "laboratory_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "lab_links", force: :cascade do |t|
+    t.string "name"
+    t.text "linkpath"
+    t.integer "laboratory_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "lab_members", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "laboratory_id", null: false
+    t.integer "post_id", null: false
+    t.boolean "authority_status", default: false
+    t.boolean "edit_status", default: false
+    t.boolean "enrolled_status", default: true
+    t.boolean "main_status", default: true
+    t.boolean "flex_status", default: false
+    t.boolean "permit_status", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "laboratories", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "introduction", null: false
+    t.string "organization_type", null: false
+    t.integer "organization_id", null: false
+    t.integer "major_id"
+    t.boolean "official_mark_status", default: false
+    t.boolean "close_status", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organization_type", "organization_id"], name: "index_laboratories_on_organization_type_and_organization_id"
+  end
+
+  create_table "majors", force: :cascade do |t|
+    t.integer "college_id", null: false
+    t.string "faculity", null: false
+    t.string "department", null: false
+    t.string "section", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "news", force: :cascade do |t|
     t.string "title", null: false
     t.text "body", null: false
@@ -74,8 +164,38 @@ ActiveRecord::Schema.define(version: 2021_09_18_031416) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "papers", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "abstract", null: false
+    t.text "linkpath"
+    t.integer "laboratory_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "press_releases", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "body", null: false
+    t.text "linkpath"
+    t.integer "laboratory_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "title", null: false
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.integer "funding"
+    t.string "position"
+    t.text "linkpath"
+    t.integer "laboratory_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
