@@ -1,0 +1,20 @@
+<div class="content-title">
+  <i class="far fa-3x fa-newspaper icon"></i>
+  <h3 class="page-title">Events</h3>
+</div>
+
+  <div class="content-new-link">
+    <% if company_admin_signed_in? && current_company_admin.company_id == @set_company.id %>
+      <%= link_to "新規作成", new_public_company_event_path(@set_company.id), class:"btn btn-primary" %>
+    <% end %>
+  </div>
+
+<table class="table", style="margin-top: 16px;">
+  <% @events.each do |event| %>
+    <tr>
+      <td><%= event.created_at.strftime("%Y/%m/%d") %></td>
+      <td><%= link_to event.title, public_company_event_path(@set_company.id, event.id) %></td>
+    </tr>
+  <% end %>
+</table>
+

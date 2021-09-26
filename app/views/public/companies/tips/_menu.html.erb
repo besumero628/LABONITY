@@ -1,0 +1,24 @@
+<div class="lab-nav justify-content-center lab-menu">
+  <ul class="nav lab-top-link">
+    <li class="nav-item item-top">
+      <%= link_to "Company", public_companies_path, class:"nav-link nav-link-top" %> |
+      <%= link_to @set_company.name, public_company_path(@set_company.id), class:"nav-link nav-link-top" %>
+      <% if company_admin_signed_in? && current_company_admin.company_id == @set_company.id %>
+        <%= link_to edit_public_company_path(@set_company.id) do %>
+        <i class="far fa-edit item-top-icon"></i>
+        <% end %>
+      <% end %>
+    </li>
+  </ul>
+
+  <ul class="nav">
+    <li class="nav-item">
+      <%= link_to "Job", public_laboratory_member_path(@set_company.id), class:"nav-link" %>
+    </li>
+    <li class="nav-item">
+      <%= link_to "Partnership", public_laboratory_papers_path(@set_company.id), class:"nav-link" %>
+    </li>
+
+  </ul>
+</div>
+

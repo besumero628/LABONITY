@@ -180,7 +180,7 @@
 // show
 .community-show-page {
   padding: 16px;
-  
+
   h1, h2, h3, h4 {
     margin: 0;
   }
@@ -200,8 +200,208 @@
       padding: 8px;
     }
   }
-  
+
   .community-flex {
-   display: flex; 
+   display: flex;
+
+   &-left {
+    margin-left: 16px;
+   }
+
   }
+
+  .community-profile-head {
+    display: flex;
+    justify-content: space-between;
+  }
+
+}
+
+.background-blue {
+  background-color: rgba(186, 225, 222, 0.2);
+  margin: 0;
+  padding: 30px 0;
+}
+
+.balloon2-left {
+  position: relative;
+  display: inline-block;
+  margin: 1.5em 0 1.5em 15px;
+  padding: 7px 10px;
+  min-width: 120px;
+  max-width: 100%;
+  color: #555;
+  // font-size: 16px;
+  background: #FFF;
+  border: solid 3px #555;
+  box-sizing: border-box;
+}
+
+.balloon2-left:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -24px;
+  margin-top: -12px;
+  border: 12px solid transparent;
+  border-right: 12px solid #555;
+  z-index: 2;
+}
+
+.balloon2-left:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -30px;
+  margin-top: -14px;
+  border: 14px solid transparent;
+  border-right: 14px solid #555;
+  z-index: 1;
+}
+
+.balloon2-left p {
+  margin: 0;
+  padding: 0;
+}
+
+.community-message-row {
+  margin: 0 16px;
+
+  &-right {
+    display: flex;
+    justify-content: right;
+  }
+}
+
+.balloon2-right {
+  position: relative;
+  display: inline-block;
+  margin: 1.5em 15px 1.5em 0;
+  padding: 7px 10px;
+  min-width: 120px;
+  max-width: 100%;
+  color: #555;
+  // font-size: 16px;
+  background: #FFF;
+  border: solid 3px #555;
+  box-sizing: border-box;
+}
+
+.balloon2-right:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -24px;
+  margin-top: -12px;
+  border: 12px solid transparent;
+  border-left: 12px solid #555;
+  z-index: 2;
+}
+
+.balloon2-right:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -30px;
+  margin-top: -14px;
+  border: 14px solid transparent;
+  border-left: 14px solid #555;
+  z-index: 1;
+}
+
+.balloon2-right p {
+  margin: 0;
+  padding: 0;
+}
+
+.new_message {
+  display: flex;
+  justify-content: space-between;
+
+  .field {
+    width: 100%;
+  }
+
+  .btn {
+    margin: 0;
+    max-height: 28px;
+  }
+
+  input[type="text"] {
+    width: 90%;
+    margin: 0 8px;
+  }
+
+}
+
+
+.community-content {
+  .community-cards {
+    justify-content: space-around;
+
+    .community-card {
+
+      .card-image {
+        display: flex;
+        justify-content: center;
+        margin-top: 6px;
+      }
+
+      .card-body {
+        max-height: 220px;
+
+        .community-title {
+          margin-top: 16px;
+          color: $black;
+          font-weight: bold;
+          padding: 0 16px;
+        }
+        .card-text {
+          padding: 0 16px;
+          color: $black;
+        }
+      }
+
+    }
+  }
+}
+
+.community-flex {
+  display: flex;
+}
+
+.community-between {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.community-card {
+
+  .card-image {
+    display: flex;
+    justify-content: center;
+    margin-top: 6px;
+  }
+
+  .card-body {
+    height: 220px;
+
+    .community-title {
+      margin-top: 16px;
+      color: $black;
+      font-weight: bold;
+    }
+    .card-text {
+      color: $black;
+    }
+  }
+
+}
+
+.community-around {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
 }

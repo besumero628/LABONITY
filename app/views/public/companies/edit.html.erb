@@ -1,0 +1,23 @@
+<!--header設定-->
+<%= render "shared/head" %>
+
+<!--flash設定-->
+<%= render "shared/flash" %>
+
+<!--menu設定-->
+<%= render "public/companies/tips/menu" %>
+
+<!--Paper Index-->
+<div class="container container-page">
+  <div class="row rowbox content-top">
+    <div class="content-title">
+      <i class="far fa-3x fa-edit icon"></i>
+      <h2 class="content-title-name">基本情報編集</h2>
+    </div>
+  </div>
+  
+  <div class="general-form">
+    <%= render "public/companies/tips/edit/topimage", path: public_company_companyimages_path(@set_company.id) %>
+  </div>
+
+</div>

@@ -1,0 +1,33 @@
+<!--header設定-->
+<%= render "shared/head" %>
+
+<!--flash設定-->
+<%= render "shared/flash" %>
+
+<div class="container container-page">
+  <div class="row rowbox content-top">
+    <div class="content-title">
+      <i class="fas fa-3x fa-vial icon"></i>
+      <h2 class="content-title-name">Company 一覧</h2>
+    </div>
+  </div>
+
+  <div class="row rowbox">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>社名</th>
+          <th>イベント数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @companies.each do |company| %>
+          <tr>
+            <td><%= link_to company.name, public_company_path(company.id) %></td>
+            <td><%= Event.where(company_id: company.id).size %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

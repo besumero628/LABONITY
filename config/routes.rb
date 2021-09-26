@@ -21,8 +21,8 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   # main
-  namespace :company_admin, path: "c_admin" do
-    root "top#index"
+  namespace :company_admin, path: "company" do
+
   end
 
   namespace :admin do
@@ -33,7 +33,11 @@ Rails.application.routes.draw do
     root "top#index"
 
     resources :news, only: [:index, :show]
-    resources :communities
+    resources :communities do
+      resources :community_members, only: [:create, :destroy]
+      resources :community_messages, only: [:create]
+    end
+
 
 
     resources :laboratories do
@@ -49,6 +53,12 @@ Rails.application.routes.draw do
       resources :accesses, except:[:show, :destroy]
       resources :labimages, only:[:create, :destroy]
     end
+
+    resources :companies do
+      resources :events, except:[:index]
+      resources :companyimages, only:[:create, :destroy]
+    end
+
 
     get 'rsses/ajax1'
     get 'rsses/ajax2'

@@ -1,0 +1,40 @@
+<!--header設定-->
+<%= render "shared/head" %>
+
+<!--flash設定-->
+<%= render "shared/flash" %>
+
+<!--menu設定-->
+<%= render "public/companies/tips/menu" %>
+
+<div class="container container-page">
+  <div class="row show-title content-top underline">
+    <div class="content-title col-10">
+      <h3 class="content-title-name"><%= @event.title %></h3>
+    </div>
+    <% if company_admin_signed_in? && current_company_admin.company_id == @set_company.id %>
+      <%= link_to "編集", edit_public_company_event_path(@set_company.id, @event.id), class:"btn btn-primary content-title-btn" %>
+    <% end %>
+    
+  </div>
+
+  <div class="row rowbox">
+    <table class="table">
+      <tr>
+        <td style="border: none;">発行：<%= @set_company.name %></td>
+        <td style="border: none;">発行日：<%= @event.created_at.strftime("%Y/%m/%d") %></td>
+        <td style="border: none;">
+          <% if @event.link_path %>
+          関連link：<%= link_to @event.link_path.truncate(30), @event.link_path %>
+          <% else %>
+          関連link：ー
+          <% end %>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <div>
+      <%= @event.body %>
+    </div>
+</div>
+

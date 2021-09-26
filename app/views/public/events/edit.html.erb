@@ -1,0 +1,15 @@
+<!--header設定-->
+<%= render "shared/head" %>
+
+<!--flash設定-->
+<%= render "shared/flash" %>
+
+<!--menu設定-->
+<%= render "public/companies/tips/menu" %>
+
+<!--Main-->
+<div class="background-orange">
+  <div class="container general-form">
+    <%= render "public/events/tips/form", title: "登録内容編集" ,path: public_company_event_path(@set_company.id) %>
+  </div>
+</div>

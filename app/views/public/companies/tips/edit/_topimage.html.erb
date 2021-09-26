@@ -1,0 +1,25 @@
+<div class="lab-edit">
+  <%= form_with model: @companyimage, url: path, id: 'edit_laboratory', class: 'edit_laboratory', local: true do |f| %>
+    <div class="lab-edit-form">
+      <h3 class="form-title-name">Slideshow Image</h3>
+      <%= f.submit "登録", class:"btn btn-primary btn-sm"%>
+    </div>
+
+    <%= markup do |m|
+      p = FormPresenter.new(f, self)
+      m << p.file_field_block(:image, "追加画像")
+    end %>
+    <%= f.hidden_field :company_id, :value => @set_company.id %>
+
+  <% end %>
+
+  <h5 class="lab-edit-title">[登録済み Image]</h5>
+  <div class="lab-edit-images">
+    <% @companyimages.each do |image| %>
+      <div class="col-3 contents">
+        <%= image_tag(image.image, class:"lab-edit-image")%>
+        <%= link_to "delete", public_company_companyimage_path(@set_company.id, image.id), class:"btn btn-default btn-sm", method: :delete %>
+      </div>
+    <% end %>
+  </div>
+</div>
