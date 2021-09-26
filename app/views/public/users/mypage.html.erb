@@ -42,7 +42,6 @@
 
         <!--実績-->
         <div class="row">
-          thesis1
         </div>
       </div>
 
@@ -70,9 +69,14 @@
         </div>
 
         <!--Community-->
-        <div class="row">
-          <i class="far fa-2x fa-comments user-content-icon"></i>
-          <h3 class=>コミュニティ</h3>
+        <div class="row community-content">
+          <div class="community-flex community-between">
+            <div class="community-flex">
+              <i class="far fa-2x fa-comments user-content-icon"></i>
+              <h3 class=>コミュニティ</h3>
+            </div>
+            <%= link_to "Community 一覧", public_communities_path, class:"rss-register-link" %>
+          </div>
           <%= render "public/users/tips/mypage/community" %>
         </div>
       </div>

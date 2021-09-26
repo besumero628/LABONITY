@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
     when Admin
       admin_root_path
     when CompanyAdmin
-      company_admin_root_path
+      public_company_path(resource)
     end
   end
   
@@ -37,6 +37,14 @@ class ApplicationController < ActionController::Base
       @set_laboratory = Laboratory.find(params[:laboratory_id])
     elsif params[:id]
       @set_laboratory = Laboratory.find(params[:id])
+    end
+  end
+  
+  def set_company
+    if params[:company_id]
+      @set_company = Company.find(params[:company_id])
+    elsif params[:id]
+      @set_company = Company.find(params[:id])
     end
   end
 

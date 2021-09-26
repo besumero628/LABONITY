@@ -1,0 +1,26 @@
+<!--header設定-->
+<%= render "shared/head" %>
+
+<!--flash設定-->
+<%= render "shared/flash" %>
+
+<!--menu設定-->
+<%= render "public/companies/tips/menu" %>
+
+<div class="container container-page">
+
+  <div class="row rowbox content-top page-title">
+    <h3 class="v-line font-bold"><%= @set_company.name %></h3>
+
+  </div>
+
+  <div class="lab-top-image">
+    <%= render "public/companies/tips/show/slideshow" %>
+  </div>
+
+
+  <!--Event-->
+  <div class="row rowbox press-release content-top">
+    <%= render "public/companies/tips/show/events" %>
+  </div>
+</div>

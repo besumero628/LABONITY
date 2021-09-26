@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_21_130822) do
+ActiveRecord::Schema.define(version: 2021_09_26_063246) do
 
   create_table "accesses", force: :cascade do |t|
     t.string "organization_type", null: false
@@ -82,6 +82,32 @@ ActiveRecord::Schema.define(version: 2021_09_21_130822) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "community_members", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "community_id", null: false
+    t.boolean "owner_status", default: false
+    t.boolean "permit_status", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "community_messages", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "community_id"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
+    t.boolean "official_mark_status"
+    t.boolean "close_status"
+    t.text "linkpath"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "company_admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -96,12 +122,27 @@ ActiveRecord::Schema.define(version: 2021_09_21_130822) do
     t.index ["reset_password_token"], name: "index_company_admins_on_reset_password_token", unique: true
   end
 
+  create_table "company_images", force: :cascade do |t|
+    t.integer "company_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "confernces", force: :cascade do |t|
     t.string "name", null: false
     t.string "title", null: false
     t.text "abstract", null: false
     t.text "linkpath"
     t.integer "laboratory_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.integer "company_id", null: false
+    t.string "title", null: false
+    t.text "body", null: false
+    t.text "link_path"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

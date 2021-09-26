@@ -11,14 +11,21 @@
   <h3>
     <%= @community.name %>
   </h3>
+  <% if user_signed_in? %>
+    <% if CommunityMember.find_by(user_id: current_user.id, community_id: @community.id)  %>
+      <%= link_to "退会する", public_community_community_member_path(@community.id, user_id: current_user.id, community_id: @community.id), class:"btn btn-default", method: :delete %>
+    <% else %>
+      <%= link_to "参加する", public_community_community_members_path(@community.id, user_id: current_user.id, community_id: @community.id), class:"btn btn-primary", method: :post %>
+    <%end%>
+  <% end %>
   </div>
 
   <table class="table">
     <tr>
-      <th width="30%">説明</th><td><%= @community.introduction %></td>
+      <th width="30%">説明</th><td><%= @community.introduction.truncate(100) %></td>
     </tr>
     <tr>
-      <th>メンバー数</th><td></td>
+      <th>メンバー数</th><td><%= CommunityMember.where(community_id: @community.id).size %></td>
     </tr>
   </table>
 </div>

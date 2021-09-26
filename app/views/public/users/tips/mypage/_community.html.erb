@@ -1,20 +1,25 @@
 <div class="col-12 community-cards">
-  <div class="card community-card col-5">
-    <img class="card-img-top" src="/assets/public/Top/about-card1" alt="Card image cap">
-    <div class="card-body">
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  <% if @communities.size == 0 %>
+    <div class="community-around">
+      <p>登録がありません</p>
     </div>
-  </div>
-  <div class="card community-card col-5">
-    <img class="card-img-top" src="/assets/public/Top/about-card2" alt="Card image cap">
-    <div class="card-body">
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    </div>
-  </div>
-  <div class="card community-card col-5">
-    <img class="card-img-top" src="/assets/public/Top/about-card3" alt="Card image cap">
-    <div class="card-body">
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    </div>
-  </div>
+  <% end %>
+  
+    <% @communities.each do |community| %>
+      <%= link_to public_community_path(community.id) do %>
+        <div class="card community-card" style="width: 20rem;">
+          <div class="card-image">
+            <% if community.image.attached? %>
+              <%= image_tag community.image, height: '240', class:"rounded img-raised"%>
+            <% else %>
+              <%= image_tag asset_path('community-noimage.jpg'), class:"rounded img-raised" %>
+            <% end %>
+          </div>
+          <div class="card-body">
+            <h4 class="community-title"><%= community.name %></h4>
+            <p class="card-text"><%= community.introduction.truncate(70) %></p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
 </div>

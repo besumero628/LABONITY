@@ -6,17 +6,19 @@ class Public::UsersController < ApplicationController
     @news = News.where(release_at: DateTime.new..Time.current).order(release_at: :desc).limit(3)
     @press_releases = PressRelease.where(laboratory_id: user_enroll_all_laboratories).order(created_at: :desc).limit(3)
     @rsses = User.find(current_user.id).rsses
+    @communities = @user.communities
     have_authenticate?(@user)
   end
 
   def show
-    @lab_user = LabMember.find_by(user_id: User.find(current_user.id).id, permit_status: true)
+    @lab_user = LabMember.find_by(user_id: User.find_by(login_id: params[:login_id]).id, permit_status: true)
+    @communities = @user.communities
     if @lab_user
       @laboratory = Laboratory.find(@lab_user.laboratory_id)
     else
       @laboratory = false
     end
-    
+
   end
 
   def edit
@@ -36,7 +38,7 @@ class Public::UsersController < ApplicationController
   def set_user
     @user = User.find_by(login_id: params[:login_id])
   end
-  
+
   def user_enroll_all_laboratories
     @all_enroll_labs = []
     @enroll_labs = LabMember.where(user_id: current_user.id, enrolled_status: true, permit_status: true)
@@ -45,9 +47,9 @@ class Public::UsersController < ApplicationController
         @all_enroll_labs << el.laboratory_id
       end
     end
-    
+
     return @all_enroll_labs
-    
+
   end
-  
+
 end

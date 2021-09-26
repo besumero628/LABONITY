@@ -13,6 +13,9 @@ class User < ApplicationRecord
   has_many :lab_members
   has_many :laboratories, through: :lab_members, dependent: :destroy
   belongs_to :post
+  has_many :community_members
+  has_many :community_messages
+  has_many :communities, :through => :community_members
 
   #正規化
   before_validation do

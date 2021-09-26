@@ -14,7 +14,7 @@
       <i class="fas fa-check-circle official_mark"></i>
     <% end %>
   </h3>
-  <% if current_user.id == @user.id %>
+  <% if user_signed_in? && current_user.id == @user.id %>
     <%= link_to "登録情報編集", edit_user_registration_path(current_user.login_id), class:"btn btn-edit"%>
   <% end %>
   </div>

@@ -11,24 +11,43 @@
   <div class="row community-show-head">
     <%= render "public/communities/tips/show/profile" %>
   </div>
-  
+
   <div class="row">
-    <div class="col-12 community-flex">
-      <i class="far fa-2x fa-newspaper community-icon"></i>
-      <h3 class="page-title">Community News</h3>
-    </div>
-    
+    <!--<div class="col-12 community-flex">-->
+    <!--  <i class="far fa-2x fa-newspaper community-icon"></i>-->
+    <!--  <h3 class="page-title">Community News</h3>-->
+    <!--</div>-->
   </div>
-  
+
+  <% if user_signed_in? && CommunityMember.find_by(user_id: current_user.id, community_id: @community.id) %>
   <div class="row community-main community-icon">
-    <div class="col-md-2 community-flex">
-      <i class="fas fa-2x fa-users"></i>
-      <h4>User</h4>
+    <div class="col-md-2">
+      <div class="community-flex">
+        <i class="fas fa-2x fa-users"></i>
+        <h4>User</h4>
+      </div>
+      <% @community_members.each do |member| %>
+        <div class="community-member">
+          <% user = User.find(member.user_id) %>
+          <%= link_to user.family_name + user.given_name, public_user_path(user.login_id) %>
+        </div>
+      <% end %>
     </div>
-    <div class="col-md-10 community-flex">
-      <i class="far fa-2x fa-comments community-icon"></i>
-      <h4>Messages</h4>
+
+    <div class="col-md-10">
+      <div class="community-flex">
+        <i class="far fa-2x fa-comments community-icon"></i>
+        <h4>Messages</h4>
+      </div>
+      <%= render "public/communities/tips/show/messages" %>
     </div>
-    
+  </div>
+</div>
+<% end %>
+
+<div class="container content-link">
+  <div class="row news-link">
+    <%= link_to "Community 一覧", public_communities_path, class:"news-index-link" %>
+    <%= "　＞　#{@community.name.truncate(30)}" %>
   </div>
 </div>
