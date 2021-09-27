@@ -29,7 +29,7 @@
                   <li>プレスリリース設定</li>
               </ul>
             </div>
-            <a href="#" class="btn btn-default">研究室管理</a>
+            <%= link_to "研究室を探す", public_laboratories_path, class:"btn btn-default" %>
           </div>
         </div>
         <!--card 2-->
@@ -48,7 +48,8 @@
                   <li>データ管理</li>
               </ul>
             </div>
-            <a href="#" class="btn btn-default">MyPage</a>
+            <%  %>
+           <%= link_to "MyPage", new_user_session_path, class:"btn btn-default" %>
           </div>
         </div>
 
@@ -62,13 +63,14 @@
                 共同研究や就職先を探しに。<br>
               </p>
               <ul>
-                  <li>共同研究先募集</li>
-                  <li>研究室求人</li>
-                  <li>企業求人</li>
+                <li>企業イベント</li>
+                  <!--<li>共同研究先募集</li>-->
+                  <!--<li>研究室求人</li>-->
+                  <!--<li>企業求人</li>-->
                   <li>OB/OG</li>
               </ul>
             </div>
-            <a href="#" class="btn btn-default">共同研究募集一覧</a>
+            <%= link_to "企業一覧", public_companies_path, class:"btn btn-default" %>
           </div>
         </div>
       </div>
@@ -79,10 +81,10 @@
           <p>これらの機能を使うためには今すぐ SIGNUP ！</p>
         </div>
         <div class="col-md-6 account-link">
-          <a href="#" class="btn btn-primary btn-lg">個人の方はこちら</a>
+          <%= link_to "個人の方はこちら", new_user_session_path, class:"btn btn-primary btn-lg" %>
         </div>
         <div class="col-md-6 account-link">
-          <a href="#" class="btn btn-primary btn-lg">企業の方はこちら</a>
+          <%= link_to "企業の方はこちら", new_company_admin_session_path, class:"btn btn-primary btn-lg" %>
         </div>
       </div>
     </div>

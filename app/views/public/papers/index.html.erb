@@ -1,0 +1,52 @@
+<!--header設定-->
+<%= render "shared/head" %>
+
+<!--flash設定-->
+<%= render "shared/flash" %>
+
+<!--menu設定-->
+<%= render "public/laboratories/tips/menu" %>
+
+<!--Paper Index-->
+<div class="container container-page">
+  <div class="row rowbox content-top">
+    <div class="content-title">
+      <i class="far fa-3x fa-sticky-note icon"></i>
+      <h2 class="content-title-name">Paper 一覧</h2>
+    </div>
+    <div class="content-new-link">
+      <% if user_signed_in? && current_user.user_has_edit_status?(@set_laboratory) %>
+        <%= link_to "新規作成", new_public_laboratory_paper_path(@set_laboratory.id), class:"btn btn-primary" %>
+      <% end %>
+    </div>
+
+  </div>
+
+  <div class="row rowbox">
+    <table class="table">
+      <thead>
+        <tr>
+          <th width="20%">title</th>
+          <th width="60%">abstract</th>
+          <th>link</th>
+          <% if user_signed_in? && current_user.user_has_edit_status?(@set_laboratory) %>
+            <th></th>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        <% @papers.each do |paper| %>
+          <tr>
+            <td><%= link_to paper.title.truncate(20), public_laboratory_paper_path(@set_laboratory.id, paper.id) %></td>
+            <td><%= paper.abstract.truncate(100) %></td>
+            <td><%= link_to paper.linkpath.truncate(20), paper.linkpath %></td>
+            <% if user_signed_in? && current_user.user_has_edit_status?(@set_laboratory) %>
+              <td><%= link_to "削除", public_laboratory_paper_path(@set_laboratory.id, paper.id), class:"btn btn-default", method: :delete %></td>
+            <% end %>
+          </tr>
+
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

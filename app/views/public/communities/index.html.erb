@@ -1,0 +1,63 @@
+<!--page名-->
+<% provide(:title,  "Community") %>
+
+<!--header設定-->
+<%= render "shared/head" %>
+
+<!--flash設定-->
+<%= render "shared/flash" %>
+
+<div class="container community-page">
+  <!--page-head-->
+  <div class="row">
+    <div class="col-12 page-head">
+      <div class="page-title">
+        <i class="far fa-3x fa-comments community-icon"></i>
+        <h2 class="title-name">Community</h2>
+      </div>
+      <% if user_signed_in? %>
+      <%= link_to "新規作成はこちら", new_public_community_path, class:"btn btn-primary community-new-link" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="community-top">
+      <h4>communityとは？</h4>
+      <p>
+        communityは誰でも立ち上げ可能な、使い方自由のグループSNSサービスです！
+        <ul>
+          <li>研究室メンバーと情報を交換する。</li>
+          <li>特定の分野のコミュニティで知見を広げる。</li>
+          <li>興味を持った企業から通知を受け取る。　　　　　　　etc...</li>
+        </ul>
+      </p>
+    </div>
+
+  </div>
+
+  <!--community 一覧-->
+  <div class="row community-cards">
+    <% @communities.each do |community| %>
+
+      <%= link_to public_community_path(community.id) do %>
+        <div class="card community-card" style="width: 20rem;">
+          <div class="card-image">
+            <% if community.image.attached? %>
+              <%= image_tag community.image, height: '240', class:"rounded img-raised"%>
+            <% else %>
+              <%= image_tag asset_path('community-noimage.jpg'), class:"rounded img-raised" %>
+            <% end %>
+          </div>
+          <div class="card-body">
+            <h4 class="community-title"><%= community.name %></h4>
+            <p class="card-text"><%= community.introduction.truncate(70) %></p>
+          </div>
+        </div>
+      <% end %>
+
+
+    <% end %>
+  </div>
+</div>
+

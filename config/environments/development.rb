@@ -29,6 +29,8 @@ Rails.application.configure do
 
   # Store uploaded files on the local file system (see config/storage.yml for options)
   config.active_storage.service = :local
+  ActiveStorage::AnalyzeJob.queue_adapter = :inline
+  ActiveStorage::PurgeJob.queue_adapter = :inline
 
   # Don't care if the mailer can't send.
   # config.action_mailer.raise_delivery_errors = true
@@ -72,4 +74,12 @@ Rails.application.configure do
     :authentication => :plain,
     :enable_starttls_auto => true
   }
+  
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.bullet_logger = true
+    Bullet.console = true
+    Bullet.add_footer = true
+  end
+  
 end

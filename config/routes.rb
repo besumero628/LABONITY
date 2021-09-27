@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  
-  
   # devise関連
   devise_for :users, path: "", controllers: {
     sessions: 'users/sessions',
@@ -19,22 +17,48 @@ Rails.application.routes.draw do
     passwords: 'admin/passwords',
     registrations: 'admin/registrations'
   }
-  
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   # main
-  namespace :company_admin, path: "c_admin" do
-    root "top#index"
+  namespace :company_admin, path: "company" do
+
   end
 
   namespace :admin do
     root "top#index"
   end
-  
+
   namespace :public, path: "" do
     root "top#index"
 
     resources :news, only: [:index, :show]
+    resources :communities do
+      resources :community_members, only: [:create, :destroy]
+      resources :community_messages, only: [:create]
+    end
+
+
+
+    resources :laboratories do
+      get 'member'
+      patch 'permit'
+      resources :press_releases, except:[:index]
+      resources :papers
+      resources :confernces
+      resources :projects, except:[:show]
+      resources :albums
+      resources :lablinks, except:[:show]
+      resources :labmembers, only:[:create]
+      resources :accesses, except:[:show, :destroy]
+      resources :labimages, only:[:create, :destroy]
+    end
+
+    resources :companies do
+      resources :events, except:[:index]
+      resources :companyimages, only:[:create, :destroy]
+    end
+
 
     get 'rsses/ajax1'
     get 'rsses/ajax2'
@@ -46,6 +70,9 @@ Rails.application.routes.draw do
     resources :users, param: :login_id, path: "", only: [:show, :update] do
       resources :rsses, only: [:index]
       resources :rss_choices, only: [:create, :destroy]
+      resources :user_papers
+      resources :user_confernces
+      resources :user_books
     end
   end
 

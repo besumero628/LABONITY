@@ -1,7 +1,31 @@
 <div class="card">
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Vestibulum at eros</li>
+    
+    <% if @press_releases.size > 0 %>
+      <% @press_releases.each do |press_release| %>
+        <li class="list-group-item">
+          <div class="lab-name">
+            <%= press_release.laboratory.name %>
+          </div>
+          <div class="notification-title">
+            <%= link_to press_release.title.truncate(30), public_laboratory_press_release_path(press_release.laboratory_id, press_release.id) %>
+          </div>
+        </li>
+      <% end %>
+    <% elsif LabMember.find_by(user_id: current_user.id) %>
+      <li class="list-group-item">
+        所属研究室からお知らせはまだありません。
+      </li>
+    <% else %>
+      <li class="list-group-item">
+        <div>
+          所属研究室がありません。
+        </div>
+        <div>
+          <%= link_to "研究室一覧はこちら", public_laboratories_path  %>
+        </div>
+      </li>
+    <% end %>
+    
   </ul>
 </div>

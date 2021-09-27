@@ -1,0 +1,54 @@
+<!--header設定-->
+<%= render "shared/head" %>
+
+<!--flash設定-->
+<%= render "shared/flash" %>
+
+<!--Paper Index-->
+<div class="container container-page">
+  <div class="row rowbox content-top">
+    <div class="content-title">
+      <i class="far fa-3x fa-sticky-note icon"></i>
+      <h2 class="content-title-name"><%= link_to @user.family_name + @user.given_name, public_user_path(@user.login_id) %>のPaper 一覧</h2>
+    </div>
+    <div class="content-new-link">
+      <% if user_signed_in? && @user.id == current_user.id  %>
+        <%= link_to "新規作成", new_public_user_user_paper_path(@user.login_id), class:"btn btn-primary" %>
+      <% end %>
+    </div>
+
+  </div>
+
+  <div class="row rowbox">
+    <table class="table">
+      <thead>
+        <tr>
+          <th width="20%">title</th>
+          <th width="60%">abstract</th>
+          <th>link</th>
+          <% if user_signed_in? %>
+            <th></th>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        <% @papers.each do |paper| %>
+          <% if Author.exists?(deliverable_type: "Paper", deliverable_id: paper.id, user_id: @user.id) %>
+          <tr>
+            <td><%= link_to paper.title.truncate(20), public_user_user_paper_path(@user.login_id, paper.id) %></td>
+            <td><%= paper.abstract.truncate(100) %></td>
+            <% if paper.linkpath == nil %>
+              <td></td>
+            <% else %>
+              <td><%= link_to paper.linkpath.truncate(20), paper.linkpath %></td>
+            <% end %>
+            <% if user_signed_in? %>
+              <td><%= link_to "削除", public_user_user_paper_path(@user.login_id, paper.id), class:"btn btn-default", method: :delete %></td>
+            <% end %>
+          </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

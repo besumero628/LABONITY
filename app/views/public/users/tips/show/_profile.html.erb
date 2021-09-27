@@ -14,22 +14,24 @@
       <i class="fas fa-check-circle official_mark"></i>
     <% end %>
   </h3>
-  <% if current_user.id == @user.id %>
+  <% if user_signed_in? && current_user.id == @user.id %>
     <%= link_to "登録情報編集", edit_user_registration_path(current_user.login_id), class:"btn btn-edit"%>
   <% end %>
   </div>
 
   <table class="table">
     <tr>
-      <th width="30%">所属</th><td>ooo</td>
+      <th width="30%">所属</th>
+      <td>
+        <% if @laboratory %>
+          <%= link_to @laboratory.name, public_laboratory_path(@laboratory.id) %>
+        <% else %>
+          未所属 (<%= link_to "研究室を探す", public_laboratories_path %>)
+        <% end %>
+      </td>
     </tr>
     <tr>
-      <th>学年/役職</th><td>ooo</td>
-    </tr>
-    <tr>
-      <th>論文数</th><td>ooo</td>
+      <th>学年/役職</th><td><%= @user.post.name %></td>
     </tr>
   </table>
-
-
 </div>

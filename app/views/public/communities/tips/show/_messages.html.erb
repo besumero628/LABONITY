@@ -1,0 +1,51 @@
+<%= form_with model: @community_message, url: public_community_community_messages_path(@community.id), id: 'new_message', class: 'new_message', local: true do |f| %>
+  <%= markup do |m|
+    p = FormPresenter.new(f, self)
+
+    m << p.text_field_block(:body, "message", {class:"text-field"})
+  end %>
+  
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <%= f.hidden_field :community_id, :value => @community.id %>
+
+  <%= f.submit "登録", class:"btn btn-primary btn-sm"%>
+<% end %>
+
+<div class="background-blue container">
+  <% @community_messages.each do |message| %>
+  <!--<div class="row community-message-row">-->
+    <% if message.user_id == current_user.id %>
+    <!--Current User-->
+    <div class="community-message-row-right">
+      <div class="balloon2-right">
+        <div class="community-flex">
+          <% if User.find(message.user_id).profile_image.attached? %>
+            <%= image_tag User.find(message.user_id).profile_image.variant(resize:'30x30') , class:"rounded img-raised"%>
+          <% else %>
+            <%= image_tag asset_path('no_image.jpg'), class:"rounded img-raised", size:"30" %>
+          <% end %>
+          <p class="community-flex-left"><%= User.find(message.user_id).family_name + User.find(message.user_id).given_name %></p>
+        </div>
+        <p><%= message.body %></p>
+      </div>
+    </div>
+    <% else %>
+      <!--Not CurrentUser-->
+    <div class="community-message-row">
+      <div class="balloon2-left">
+        <div class="community-flex">
+          <% if User.find(message.user_id).profile_image.attached? %>
+            <%= image_tag User.find(message.user_id).profile_image.variant(resize:'30x30') , class:"rounded img-raised"%>
+          <% else %>
+            <%= image_tag asset_path('no_image.jpg'), class:"rounded img-raised", size:"30" %>
+          <% end %>
+          <p class="community-flex-left"><%= User.find(message.user_id).family_name + User.find(message.user_id).given_name %></p>
+        </div>
+        <p><%= message.body %></p>
+      </div>
+    </div>
+    <% end %>
+  <!--</div>-->
+  <% end %>
+</div>
+

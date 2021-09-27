@@ -1,0 +1,28 @@
+<!--Paper Form-->
+<div class="row form-title">
+  <h3 class="form-title-name col-12">PressRelease <%= title %></h3>
+</div>
+
+<div class="form-main">
+  <%= form_with model: @press_release, url: path, id: 'new_press_release', class: 'new_press_release', local: true do |f| %>
+    <%= markup do |m|
+      p = FormPresenter.new(f, self)
+
+      m << p.text_field_block(:title, "タイトル", {placeholder: "タイトル"})
+      m << p.text_area_block(:body, "本文", {rows:10})
+      m << p.text_field_block(:linkpath, "link (※任意)")
+
+    end %>
+
+    <%= f.hidden_field :laboratory_id, :value => @set_laboratory.id %>
+
+  <div class="form-main-submit">
+    <%= f.submit "登録", class:"btn btn-primary col-6"%>
+  </div>
+
+  <% end %>
+</div>
+
+<div class="row other-link">
+  <%= link_to "研究室Topに戻る", public_laboratory_path(@set_laboratory.id), class:"col-12" %>
+</div>

@@ -1,0 +1,51 @@
+<!--Community-->
+
+    <!-- Swiper -->
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        <% if @labimages.size != 0 %>
+          <% @labimages.each do |labimage| %>
+            <div class="swiper-slide">
+              <%= image_tag labimage.image, class:"rounded img-raised swiper-image" %>
+            </div>
+          <% end %>
+        <% else %>
+          <div class="swiper-slide">
+            <%= image_tag asset_path('community-noimage.jpg'), class:"rounded img-raised swiper-image" %>
+          </div>
+          <div class="swiper-slide">
+            <%= image_tag asset_path('community-noimage.jpg'), class:"rounded img-raised swiper-image" %>
+          </div>
+          <div class="swiper-slide">
+            <%= image_tag asset_path('community-noimage.jpg'), class:"rounded img-raised swiper-image" %>
+          </div>
+        <% end %>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        autoplay: {
+          delay: 5000,
+          speed: 3000,
+          disableOnInteraction: false,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+      });
+    </script>

@@ -42,6 +42,8 @@ Rails.application.configure do
 
   # Store uploaded files on the local file system (see config/storage.yml for options)
   config.active_storage.service = :local
+  ActiveStorage::AnalyzeJob.queue_adapter = :inline
+  ActiveStorage::PurgeJob.queue_adapter = :inline
 
   # Mount Action Cable outside main process or domain
   # config.action_cable.mount_path = nil
@@ -99,12 +101,11 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.smtp_settings = {
-  address: 'smtp.gmail.com',
-  domain: 'gmail.com',
-  port: 587,
-  user_name: 'besumero628@gmail.com',
-  password: 'qzhusgxveeykmyli',
-  authentication: 'login',
-  enable_starttls_auto: true
+    :address => "smtp.gmail.com",
+    :port => 587,
+    :user_name => ENV["GMAIL_USERNAME"] ,
+    :password => ENV["GMAIL_PASSWORD"] ,
+    :authentication => :plain,
+    :enable_starttls_auto => true
   }
 end

@@ -1,0 +1,50 @@
+<!--header設定-->
+<%= render "shared/head" %>
+
+<!--flash設定-->
+<%= render "shared/flash" %>
+
+<!--Confernce Index-->
+<div class="container container-page">
+  <div class="row rowbox content-top">
+    <div class="content-title">
+      <i class="far fa-3x fa-sticky-note icon"></i>
+      <h2 class="content-title-name"><%= link_to @user.family_name + @user.given_name, public_user_path(@user.login_id) %>のConfernce 一覧</h2>
+    </div>
+    <div class="content-new-link">
+      <% if user_signed_in? && @user.id == current_user.id  %>
+        <%= link_to "新規作成", new_public_user_user_confernce_path(@user.login_id), class:"btn btn-primary" %>
+      <% end %>
+    </div>
+
+  </div>
+
+  <div class="row rowbox">
+    <table class="table">
+      <thead>
+        <tr>
+          <th width="20%">title</th>
+          <th width="60%">abstract</th>
+          <th>link</th>
+          <% if user_signed_in? %>
+            <th></th>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        <% @confernces.each do |confernce| %>
+          <% if Author.exists?(deliverable_type: "Confernce", deliverable_id: confernce.id, user_id: @user.id) %>
+          <tr>
+            <td><%= link_to confernce.title.truncate(20), public_user_user_confernce_path(@user.login_id, confernce.id) %></td>
+            <td><%= confernce.abstract.truncate(100) %></td>
+            <td><%= link_to confernce.linkpath.truncate(20), confernce.linkpath %></td>
+            <% if user_signed_in? %>
+              <td><%= link_to "削除", public_user_user_confernce_path(@user.login_id, confernce.id), class:"btn btn-default", method: :delete %></td>
+            <% end %>
+          </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
