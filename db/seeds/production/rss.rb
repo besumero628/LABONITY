@@ -19,23 +19,18 @@ Rss.create!(
 Rss.create!(
   url: "http://feeds.nature.com/nmat/rss/current",
   name: "Nature Material",
-  introduction: "Nature Material 物質化学系統の論文です。"
+  introduction: "物質化学系統の論文です。"
 )
 
 Rss.create!(
   url: "http://feeds.nature.com/nnano/rss/current",
   name: "Nature Nanotechnology",
-  introduction: "Nature Nanotechnology ナノテクノロジー系統の論文です。"
+  introduction: "ナノテクノロジー系統の論文です。"
 )
 
-users = User.all
-
-
-  5.times do |n|
-    RssChoice.create!(
-      user_id: users.sample.id,
-      rss_id: n+1
-    )
-  end
-
+Rss.create!(
+  url: "http://feeds.nature.com/nphoton/rss/current",
+  name: "Nature Photonics",
+  introduction: "フォトニクス系統の論文です。"
+)
 

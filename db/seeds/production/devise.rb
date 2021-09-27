@@ -20,7 +20,7 @@ User.create!(
   given_name_kana: "タロウ",
   email: "example1@gmail.com",
   password: "password",
-  post_id: 1
+  post_id: 8
 )
 
 User.create!(
@@ -31,6 +31,6 @@ User.create!(
   given_name_kana: "ジロウ",
   email: "example2@gmail.com",
   password: "password",
-  post_id: 1,
+  post_id: 17,
   official_mark_status: true
 )
