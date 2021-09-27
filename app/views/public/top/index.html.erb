@@ -65,11 +65,16 @@
             <% end %>
           </div>
 
-          <!--panel 2-->
-          <div class="tab-pane" id="community" role="tabpanel">
 
+          
+          <!--panel 3-->
+          <div class="tab-pane" id="event" role="tabpanel">
+            <% if @events.size == 0 %>
+              <p>投稿はありません。</p>
+            <% else %>
+              <%= render "public/top/tips/event" %>
+            <% end %>
           </div>
-
         </div>
       </div>
     </div>
