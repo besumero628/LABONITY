@@ -405,3 +405,17 @@
   display: flex;
   justify-content: space-around;
 }
+
+.flex-type {
+  display: flex;
+}
+
+.between-type {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.baseline-content {
+  align-items: baseline;
+}

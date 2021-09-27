@@ -16,6 +16,7 @@ class User < ApplicationRecord
   has_many :community_members
   has_many :community_messages
   has_many :communities, :through => :community_members
+  has_many :authors
 
   #正規化
   before_validation do

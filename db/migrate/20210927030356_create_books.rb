@@ -1,7 +1,6 @@
-class CreateConfernces < ActiveRecord::Migration[5.2]
+class CreateBooks < ActiveRecord::Migration[5.2]
   def change
-    create_table :confernces do |t|
-      t.string :name, null: false
+    create_table :books do |t|
       t.string :title, null: false
       t.text :abstract, null: false
       t.text :linkpath

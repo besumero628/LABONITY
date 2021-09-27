@@ -1,0 +1,11 @@
+<!--header設定-->
+<%= render "shared/head" %>
+
+<!--flash設定-->
+<%= render "shared/flash" %>
+
+<div class="background-orange">
+  <div class="container general-form">
+    <%= render "public/user_papers/tips/form", title: "新規登録", path: public_user_user_papers_path(@user.login_id) %>
+  </div>
+</div>

@@ -1,11 +1,8 @@
-class Public::PapersController < ApplicationController
-  before_action :set_laboratory
-  before_action ->{
-    current_user_have_edit_status_for_this_lab?(Laboratory.find(@set_laboratory.id))
-  }, only: [:new, :edit]
+class Public::UserPapersController < ApplicationController
+  before_action :set_user
 
   def index
-    @papers = Paper.where(laboratory_id: @set_laboratory.id).order(created_at: :desc).page(params[:page])
+    @papers = Paper.all
   end
 
   def show
@@ -21,35 +18,39 @@ class Public::PapersController < ApplicationController
   end
 
   def create
+    # render plain: params.inspect
     @paper = Paper.new(paper_params)
-    
+
     if @paper.save
+      @author = Author.new(deliverable_type: "Paper", deliverable_id: @paper.id, user_id: @user.id)
+      @author.save
       flash[:info] = "論文を新規登録しました！"
-      redirect_to public_laboratory_papers_path(@set_laboratory.id)
+      redirect_to public_user_user_papers_path(@user.login_id)
     else
+      set_user
       render "new"
     end
-    
-  end
 
+  end
+  
   def update
     @paper = Paper.find(params[:id])
     
     if @paper.update(paper_params)
       flash[:info] = "論文を編集しました！"
-      redirect_to public_laboratory_papers_path(@set_laboratory.id)
+      redirect_to public_user_user_papers_path(@user.login_id)
     else
+      set_user
       render "edit"
     end
-    
   end
-
+  
   def destroy
     @paper = Paper.find(params[:id])
     
     if @paper.destroy
       flash[:info] = "論文を削除しました！"
-      redirect_to public_laboratory_papers_path(@set_laboratory.id)
+      redirect_to public_user_user_papers_path(@user.login_id)
     else
       flash[:danger] = "エラーです。"
       render "index"
@@ -59,7 +60,7 @@ class Public::PapersController < ApplicationController
 
   private
   def paper_params
-    params.require(:paper).permit(:title, :abstract, :figure, :linkpath, :laboratory_id)
+    params.require(:paper).permit(:title, :abstract, :figure, :linkpath)
   end
 
 end

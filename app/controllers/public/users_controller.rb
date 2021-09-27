@@ -13,6 +13,10 @@ class Public::UsersController < ApplicationController
   def show
     @lab_user = LabMember.find_by(user_id: User.find_by(login_id: params[:login_id]).id, permit_status: true)
     @communities = @user.communities
+    @papers = Paper.all
+    @confernces = Confernce.all
+    @books = Book.all
+    
     if @lab_user
       @laboratory = Laboratory.find(@lab_user.laboratory_id)
     else

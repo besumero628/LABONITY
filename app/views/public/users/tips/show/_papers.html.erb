@@ -1,6 +1,9 @@
-<div class="col-12 user-papers">
-  <i class="far fa-2x fa-copy paper-icon"></i>
-  <h3>Paper</h3>
+<div class="col-12 user-papers between-type baseline-content">
+  <div class="flex-type">
+    <i class="far fa-2x fa-copy paper-icon"></i>
+    <h3>Paper</h3>
+  </div>
+  <%= link_to "Paper 一覧", public_user_user_papers_path(@user.login_id), class:"rss-register-link" %>
 </div>
 
 <table class="col-12 table">
@@ -10,13 +13,22 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>test title</td>
-      <td>2021/09/05</td>
-    </tr>
-    <tr>
-      <td>test title</td>
-      <td>2021/09/05</td>
-    </tr>
+    <% count = 0 %>
+    <% @papers.each do |paper| %>
+      <% if Author.exists?(deliverable_type: "Paper", deliverable_id: paper.id, user_id: @user.id) %>
+        <tr>
+          <td><%= link_to paper.title.truncate(18), public_user_user_paper_path(@user.login_id, paper.id) %></td>
+          <td><%= paper.created_at.strftime("%Y/%m/%d") %></td>
+        </tr>
+        <% count += 1 %>
+      <% end %>
+    <% end %>
+    
+    <% if count == 0 %>
+      <tr>
+        <td>登録がありません</td>
+        <td>- - -</td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
