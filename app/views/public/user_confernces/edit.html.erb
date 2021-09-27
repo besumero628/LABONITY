@@ -1,0 +1,12 @@
+<!--header設定-->
+<%= render "shared/head" %>
+
+<!--flash設定-->
+<%= render "shared/flash" %>
+
+<!--Main-->
+<div class="background-orange">
+  <div class="container general-form">
+    <%= render "public/user_confernces/tips/form", title: "登録内容編集" , path: public_user_user_confernce_path(@user.login_id, @confernce.id) %>
+  </div>
+</div>

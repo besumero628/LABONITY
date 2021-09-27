@@ -1,0 +1,42 @@
+<!--header設定-->
+<%= render "shared/head" %>
+
+<!--flash設定-->
+<%= render "shared/flash" %>
+
+
+<!--book Show-->
+<div class="container container-page">
+  <!--Title-->
+  <div class="row show-title content-top underline">
+    <div class="content-title col-10">
+      <h3 class="content-title-name"><%= @book.title %></h3>
+    </div>
+    <% if @user.id == current_user.id%>
+      <%= link_to "編集", edit_public_user_user_book_path(@user.login_id, @book.id), class:"btn btn-primary content-title-btn" %>
+    <% end %>
+  </div>
+
+  <!--Main-->
+  <div class="row rowbox">
+    <div class="content-main">
+      <p class="content-main-text"><%= @book.abstract %></p>
+      <% if @book.figure.attached? %>
+        <div class="content-main-figure">
+          <%= image_tag @book.figure %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<!--Link-->
+<div class="container content-link">
+  <div class="row news-link">
+    <%= link_to "book 一覧", public_user_user_books_path(@user.login_id), class:"news-index-link" %>
+    <%= "　＞　#{@book.title.truncate(30)}" %>
+  </div>
+  <div class="content-link-path">
+    link：<%= link_to @book.linkpath.truncate(30), @book.linkpath %>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<!--header設定-->
+<%= render "shared/head" %>
+
+<!--flash設定-->
+<%= render "shared/flash" %>
+
+<!--Main-->
+<div class="background-orange">
+  <div class="container general-form">
+    <%= render "public/user_books/tips/form", title: "登録内容編集" , path: public_user_user_book_path(@user.login_id, @book.id) %>
+  </div>
+</div>

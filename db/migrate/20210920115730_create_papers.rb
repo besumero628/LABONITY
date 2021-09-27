@@ -4,7 +4,7 @@ class CreatePapers < ActiveRecord::Migration[5.2]
       t.string :title, null: false
       t.text :abstract, null: false
       t.text :linkpath
-      t.integer :laboratory_id, null: false
+      t.integer :laboratory_id
 
       t.timestamps
     end

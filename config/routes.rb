@@ -70,6 +70,9 @@ Rails.application.routes.draw do
     resources :users, param: :login_id, path: "", only: [:show, :update] do
       resources :rsses, only: [:index]
       resources :rss_choices, only: [:create, :destroy]
+      resources :user_papers
+      resources :user_confernces
+      resources :user_books
     end
   end
 

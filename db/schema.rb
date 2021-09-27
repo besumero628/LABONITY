@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_26_063246) do
+ActiveRecord::Schema.define(version: 2021_09_27_030356) do
 
   create_table "accesses", force: :cascade do |t|
     t.string "organization_type", null: false
@@ -64,6 +64,26 @@ ActiveRecord::Schema.define(version: 2021_09_26_063246) do
     t.integer "laboratory_id", null: false
     t.string "name", null: false
     t.text "introduction", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "authors", force: :cascade do |t|
+    t.string "deliverable_type", null: false
+    t.integer "deliverable_id", null: false
+    t.integer "user_id"
+    t.string "name"
+    t.boolean "permit_status", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["deliverable_type", "deliverable_id"], name: "index_authors_on_deliverable_type_and_deliverable_id"
+  end
+
+  create_table "books", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "abstract", null: false
+    t.text "linkpath"
+    t.integer "laboratory_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -133,7 +153,7 @@ ActiveRecord::Schema.define(version: 2021_09_26_063246) do
     t.string "title", null: false
     t.text "abstract", null: false
     t.text "linkpath"
-    t.integer "laboratory_id", null: false
+    t.integer "laboratory_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -209,7 +229,7 @@ ActiveRecord::Schema.define(version: 2021_09_26_063246) do
     t.string "title", null: false
     t.text "abstract", null: false
     t.text "linkpath"
-    t.integer "laboratory_id", null: false
+    t.integer "laboratory_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

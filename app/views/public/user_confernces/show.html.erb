@@ -1,0 +1,42 @@
+<!--header設定-->
+<%= render "shared/head" %>
+
+<!--flash設定-->
+<%= render "shared/flash" %>
+
+
+<!--confernce Show-->
+<div class="container container-page">
+  <!--Title-->
+  <div class="row show-title content-top underline">
+    <div class="content-title col-10">
+      <h3 class="content-title-name"><%= @confernce.title %></h3>
+    </div>
+    <% if @user.id == current_user.id%>
+      <%= link_to "編集", edit_public_user_user_confernce_path(@user.login_id, @confernce.id), class:"btn btn-primary content-title-btn" %>
+    <% end %>
+  </div>
+
+  <!--Main-->
+  <div class="row rowbox">
+    <div class="content-main">
+      <p class="content-main-text"><%= @confernce.abstract %></p>
+      <% if @confernce.figure.attached? %>
+        <div class="content-main-figure">
+          <%= image_tag @confernce.figure %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<!--Link-->
+<div class="container content-link">
+  <div class="row news-link">
+    <%= link_to "confernce 一覧", public_user_user_confernces_path(@user.login_id), class:"news-index-link" %>
+    <%= "　＞　#{@confernce.title.truncate(30)}" %>
+  </div>
+  <div class="content-link-path">
+    link：<%= link_to @confernce.linkpath.truncate(30), @confernce.linkpath %>
+  </div>
+</div>

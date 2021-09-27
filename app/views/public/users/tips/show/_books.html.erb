@@ -1,6 +1,9 @@
-<div class="col-12 user-books">
-  <i class="fas fa-2x fa-book book-icon"></i>
-  <h3>Books</h3>
+<div class="col-12 user-books between-type baseline-content">
+  <div class="flex-type">
+    <i class="far fa-2x fa-copy book-icon"></i>
+    <h3>book</h3>
+  </div>
+  <%= link_to "book 一覧", public_user_user_books_path(@user.login_id), class:"rss-register-link" %>
 </div>
 
 <table class="col-12 table">
@@ -10,13 +13,22 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>test title</td>
-      <td>2021/09/05</td>
-    </tr>
-    <tr>
-      <td>test title</td>
-      <td>2021/09/05</td>
-    </tr>
+    <% count = 0 %>
+    <% @books.each do |book| %>
+      <% if Author.exists?(deliverable_type: "Book", deliverable_id: book.id, user_id: @user.id) %>
+        <tr>
+          <td><%= link_to book.title.truncate(18), public_user_user_book_path(@user.login_id, book.id) %></td>
+          <td><%= book.created_at.strftime("%Y/%m/%d") %></td>
+        </tr>
+        <% count += 1 %>
+      <% end %>
+    <% end %>
+    
+    <% if count == 0 %>
+      <tr>
+        <td>登録がありません</td>
+        <td>- - -</td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
