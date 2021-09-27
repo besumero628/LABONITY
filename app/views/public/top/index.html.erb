@@ -23,64 +23,7 @@
   <%= render "public/top/tips/about" %>
 
    <!-- Nav tabs -->
-    <div class="card pickup">
-      <div class="card-header">
-        <div class="container">
-          <div class="row">
-            <i class="far fa-2x fa-lightbulb pickup-icon"></i>
-            <h4>Pick Up</h4>
-          </div>
-
-          <div class="row">
-            <ul class="nav nav-tabs justify-content-center" role="tablist">
-              <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#thesis" role="tab">
-                  Paper
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#community" role="tab">
-                  COMMUNITY
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#event" role="tab">
-                  EVENT
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-      </div>
-      <div class="card-body">
-        <!-- Tab panes -->
-        <div class="tab-content text-center">
-          <!--panel 1-->
-          <div class="tab-pane active" id="thesis" role="tabpanel">
-            <% if @papers.size == 0 %>
-              <p>投稿はありません。</p>
-            <% else %>
-              <%= render "public/top/tips/thesis" %>
-            <% end %>
-          </div>
-
-          <!--panel 2-->
-          <div class="tab-pane" id="community" role="tabpanel">
-            <%= render "public/top/tips/community" %>
-          </div>
-
-          <!--panel 3-->
-          <div class="tab-pane" id="event" role="tabpanel">
-            <% if @events.size == 0 %>
-              <p>投稿はありません。</p>
-            <% else %>
-              <%= render "public/top/tips/event" %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
+    
   </div>
 </div>
 
