@@ -15,8 +15,9 @@
         <i class="far fa-3x fa-comments community-icon"></i>
         <h2 class="title-name">Community</h2>
       </div>
-
+      <% if user_signed_in? %>
       <%= link_to "新規作成はこちら", new_public_community_path, class:"btn btn-primary community-new-link" %>
+      <% end %>
     </div>
   </div>
 

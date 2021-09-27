@@ -392,6 +392,11 @@
       margin-top: 16px;
       color: $black;
       font-weight: bold;
+
+      a {
+        color: $black;
+      }
+
     }
     .card-text {
       color: $black;

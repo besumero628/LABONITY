@@ -37,7 +37,11 @@
           <tr>
             <td><%= link_to paper.title.truncate(20), public_user_user_paper_path(@user.login_id, paper.id) %></td>
             <td><%= paper.abstract.truncate(100) %></td>
-            <td><%= link_to paper.linkpath.truncate(20), paper.linkpath %></td>
+            <% if paper.linkpath == nil %>
+              <td></td>
+            <% else %>
+              <td><%= link_to paper.linkpath.truncate(20), paper.linkpath %></td>
+            <% end %>
             <% if user_signed_in? %>
               <td><%= link_to "削除", public_user_user_paper_path(@user.login_id, paper.id), class:"btn btn-default", method: :delete %></td>
             <% end %>
