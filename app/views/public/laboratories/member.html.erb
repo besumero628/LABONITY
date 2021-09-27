@@ -38,7 +38,7 @@
                   <%= image_tag asset_path('no_image.jpg'), size: "50x50", class:"rounded img-raised" %>
                 <% end %>
               </td>
-              <td><%= user.family_name + user.given_name %></td>
+              <td><%= link_to user.family_name + user.given_name, public_user_path(user.login_id) %></td>
               <td><%= user.post.name %></td>
               <td>
                 <% if !member.permit_status %>
@@ -59,7 +59,7 @@
                   <%= image_tag asset_path('no_image.jpg'), size: "50x50", class:"rounded img-raised" %>
                 <% end %>
               </td>
-              <td><%= user.family_name + user.given_name %></td>
+              <td><%= link_to user.family_name + user.given_name, public_user_path(user.login_id) %></td>
               <td><%= user.post.name %></td>
             </tr>
           <% end %>

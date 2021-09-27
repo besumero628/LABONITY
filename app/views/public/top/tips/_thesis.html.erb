@@ -1,61 +1,55 @@
 <!--thesis-->
 <div class="container">
   <div class="row">
-    
+
     <!-- Swiper -->
-    <div class="swiper mySwiper">
-      <div class="swiper-wrapper">
-        <!--slide 1-->
-        <div class="swiper-slide">
-          <div class="card" style="width: 20rem;">
-            <img class="card-img-top" src="/assets/public/Top/about-card1" alt="Card image cap">
-            <div class="card-body">
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-          </div>
-        </div>
-        
-        <!--slide 2-->
-        <div class="swiper-slide">
-          <div class="swiper-slide">
-            <div class="card" style="width: 20rem;">
-              <img class="card-img-top" src="/assets/public/Top/about-card2" alt="Card image cap">
-              <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+        <% if @papers.size <= 3 %>
+        <div class="community-around">
+          <% @papers.each do |paper| %>
+              <div class="card  community-card" style="width: 20rem;">
+                <div class="card-image">
+                  <% if paper.figure.attached? %>
+                    <%= image_tag paper.figure, height: '240', class:" rounded img-raised"%>
+                  <% else %>
+                    <%= image_tag asset_path('community-noimage.jpg'), class:" rounded img-raised" %>
+                  <% end %>
+                </div>
+                <div class="card-body">
+                  <h4 class="community-title"><%= link_to paper.title.truncate(15), (paper.laboratory_id ? public_laboratory_paper_path(paper.laboratory_id, paper.id) : public_user_user_paper_path(User.find(Author.find_by(deliverable_type:"Paper", deliverable_id: paper.id).user_id).login_id, paper.id)) %></h4>
+                  <p class="card-text"><%= paper.abstract.truncate(30) %></p>
+                </div>
               </div>
-            </div>
-          </div>
+          <% end %>
         </div>
-        
-        <!--slide 3-->
-        <div class="swiper-slide">
-          <div class="swiper-slide">
-            <div class="card" style="width: 20rem;">
-              <img class="card-img-top" src="/assets/public/Top/about-card3" alt="Card image cap">
-              <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              </div>
+        <% else %>
+          <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+              <% @papers.each do |paper| %>
+                
+                  <div class="swiper-slide">
+                    <div class="card community-card" style="width: 20rem;">
+                      <div class="card-image">
+                        <% if paper.figure.attached? %>
+                          <%= image_tag paper.figure, height: '240', class:" rounded img-raised"%>
+                        <% else %>
+                          <%= image_tag asset_path('community-noimage.jpg'), class:" rounded img-raised" %>
+                        <% end %>
+                      </div>
+                      <div class="card-body">
+                        <h4 class="community-title"><%= link_to paper.title.truncate(15), (paper.laboratory_id ? public_laboratory_paper_path(paper.laboratory_id, paper.id) : public_user_user_paper_path(User.find(Author.find_by(deliverable_type:"Paper", deliverable_id: paper.id).user_id).login_id, paper.id)) %></h4>
+                        <p class="card-text"><%= paper.abstract.truncate(30) %></p>
+                      </div>
+                    </div>
+                  </div>
+                
+              <% end %>
             </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
           </div>
-        </div>
-        
-        <!--slide 4-->
-        <div class="swiper-slide">
-          <div class="swiper-slide">
-            <div class="card" style="width: 20rem;">
-              <img class="card-img-top" src="/assets/public/Top/about-card2" alt="Card image cap">
-              <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-      </div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-pagination"></div>
-    </div>
+        <% end %>
 
     <!-- Swiper JS -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
@@ -80,7 +74,7 @@
         },
       });
     </script>
-    
+
   </div>
 </div>
 

@@ -12,7 +12,7 @@
     <div class="content-title col-10">
       <h3 class="content-title-name"><%= @paper.title %></h3>
     </div>
-    <% if @user.id == current_user.id%>
+    <% if user_signed_in? && @user.id == current_user.id%>
       <%= link_to "編集", edit_public_user_user_paper_path(@user.login_id, @paper.id), class:"btn btn-primary content-title-btn" %>
     <% end %>
   </div>
@@ -37,6 +37,10 @@
     <%= "　＞　#{@paper.title.truncate(30)}" %>
   </div>
   <div class="content-link-path">
-    link：<%= link_to @paper.linkpath.truncate(30), @paper.linkpath %>
+    <% if @paper.linkpath == nil %>
+      link：---
+    <% else %>
+      link：<%= link_to @paper.linkpath.truncate(30), @paper.linkpath %>
+    <% end %>
   </div>
 </div>

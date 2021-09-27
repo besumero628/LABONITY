@@ -15,10 +15,10 @@
     </div>
     <div class="content-new-link">
       <% if user_signed_in? && current_user.user_has_edit_status?(@set_laboratory) %>
-        <% if Access.find_by(organization_type: "Collage", organization_id: @set_laboratory.id) %>
-          <%= link_to "新規作成", new_public_laboratory_access_path(@set_laboratory.id), class:"btn btn-primary" %>
-        <% else %>
+        <% if @access %>
           <%= link_to "編集", edit_public_laboratory_access_path(@set_laboratory.id, @access.id), class:"btn btn-primary" %>
+        <% else %>
+          <%= link_to "新規作成", new_public_laboratory_access_path(@set_laboratory.id), class:"btn btn-primary" %>  
         <% end %>
       <% end %>
     </div>
@@ -34,8 +34,9 @@
     <% end %>
   </div>
 
+  <% if @access %>
   <div id='map'></div>
-
+  <% end %>
 
 </div>
 

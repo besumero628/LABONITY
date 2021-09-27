@@ -29,7 +29,7 @@ footer {
    letter-spacing: 3px;
 }
 
-.address li a,
+.address li p,
 .menu li a {
     color: #FFF;
     letter-spacing: 3px;
@@ -56,4 +56,8 @@ footer {
     color: #da3e44;
     margin-right: 10px;
     font-size: 18px;
+}
+
+.address li {
+  display: flex;
 }
