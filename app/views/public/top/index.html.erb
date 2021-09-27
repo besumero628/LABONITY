@@ -53,7 +53,20 @@
         </div>
 
       </div>
-      
+      <div class="card-body">
+        <!-- Tab panes -->
+        <div class="tab-content text-center">
+          <!--panel 1-->
+          <div class="tab-pane active" id="thesis" role="tabpanel">
+            <% if @papers.size == 0 %>
+              <p>投稿はありません。</p>
+            <% else %>
+              <%= render "public/top/tips/thesis" %>
+            <% end %>
+          </div>
+
+        </div>
+      </div>
     </div>
   </div>
 </div>
