@@ -1,12 +1,12 @@
 class Laboratory < ApplicationRecord
-  has_many :lab_members
-  has_many :users, through: :lab_members
-  has_many :albums
-  has_many :press_releases
-  has_many :papers
-  has_many :confernces
-  has_many :projects
-  has_many :lab_links
+  has_many :lab_members, dependent: :destroy
+  has_many :users, through: :lab_members, dependent: :destroy
+  has_many :albums, dependent: :destroy
+  has_many :press_releases, dependent: :destroy
+  has_many :papers, dependent: :destroy
+  has_many :confernces, dependent: :destroy
+  has_many :projects, dependent: :destroy
+  has_many :lab_links, dependent: :destroy
   belongs_to :major, optional: true
   belongs_to :organization, polymorphic: true
 

@@ -8,6 +8,7 @@
       p = FormPresenter.new(f, self)
 
       m << p.text_field_block(:name, "お名前")
+      m << p.text_field_block(:subject, "件名")
       m << p.text_area_block(:message, "メッセージ", {rows:10})
       
     end %>
