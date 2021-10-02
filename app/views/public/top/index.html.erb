@@ -50,8 +50,6 @@
               </li>
             </ul>
           </div>
-
-
         </div>
 
       </div>
@@ -60,17 +58,25 @@
         <div class="tab-content text-center">
           <!--panel 1-->
           <div class="tab-pane active" id="thesis" role="tabpanel">
-            <%= render "public/top/tips/thesis" %>
+            <% if @papers.size == 0 %>
+              <p>投稿はありません。</p>
+            <% else %>
+              <%= render "public/top/tips/thesis" %>
+            <% end %>
           </div>
-
-          <!--panel 2-->
+          
+         <!--panel 2-->
           <div class="tab-pane" id="community" role="tabpanel">
             <%= render "public/top/tips/community" %>
           </div>
-
+          
           <!--panel 3-->
           <div class="tab-pane" id="event" role="tabpanel">
-            <%= render "public/top/tips/event" %>
+            <% if @events.size == 0 %>
+              <p>投稿はありません。</p>
+            <% else %>
+              <%= render "public/top/tips/event" %>
+            <% end %>
           </div>
         </div>
       </div>

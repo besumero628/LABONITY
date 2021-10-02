@@ -1,0 +1,54 @@
+<!--header設定-->
+<%= render "shared/head" %>
+
+<!--flash設定-->
+<%= render "shared/flash" %>
+
+<!--Main-->
+<div class="background-black">
+  <div class="container general-form">
+
+    <div class="row form-title">
+      <h3 class="form-title-name col-12">お問い合わせ内容確認</h3>
+    </div>
+
+
+    <div class="row">
+      <table class="table">
+        <tbody>
+          <tr>
+            <td class="text-center" style="width: 30%;">お名前</td>
+            <td><%= @contact.name %></td>
+          </tr>
+          <tr>
+            <td class="text-center" style="width: 30%;">件名</td>
+            <td><%= @contact.subject %></td>
+          </tr>
+          <tr>
+            <td class="text-center">メッセージ</td>
+            <td style="white-space: pre-wrap;"><%= @contact.message %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <%= form_with(model: @contact, url: public_contacts_path) do |f| %>
+      <%= f.hidden_field :name %>
+      <%= f.hidden_field :subject %>
+      <%= f.hidden_field :message %>
+      <div class="form-main-submit">
+        <%= f.submit "送信", class:"btn btn-primary col-6"%>
+      </div>
+    <% end %>
+
+
+    <%= form_with(model: @contact, url: public_back_path, local: true) do |f| %>
+      <%= f.hidden_field :name %>
+      <%= f.hidden_field :subject %>
+      <%= f.hidden_field :message %>
+      <div class="other-link">
+        <%= f.submit "入力画面に戻る", class:"btn-neutral confirm-btn"%>
+      </div>
+    <% end %>
+  </div>
+</div>
