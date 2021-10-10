@@ -3,7 +3,7 @@ class FormPresenter
 
   attr_reader :form_builder, :view_context
 
-  delegate :label, :text_field, :date_field, :file_field, 
+  delegate :label, :text_field, :date_field, :datetime_field, :file_field,
            :password_field, :check_box, :radio_button, :select, :collection_select,
            :text_area, :object, to: :form_builder
 
@@ -19,7 +19,7 @@ class FormPresenter
       m << error_messages_for(name)
     end
   end
-  
+
   def text_area_block(name, label_text, options={})
     markup(:div, class:"field") do |m|
       m << label(name, label_text, class:"label")
@@ -43,7 +43,7 @@ class FormPresenter
       m << error_messages_for(name)
     end
   end
-  
+
   def select_block(name, label_text, collection, options={})
     markup(:div, class:"field") do |m|
       m << label(name, label_text, class:"label")
@@ -59,11 +59,35 @@ class FormPresenter
       m << error_messages_for(name)
     end
   end
-  
+
   def date_field_block(name, label_text, options={})
     markup(:div, class:"field") do |m|
       m << label(name, label_text, class:"label")
       m << date_field(name, options)
+      m << error_messages_for(name)
+    end
+  end
+
+  def datetime_field_block(name, label_text, options={})
+    markup(:div, class:"field") do |m|
+      m << label(name, label_text, class:"label")
+      m << datetime_field(name, options)
+      m << error_messages_for(name)
+    end
+  end
+
+  def radio_button_block(name, label_text, options={})
+    markup(:div, class:"field") do |m|
+      m << label(name, label_text, class:"label")
+      m << radio_button(name, options)
+      m << error_messages_for(name)
+    end
+  end
+
+  def check_box_block(name, label_text, options={})
+    markup(:div, class:"field") do |m|
+      m << label(name, label_text, class:"label")
+      m << check_box(name, options)
       m << error_messages_for(name)
     end
   end

@@ -50,6 +50,34 @@
     <!--Main-->
     <div class="col-md-8">
       <div class="container user-content">
+
+        <div class="row notification">
+          <i class="far fa-2x fa-calendar-alt user-content-icon"></i>
+          <h3>予定表</h3>
+        </div>
+
+        <%= month_calendar events: @schedules do |date, schedules| %>
+          <%= date.strftime("%d") %>
+            <% schedules.each do |schedule| %>
+            <% if schedule.secret_status %>
+              <div>
+                <button type="button" class="btn btn-secondary btn-warning btn-sm" data-container="body" data-toggle="popover" data-placement="top" data-content=<%= schedule.introduction%>>
+                  <%= schedule.start_time.strftime("%H:%M").to_s + "~ " %><br>
+                  <%= schedule.title %>
+                </button>
+              </div>
+            <% else %>
+              <div>
+                <button type="button" class="btn btn-secondary btn-info btn-sm" data-container="body" data-toggle="popover" data-placement="top" data-content=<%= schedule.introduction%>>
+                  <%= schedule.start_time.strftime("%H:%M").to_s + "~ " %><br>
+                  <%= schedule.title %>
+                </button>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+
+
         <!--研究室からのお知らせ-->
         <div class="row notification">
           <i class="fas fa-2x fa-flag-checkered user-content-icon"></i>
