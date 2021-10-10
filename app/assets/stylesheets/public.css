@@ -1,6 +1,7 @@
 /*
   *= require_tree ./shared
   *= require_tree ./devise
+  *= require simple_calendar
   *= require_tree ./public
  */
 

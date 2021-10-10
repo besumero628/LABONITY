@@ -1,0 +1,135 @@
+<!--header設定-->
+<%= render "shared/head" %>
+
+<!--flash設定-->
+<%= render "shared/flash" %>
+
+<!--menu設定-->
+<%= render "public/laboratories/tips/menu" %>
+
+<!--Paper Index-->
+<div class="container container-page">
+  <div class="row rowbox content-top">
+    <div class="content-title">
+      <i class="far fa-3x fa-calendar-alt icon"></i>
+      <h2 class="content-title-name">Schedule</h2>
+    </div>
+  </div>
+
+  <div class="row rowbox">
+    <div class="col-12">
+      <%= month_calendar events: @schedules do |date, schedules| %>
+        <%= date.strftime("%d") %>
+          <% schedules.each do |schedule| %>
+            <% if schedule.secret_status == true %>
+              <% if user_signed_in? && LabMember.find_by(user_id: current_user.id, laboratory_id: @set_laboratory.id) %>
+                <div>
+                  <button type="button" class="btn btn-secondary btn-warning btn-sm" data-container="body" data-toggle="popover" data-placement="top" data-content=<%= schedule.introduction %>>
+                    <%= schedule.start_time.strftime("%H:%M").to_s + "~ " + schedule.title %></br>
+                    <% if user_signed_in? && current_user.user_has_edit_status?(@set_laboratory) %>
+                      <%= link_to "削除", public_laboratory_schedule_path(@set_laboratory.id, schedule.id), class:"btn btn-default btn-sm", method: :delete %>
+                    <% end %>
+                  </button>
+                </div>
+              <% end %>
+            <% else %>
+                <div>
+                  <button type="button" class="btn btn-secondary btn-info btn-sm" data-container="body" data-toggle="popover" data-placement="top" data-content=<%= schedule.introduction %>>
+                    <%= schedule.start_time.strftime("%H:%M").to_s + "~ " + schedule.title %></br>
+                    <% if user_signed_in? && current_user.user_has_edit_status?(@set_laboratory) %>
+                      <%= link_to "削除", public_laboratory_schedule_path(@set_laboratory.id, schedule.id), class:"btn btn-default btn-sm", method: :delete %>
+                    <% end %>
+                  </button>
+                </div>
+            <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row rowbox content-top">
+    <div class="content-title">
+      <h3 class="content-title-name">今後の予定</h2>
+    </div>
+    <div class="content-new-link">
+      <% if user_signed_in? && current_user.user_has_edit_status?(@set_laboratory) %>
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+          新規作成
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel" style="font-weight: bold;">New Schedule</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                
+                  <%= form_with model: @schedule, url: public_laboratory_schedules_path, local: true do |f| %>
+                    <%= markup do |m|
+                      p = FormPresenter.new(f, self)
+                      
+                      m << p.text_field_block(:title, "タイトル")
+                      m << p.text_area_block(:introduction, "説明", {rows:5})
+                      m << p.datetime_field_block(:start_time, "日付")
+                      m << p.check_box_block(:secret_status, "限定公開")
+                      
+                    end %>
+                    
+                    <%= f.hidden_field :affiliation_type, :value => "Laboratory" %>
+                    <%= f.hidden_field :affiliation_id, :value => @set_laboratory.id %>
+                    
+                  <div class="modal-body-submit" id="modal-btn">
+                    <%= f.submit "登録", class:"btn btn-primary col-6"%>
+                  </div>
+
+                  <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th width="20%">日時</th>
+        <th width="30%">タイトル</th>
+        <th>概要</th>
+        <% if user_signed_in? && current_user.user_has_edit_status?(@set_laboratory) %>
+          <th width="10%"></th>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <% @schedules.each do |schedule| %>
+        <% if schedule.start_time >= Time.now %>
+          <% next if schedule.secret_status && (user_signed_in? == false || LabMember.find_by(user_id: current_user.id, laboratory_id: @set_laboratory.id) == nil )  %>
+          <tr>
+            <td><%= schedule.start_time.strftime("%Y/%m/%d %H:%M") %> ~</td>
+            <td><%= schedule.title %></td>
+            <td><%= schedule.introduction %></td>
+            <% if user_signed_in? && current_user.user_has_edit_status?(@set_laboratory) %>
+              <td><%= link_to "削除", public_laboratory_schedule_path(@set_laboratory.id, schedule.id), class:"btn btn-default", method: :delete %></td>
+            <% end %>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<script>
+  $('.popover-dismiss').popover({
+    trigger: 'focus'
+  })
+</script>
