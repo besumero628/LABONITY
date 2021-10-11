@@ -16,6 +16,9 @@
       <%= link_to "Member", public_laboratory_member_path(@set_laboratory.id), class:"nav-link" %>
     </li>
     <li class="nav-item">
+      <%= link_to "Schedule", public_laboratory_schedules_path(@set_laboratory.id), class:"nav-link" %>
+    </li>
+    <li class="nav-item">
       <%= link_to "Paper", public_laboratory_papers_path(@set_laboratory.id), class:"nav-link" %>
     </li>
     <li class="nav-item">

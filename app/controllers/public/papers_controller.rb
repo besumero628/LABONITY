@@ -54,7 +54,6 @@ class Public::PapersController < ApplicationController
       flash[:danger] = "エラーです。"
       render "index"
     end
-
   end
 
   private
