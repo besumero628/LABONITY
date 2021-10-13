@@ -8,16 +8,17 @@ class User < ApplicationRecord
   has_one_attached :profile_image
 
   #association
-  has_many :rss_choices
+  has_many :rss_choices, dependent: :destroy
   has_many :rsses, through: :rss_choices, dependent: :destroy
-  has_many :lab_members
+  has_many :lab_members, dependent: :destroy
   has_many :laboratories, through: :lab_members, dependent: :destroy
-  belongs_to :post
-  has_many :community_members
-  has_many :community_messages
+  has_many :community_members, dependent: :destroy
+  has_many :community_messages, dependent: :destroy
   has_many :communities, :through => :community_members
-  has_many :authors
+  has_many :authors, dependent: :destroy
 
+  belongs_to :post
+  
   #正規化
   before_validation do
     self.family_name = normalize_as_name(family_name)

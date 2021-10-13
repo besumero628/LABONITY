@@ -52,13 +52,18 @@ Rails.application.routes.draw do
       resources :labmembers, only:[:create]
       resources :accesses, except:[:show, :destroy]
       resources :labimages, only:[:create, :destroy]
+      resources :schedules, only:[:index, :create, :destroy]
     end
 
     resources :companies do
       resources :events, except:[:index]
       resources :companyimages, only:[:create, :destroy]
     end
-
+    
+    resources :contacts, only: [:new, :create]
+    post 'contacts/confirm', to: 'contacts#confirm', as: 'confirm'
+    post 'contacts/back', to: 'contacts#back', as: 'back'
+    get 'done', to: 'contacts#done', as: 'done'
 
     get 'rsses/ajax1'
     get 'rsses/ajax2'

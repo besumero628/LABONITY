@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_27_030356) do
+ActiveRecord::Schema.define(version: 2021_10_09_005651) do
 
   create_table "accesses", force: :cascade do |t|
     t.string "organization_type", null: false
@@ -158,6 +158,14 @@ ActiveRecord::Schema.define(version: 2021_09_27_030356) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "contacts", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "subject", null: false
+    t.text "message", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "events", force: :cascade do |t|
     t.integer "company_id", null: false
     t.string "title", null: false
@@ -274,6 +282,18 @@ ActiveRecord::Schema.define(version: 2021_09_27_030356) do
     t.text "introduction"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "schedules", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "introduction"
+    t.datetime "start_time", null: false
+    t.string "affiliation_type", null: false
+    t.integer "affiliation_id", null: false
+    t.boolean "secret_status", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["affiliation_type", "affiliation_id"], name: "index_schedules_on_affiliation_type_and_affiliation_id"
   end
 
   create_table "users", force: :cascade do |t|
