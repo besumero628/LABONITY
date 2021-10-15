@@ -1,0 +1,86 @@
+<!--page名-->
+<% provide(:title,  "#{@user.login_id} Follow / Follower") %>
+
+<!--header設定-->
+<%= render "shared/head" %>
+
+<!--flash設定-->
+<%= render "shared/flash" %>
+
+<div class="container container-page">
+  <div class="row rowbox content-top">
+    <div class="content-title">
+      <i class="far fa-3x fa-user-circle icon"></i>
+      <h2 class="content-title-name"><%= link_to @user.family_name + @user.given_name, public_user_path(@user.login_id) %>の Follow / Follower</h2>
+    </div>
+  </div>
+
+
+  <div class="row rowbox">
+    <div class="col-md-6">
+      <h3>Follow</h3>
+      <section>
+      	<table class="table">
+      	  <thead>
+      	    <tr>
+      	      <th></th>
+      	      <th>名前</th>
+      	      <th>研究室</th>
+      	      <th>役職</th>
+      	    </tr>
+      	  </thead>
+      	  <tbody>
+      	    <% @user.followings.each do |follow| %>
+        	    <% @laboratory = Laboratory.find(LabMember.find_by(user_id: follow.id).laboratory_id) if LabMember.find_by(user_id: follow.id) %>
+      	      <tr class="align-y">
+      	        <% if follow.profile_image.attached? %>
+                  <td><%= image_tag follow.profile_image, class:"rounded", size:"50x50"%></td>
+                <% else %>
+                  <td><%= image_tag asset_path('no_image.jpg'), class:"rounded", size:"25x25" %></td>
+                <% end %>
+      	        <th><%= link_to follow.family_name + follow.given_name, public_user_path(follow.login_id) %></th>
+      	        <th><%= link_to @laboratory.name, public_laboratory_path(@laboratory.id) if @laboratory %></th>
+      	        <th><%= Post.find(follow.post_id).name %></th>
+      	      </tr>
+        	    <% @laboratory = nil %>
+      	    <% end %>
+      	  </tbody>
+      	</table>
+      </section>
+    </div>
+
+    <div class="col-md-6">
+      <h3>Follower</h3>
+      <section>
+      	<table class="table">
+      	  <thead>
+      	    <tr>
+      	      <th></th>
+      	      <th>名前</th>
+      	      <th>研究室</th>
+      	      <th>役職</th>
+      	    </tr>
+      	  </thead>
+      	  <tbody>
+      	    <% @user.followers.each do |follow| %>
+      	    <% @laboratory = Laboratory.find(LabMember.find_by(user_id: follow.id).laboratory_id) if LabMember.find_by(user_id: follow.id) %>
+      	      <tr>
+      	        <% if follow.profile_image.attached? %>
+                  <td><%= image_tag follow.profile_image, class:"rounded", size:"50x50"%></td>
+                <% else %>
+                  <td><%= image_tag asset_path('no_image.jpg'), class:"rounded", size:"25x25" %></td>
+                <% end %>
+      	        <th><%= link_to follow.family_name + follow.given_name, public_user_path(follow.login_id) %></th>
+      	        <th><%= link_to @laboratory.name, public_laboratory_path(@laboratory.id) if @laboratory  %></th>
+      	        <th><%= Post.find(follow.post_id).name %></th>
+      	      </tr>
+            <% @laboratory = nil %>
+      	    <% end %>
+      	  </tbody>
+      	</table>
+      </section>
+    </div>
+
+  </div>
+</div>
+

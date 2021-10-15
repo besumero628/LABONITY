@@ -1,3 +1,6 @@
+<!--page名-->
+<% provide(:title,  "News Release") %>
+
 <!--header設定-->
 <%= render "shared/head" %>
 
@@ -6,7 +9,7 @@
 
 <!--news 一覧-->
 <div class="container index-news">
-  
+
   <!--page-head-->
   <div class="row">
     <i class="far fa-3x fa-newspaper news-icon"></i>
@@ -15,7 +18,7 @@
       <h4 class="page-subtitle">運営からのお知らせ</h4>
     </div>
   </div>
-  
+
   <!--一覧-->
   <% if @news == nil %>
     <h5>お知らせはまだありません。</h4>
@@ -37,7 +40,7 @@
       </tbody>
     </table>
   <% end %>
-  
+
   <!--Pagination-->
   <% if @news != nil %>
     <div class="news-paginate">

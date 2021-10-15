@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_09_005651) do
+ActiveRecord::Schema.define(version: 2021_10_14_150451) do
 
   create_table "accesses", force: :cascade do |t|
     t.string "organization_type", null: false
@@ -175,6 +175,13 @@ ActiveRecord::Schema.define(version: 2021_10_09_005651) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "faqs", force: :cascade do |t|
+    t.text "question", null: false
+    t.text "answer", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "lab_images", force: :cascade do |t|
     t.integer "laboratory_id"
     t.datetime "created_at", null: false
@@ -267,6 +274,16 @@ ActiveRecord::Schema.define(version: 2021_10_09_005651) do
     t.integer "laboratory_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "follow_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["follow_id"], name: "index_relationships_on_follow_id"
+    t.index ["user_id", "follow_id"], name: "index_relationships_on_user_id_and_follow_id", unique: true
+    t.index ["user_id"], name: "index_relationships_on_user_id"
   end
 
   create_table "rss_choices", force: :cascade do |t|

@@ -1,0 +1,33 @@
+<!--header設定-->
+<%= render "shared/head" %>
+
+<!--flash設定-->
+<%= render "shared/flash" %>
+
+<!--Main-->
+<div class="background-orange">
+  <div class="container general-form faq-page">
+    <div class="flex-type faq-page-title">
+      <h2>FAQ</h2>
+    </div>
+    
+    <table class="table">
+      
+      <% @faq.each_with_index do |faq, idx| %>
+        <tr>
+          <th><%= "Q" + (idx + 1).to_s + "." %><%= faq.question %></th>
+        </tr>
+        <tr>
+          <td>
+            調べてください
+            <% faq.images.each do |image| %>
+              <div class="col-3">
+                <%= image_tag(image)%>
+              </div>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

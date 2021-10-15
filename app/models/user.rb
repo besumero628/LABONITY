@@ -16,9 +16,13 @@ class User < ApplicationRecord
   has_many :community_messages, dependent: :destroy
   has_many :communities, :through => :community_members
   has_many :authors, dependent: :destroy
+  has_many :relationships
+  has_many :followings, through: :relationships, source: :follow
+  has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
+  has_many :followers, through: :reverse_of_relationships, source: :user
 
   belongs_to :post
-  
+
   #正規化
   before_validation do
     self.family_name = normalize_as_name(family_name)
@@ -58,9 +62,25 @@ class User < ApplicationRecord
     clean_up_passwords
     result
   end
-  
+
   def user_has_edit_status?(lab)
     return LabMember.where(laboratory_id: lab.id, edit_status: true).exists?(user_id: self.id) ? true : false
   end
   
+  # follow
+  def follow(other_user)
+    unless self == other_user
+      self.relationships.find_or_create_by(follow_id: other_user.id)
+    end
+  end
+
+  def unfollow(other_user)
+    relationship = self.relationships.find_by(follow_id: other_user.id)
+    relationship.destroy if relationship
+  end
+
+  def following?(other_user)
+    self.followings.include?(other_user)
+  end
+
 end
