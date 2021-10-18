@@ -9,6 +9,7 @@ class Public::UsersController < ApplicationController
     @press_releases = PressRelease.where(laboratory_id: user_enroll_all_laboratories).order(created_at: :desc).limit(3)
     @rsses = User.find(current_user.id).rsses
     @communities = @user.communities
+    @search = Paper.search(params[:q])
     have_authenticate?(@user)
   end
 

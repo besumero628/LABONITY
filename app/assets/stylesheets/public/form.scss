@@ -187,3 +187,24 @@
 
 }
 
+.search {
+  .card {
+    margin: 0;
+  }
+  .card-body {
+    margin: 0;
+    padding: 0;
+  }
+  .nav-tabs {
+    padding: 16px 8px 0;
+  }
+  .nav-links {
+    margin-right: 8px;
+  }
+  .s-form {
+    padding: 0;
+  }
+  .nav-tabs {
+    align-items: center;
+  }
+}
