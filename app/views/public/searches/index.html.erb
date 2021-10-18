@@ -1,0 +1,68 @@
+<!--header設定-->
+<%= render "shared/head" %>
+
+<!--flash設定-->
+<%= render "shared/flash" %>
+
+<div class="mypage-search">
+  <div class="container">
+    <div class="row search">
+      <%= render "public/users/tips/mypage/search" %>
+    </div>
+  </div>
+</div>
+
+
+<div class="container container-page">
+  <div class="row rowbox content-top">
+    <div class="content-title">
+      <i class="fas fa-3x fa-search icon"></i>
+      <h2 class="content-title-name">
+        <%= params[:model].capitalize %>
+        <% params[:q].each do |key, value| %>
+        「<%= value %>」 検索結果
+        <% end %>
+      </h2>
+    </div>
+  </div>
+
+  <div class="row rowbox">
+    <% if @search_results.size == 0 %>
+     <h5>該当する検索結果はありません。</h5>
+    <% end %>
+    <table class="table">
+      <% @search_results.each do |result| %>
+        <tr>
+          <% case params[:model] %>
+          <% when "laboratory" %>
+            <td><%= link_to result.name, public_laboratory_path(result.id) %></td>
+
+          <% when "company" %>
+            <td><%= link_to result.name, public_company_path(result.id) %></td>
+
+          <% when "paper" %>
+            <% if result.laboratory_id %>
+              <td><%= link_to result.title, public_laboratory_paper_path(result.laboratory_id, result.id) %></td>
+            <% else %>
+              <% user = User.find(Author.find_by(deliverable_type: "Paper", deliverable_id: result.id).user_id) %>
+              <td><%= link_to result.title, public_user_user_paper_path(user.login_id, result.id) %></td>
+            <% end %>
+
+          <% when "confernce" %>
+            <td><%= link_to result.title, public_laboratory_confernce_path(result.laboratory_id, result.id) %></td>
+            <td><%= result.name %></td>
+
+          <% when "book" %>
+            <% user = User.find(Author.find_by(deliverable_type: "Book", deliverable_id: result.id).user_id) %>
+            <td><%= link_to result.title, public_user_user_book_path(user.login_id, result.id) %></td>
+
+          <% when "event" %>
+            <td><%= link_to result.title, public_company_event_path(result.company_id, result.id) %></td>
+
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+

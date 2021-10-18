@@ -1,0 +1,20 @@
+<%= search_form_for search, url: public_searches_path, class:"search-form col-12" do |f| %>
+  <div class="col-2"></div>
+  <div class="col-7 s-form">
+    <% case type %>
+    <% when "name" %>
+      <%= f.text_field :name_cont, :placeholder => "検索", :class => "form-control search-input" %>
+      <%= hidden_field_tag :model, model %>
+      <%= hidden_field_tag :type, type %>
+    <% when "title" %>
+      <%= f.text_field :title_cont, :placeholder => "検索", :class => "form-control search-input" %>
+      <%= hidden_field_tag :model, model %>
+      <%= hidden_field_tag :type, type %>
+    <% else %>
+
+    <% end %>
+  </div>
+  <div class="col-1">
+    <%= f.submit '検索', :class => "btn btn-primary btn-round" %>
+  </div>
+<% end %>

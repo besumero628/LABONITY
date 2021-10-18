@@ -1,12 +1,65 @@
-<!--<form class="search-form col-12">-->
-<!--  <div class="col-2"></div>-->
-<!--  <div class="col-7">-->
-<!--    <input type="text" class="form-control  search-input" placeholder="Search...">-->
-<!--  </div>-->
-<!--  <div class="col-1">-->
-<!--    <button type="submit" class="btn btn-primary btn-round">Search</button>-->
-<!--  </div>-->
-<!--</form>-->
+<div class="card card-nav-tabs card-plain ">
+  <div class="card-header card-header-danger">
+      <div class="nav-tabs-navigation">
+          <div class="nav-tabs-wrapper">
+              <ul class="nav nav-tabs" data-tabs="tabs">
+                <div class="col-2"></div>
+                  <li class="nav-item">
+                    <h6 class="nav-links s-content">Category :</h6>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-links badge badge-info" href="#laboratory" data-toggle="tab">Laboratory</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-links badge badge-default" href="#company" data-toggle="tab">Company</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-links badge badge-default" href="#paper" data-toggle="tab">Paper</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-links badge badge-default" href="#confernce" data-toggle="tab">Confernce</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-links badge badge-default" href="#book" data-toggle="tab">book</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-links badge badge-default" href="#event" data-toggle="tab">event</a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </div>
+  <div class="card-body ">
+      <div class="tab-content text-center">
+          <div class="tab-pane active" id="laboratory">
+              <%= render "public/users/tips/mypage/form", search: Laboratory.search(params[:q]), type: "name", model: :laboratory %>
+          </div>
+          <div class="tab-pane" id="company">
+              <%= render "public/users/tips/mypage/form", search: Company.search(params[:q]), type: "name", model: :company %>
+          </div>
+          <div class="tab-pane" id="paper">
+              <%= render "public/users/tips/mypage/form", search: Paper.search(params[:q]), type: "title", model: :paper %>
+          </div>
+          <div class="tab-pane" id="confernce">
+              <%= render "public/users/tips/mypage/form", search: Confernce.search(params[:q]), type: "title", model: :confernce %>
+          </div>
+          <div class="tab-pane" id="book">
+              <%= render "public/users/tips/mypage/form", search: Book.search(params[:q]), type: "title", model: :book %>
+          </div>
+          <div class="tab-pane" id="event">
+              <%= render "public/users/tips/mypage/form", search: Event.search(params[:q]), type: "title", model: :event %>
+          </div>
+      </div>
+  </div>
+</div>
 
-
-
+<script>
+  $(function(){
+  $(".badge").on("click", function() {
+  $(this).toggleClass("badge-info");
+  $(this).removeClass('badge-default')
+  $('.badge').not(this).removeClass('badge-info');
+  $('.badge').not(this).addClass('badge-default');
+  });
+  });
+</script>
