@@ -28,7 +28,7 @@
         </tr>
       </thead>
       <tbody>
-        <% @laboratories.each do |laboratory| %>
+        <% @laboratories.includes([:organization]).each do |laboratory| %>
           <tr>
             <td><%= link_to laboratory.name, public_laboratory_path(laboratory.id) %></td>
             <td><%= laboratory.organization.name %></td>

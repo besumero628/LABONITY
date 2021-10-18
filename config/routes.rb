@@ -17,10 +17,11 @@ Rails.application.routes.draw do
     passwords: 'admin/passwords',
     registrations: 'admin/registrations'
   }
-
+  
+  # Admin
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-  # main
+  # 以下main
   namespace :company_admin, path: "company" do
 
   end
@@ -31,7 +32,8 @@ Rails.application.routes.draw do
 
   namespace :public, path: "" do
     root "top#index"
-
+    
+    get 'top', to: 'top#faq'
     resources :news, only: [:index, :show]
     resources :communities do
       resources :community_members, only: [:create, :destroy]
@@ -70,7 +72,10 @@ Rails.application.routes.draw do
     get 'rsses/ajax3'
     get 'rsses/ajax4'
     get 'rsses/ajax5'
-
+    
+    resources :relationships, only: [:create, :destroy]
+    resources :searches, only: [:index]
+    
     get ':login_id/mypage' => 'users#mypage', param: :login_id, as: :mypage #すべてに反応してしまうので一番最後
     resources :users, param: :login_id, path: "", only: [:show, :update] do
       resources :rsses, only: [:index]
@@ -78,6 +83,7 @@ Rails.application.routes.draw do
       resources :user_papers
       resources :user_confernces
       resources :user_books
+      resources :relationships, only: [:index]
     end
   end
 

@@ -48,3 +48,20 @@
 
 }
 
+section {
+	overflow: auto;
+	margin: 10px 0;
+  max-height: 500px;
+}
+
+.content-title {
+  span {
+    display: inline-block;
+  }
+}
+
+.message-container {
+  overflow-y: scroll;
+  height: 400px;
+  width: 100%;
+}

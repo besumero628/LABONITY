@@ -3,7 +3,7 @@
     <div class="card-header">
       <ul class="nav nav-tabs nav-tabs-neutral justify-content-center" role="tablist">
         <% if @rsses.size != 0 %>
-          <% @rsses.each_with_index do |rss, idx| %>
+          <% @rsses.includes([:users]).each_with_index do |rss, idx| %>
             <% if rss.users.include?(current_user) %>
               <li class="nav-item">
                 <a class="rss-btn nav-link <%= "active" if idx == 0 %>" data-toggle="tab" href="#<%= rss.name.gsub(" ", "") %>" role="tab"><%= rss.name.truncate(15) %></a>
@@ -20,7 +20,7 @@
     <div class="card-body col-12">
       <div class="tab-content text-center">
         <% if @rsses.size != 0 %>
-          <% @rsses.each_with_index do |rss, idx| %>
+          <% @rsses.includes([:users]).each_with_index do |rss, idx| %>
             <% if rss.users.include?(current_user) %>
               <div class="tab-pane <%= "active" if idx == 0 %>" id="<%= rss.name.gsub(" ", "") %>" role="tabpanel">
                 <p class="rss-title-detail"><%= rss.name %></p>

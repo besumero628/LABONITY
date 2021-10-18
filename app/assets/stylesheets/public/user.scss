@@ -40,6 +40,38 @@
           }
         }
       }
+      .user-follow {
+        text-align: justify;
+        text-align-last: justify;
+        text-justify: inter-character;
+      }
+      .follower-count {
+        margin: 0;
+      }
+      .follow-link {
+        margin-top: 10px;
+        margin-bottom: 0;
+      }
+    }
+    .user-group {
+      .set-title {
+        display: flex;
+        align-items: center;
+        padding: 0;
+
+        .icon {
+          margin-right: 8px;
+        }
+        h3 {
+          margin: 0;
+        }
+      }
+      &-laboratory {
+        padding: 0;
+        .table {
+          margin-top: 8px;
+        }
+      }
     }
   }
 
@@ -50,7 +82,7 @@
       margin-right: 10px;
       padding-top: 3px;
     }
-    
+
     .notification {
       .lab-name {
         font-weight: bold;
@@ -227,6 +259,12 @@
     .btn-edit {
       margin: 0 0 .75rem 10px;
       background-color: $orange;
+      padding: 6px 12px;
+      font-weight: bold;
+    }
+    .btn-anti-edit {
+      margin: 0 0 .75rem 10px;
+      background-color: $gray;
       padding: 6px 12px;
       font-weight: bold;
     }

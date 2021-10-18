@@ -14,8 +14,21 @@
       <i class="fas fa-check-circle official_mark"></i>
     <% end %>
   </h3>
-  <% if user_signed_in? && current_user.id == @user.id %>
-    <%= link_to "登録情報編集", edit_user_registration_path(current_user.login_id), class:"btn btn-edit"%>
+  <% if user_signed_in? %>
+    <% if current_user.id == @user.id %>
+      <%= link_to "登録情報編集", edit_user_registration_path(current_user.login_id), class:"btn btn-edit"%>
+    <% else %>
+
+      <% if current_user.following?(@user) %>
+        <%= link_to "Follower", public_relationship_path(@user), follow_id: @user.id, class:"btn btn-info btn-round btn-anti-edit", method: :delete %>
+      <% else %>
+        <%= form_with model: @relationship, url: public_relationships_path, local: true do |f| %>
+          <%= hidden_field_tag :follow_id, @user.id %>
+          <%= f.submit 'Follow', class: 'btn btn-primary btn-round btn-edit' %>
+        <% end %>
+      <% end %>
+
+    <% end %>
   <% end %>
   </div>
 
@@ -32,6 +45,9 @@
     </tr>
     <tr>
       <th>学年/役職</th><td><%= @user.post.name %></td>
+    </tr>
+    <tr>
+      <th>Follow / Follower</th><td><%= @user.followings.count %> / <%= @user.followers.count %> <%= link_to "一覧", public_user_relationships_path(@user.login_id), class:"badge badge-default" %></td>
     </tr>
   </table>
 </div>
