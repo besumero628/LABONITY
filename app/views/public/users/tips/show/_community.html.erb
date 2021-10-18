@@ -14,7 +14,7 @@
   
   <% if @communities.size <= 3 %>
   <div class="community-around">
-    <% @communities.each do |community| %>
+    <% @communities.includes([:image_attachment]).each do |community| %>
       <%= link_to public_community_path(community.id) do %>
         <div class="card community-card" style="width: 20rem;">
           <div class="card-image">
@@ -40,7 +40,7 @@
             <!-- Swiper -->
             <div class="swiper mySwiper">
               <div class="swiper-wrapper">
-                <% @communities.each do |community| %>
+                <% @communities.includes([:image_attachment]).each do |community| %>
                   <%= link_to public_community_path(community.id), class:"swiper-slide" do %>
                     <div class="card community-card" style="width: 20rem;">
                       <div class="card-image">

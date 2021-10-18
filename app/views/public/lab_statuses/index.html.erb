@@ -1,0 +1,42 @@
+<% provide(:title,  "Laboratory Main Status") %>
+
+<!--header設定-->
+<%= render "shared/head" %>
+
+<!--flash設定-->
+<%= render "shared/flash" %>
+
+<!--RSS登録-->
+<div class="rss-background">
+  <div class="container">
+    <div class="frame-rss">
+      <div class="row rss-choice-title">
+        <h3 class="title_name col-12">論文RSS 登録</h3>
+      </div>
+
+      <!--validation設定-->
+      <div id="rss-validation-error"></div>
+
+      <table class="table rss-table">
+        <thead>
+          <tr>
+            <th class="col-10">研究室名</th> <th class="col-2"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @user_enrolled_labmember.each do |m| %>
+           <% laboratory = Laboratory.find(m.laboratory_id) %>
+           <tr>
+             <td><%= laboratory.name %></td>
+             <td><%= m.main_status %></td>
+           </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <div class="row rss-mypage-link">
+        <%= link_to "マイページに戻る", public_mypage_path(login_id: current_user.login_id), class:"col-12" %>
+      </div>
+    </div>
+  </div>
+</div>

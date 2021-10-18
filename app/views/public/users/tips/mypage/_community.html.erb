@@ -5,7 +5,7 @@
     </div>
   <% end %>
   
-    <% @communities.each do |community| %>
+    <% @communities.includes([:image_attachment]).each do |community| %>
       <%= link_to public_community_path(community.id) do %>
         <div class="card community-card" style="width: 20rem;">
           <div class="card-image">

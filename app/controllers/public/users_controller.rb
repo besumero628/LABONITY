@@ -5,6 +5,7 @@ class Public::UsersController < ApplicationController
   def mypage
     @schedules = Schedule.where(affiliation_type: "Laboratory", affiliation_id: user_enroll_all_laboratories)
     @news = News.where(release_at: DateTime.new..Time.current).order(release_at: :desc).limit(3)
+    @laboratories = LabMember.where(user_id: @user.id)
     @press_releases = PressRelease.where(laboratory_id: user_enroll_all_laboratories).order(created_at: :desc).limit(3)
     @rsses = User.find(current_user.id).rsses
     @communities = @user.communities
@@ -17,6 +18,7 @@ class Public::UsersController < ApplicationController
     @papers = Paper.all
     @confernces = Confernce.all
     @books = Book.all
+    @relationship = Relationship.new
 
     if @lab_user
       @laboratory = Laboratory.find(@lab_user.laboratory_id)

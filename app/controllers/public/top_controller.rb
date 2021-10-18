@@ -5,4 +5,8 @@ class Public::TopController < ApplicationController
     @communities = Community.all.order(created_at: :desc).limit(10)
     @events = Event.all.order(created_at: :desc).limit(10)
   end
+  
+  def faq
+    @faq = Faq.all
+  end
 end
