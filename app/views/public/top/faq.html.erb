@@ -10,16 +10,16 @@
     <div class="flex-type faq-page-title">
       <h2>FAQ</h2>
     </div>
-    
+
     <table class="table">
-      
+
       <% @faq.each_with_index do |faq, idx| %>
         <tr>
           <th><%= "Q" + (idx + 1).to_s + "." %><%= faq.question %></th>
         </tr>
         <tr>
           <td>
-            調べてください
+            <%= faq.answer %>
             <% faq.images.each do |image| %>
               <div class="col-3">
                 <%= image_tag(image)%>
