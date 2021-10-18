@@ -11,13 +11,40 @@
       </tr>
     </thead>
     <tbody>
-      <% if @laboratories != nil %>
+      <% if @laboratories.size != 0 %>
         <% @laboratories.each do |laboratory| %>
           <% laboratory = Laboratory.find(laboratory.laboratory_id) %>
           <tr>
             <td><%= link_to laboratory.name, public_laboratory_path(laboratory.id) %></td>
           </tr>
         <% end %>
+      <% else %>
+        <tr>
+          <td><%= link_to "研究室を探す", public_laboratories_path %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="user-group-laboratory col-12">
+  <table class="table">
+    <thead>
+      <tr>
+        <th width="100%">Community</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @communities.size != 0 %>
+        <% @communities.each do |community| %>
+          <tr>
+            <td><%= link_to community.name.truncate(12), public_community_path(community.id) %></td>
+          </tr>
+        <% end %>
+      <% else %>
+        <tr>
+          <td><%= link_to "communityを探す", public_communities_path %></td>
+        </tr>
       <% end %>
     </tbody>
   </table>

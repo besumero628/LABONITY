@@ -11,7 +11,7 @@
   <div class="row rowbox content-top">
     <div class="content-title">
       <i class="far fa-3x fa-user-circle icon"></i>
-      <h2 class="content-title-name"><%= link_to @user.family_name + @user.given_name, public_user_path(@user.login_id) %>の Follow / Follower</h2>
+      <h2 class="content-title-name"><%= link_to @user.family_name + @user.given_name, public_user_path(@user.login_id) %>の <span>Follow / Follower</span></h2>
     </div>
   </div>
 
@@ -30,7 +30,7 @@
       	    </tr>
       	  </thead>
       	  <tbody>
-      	    <% @user.followings.each do |follow| %>
+      	    <% @user.followings.includes([:profile_image_attachment]).each do |follow| %>
         	    <% @laboratory = Laboratory.find(LabMember.find_by(user_id: follow.id).laboratory_id) if LabMember.find_by(user_id: follow.id) %>
       	      <tr class="align-y">
       	        <% if follow.profile_image.attached? %>
@@ -44,6 +44,7 @@
       	      </tr>
         	    <% @laboratory = nil %>
       	    <% end %>
+      	    
       	  </tbody>
       	</table>
       </section>
@@ -62,7 +63,7 @@
       	    </tr>
       	  </thead>
       	  <tbody>
-      	    <% @user.followers.each do |follow| %>
+      	    <% @user.followers.includes([:profile_image_attachment]).each do |follow| %>
       	    <% @laboratory = Laboratory.find(LabMember.find_by(user_id: follow.id).laboratory_id) if LabMember.find_by(user_id: follow.id) %>
       	      <tr>
       	        <% if follow.profile_image.attached? %>

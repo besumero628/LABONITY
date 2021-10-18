@@ -24,7 +24,7 @@
     <div class="content-main">
       <p class="content-main-text"><%= @album.introduction %></p>
       <div class="content-main-images">
-        <% @album.images.each do |image| %>
+        <% @album.images.includes([:blob]).each do |image| %>
           <div class="col-3">
             <%= image_tag(image)%>
           </div>
