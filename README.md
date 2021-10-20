@@ -62,7 +62,11 @@
 - 共同研究
 
 ## 設計書
-追記予定
+- ER図<br>
+https://drive.google.com/file/d/1yGnLxsKeS6ZBV5v66-frKjYHIBml_b7E/view?usp=sharing
+
+- テーブル定義書<br>
+https://docs.google.com/spreadsheets/d/1ysXeOrxYAfD1K-0nyfF1gcIQz7MAKOay2okQ_MYwlvQ/edit?usp=sharing
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1ZoMtqQ1p0W14MXCz2ZHEhYdD-qLCFfo23flis8dguc0/edit?usp=sharing
