@@ -17,6 +17,8 @@
     <% if user_signed_in? && current_user.user_has_edit_status?(@set_laboratory) %>
       <%= link_to "編集", edit_public_laboratory_paper_path(@set_laboratory.id, @paper.id), class:"btn btn-primary content-title-btn" %>
     <% end %>
+    
+    <%= render "public/papers/tips/favorite", paper: @paper %>
   </div>
 
   <!--Main-->
