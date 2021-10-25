@@ -1,1 +1,1 @@
-document.getElementById('favorite').innerHTML = '<%= j(render "public/papers/tips/favorite", paper: @paper ) %>'
+document.getElementById('favorite').innerHTML = '<%= j(render "shared/favorite", type: params[:type], deliverable: @deliverable ) %>'

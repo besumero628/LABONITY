@@ -14,11 +14,13 @@
     <div class="content-title col-10">
       <h3 class="content-title-name"><%= @paper.title %></h3>
     </div>
-    <% if user_signed_in? && current_user.user_has_edit_status?(@set_laboratory) %>
-      <%= link_to "編集", edit_public_laboratory_paper_path(@set_laboratory.id, @paper.id), class:"btn btn-primary content-title-btn" %>
-    <% end %>
+    <div>
+      <%= render "shared/favorite", type: "Paper", deliverable: @paper %>
     
-    <%= render "public/papers/tips/favorite", paper: @paper %>
+      <% if user_signed_in? && current_user.user_has_edit_status?(@set_laboratory) %>
+        <%= link_to "編集", edit_public_laboratory_paper_path(@set_laboratory.id, @paper.id), class:"btn btn-primary content-title-btn" %>
+      <% end %>
+    </div>
   </div>
 
   <!--Main-->

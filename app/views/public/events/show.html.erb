@@ -12,9 +12,13 @@
     <div class="content-title col-10">
       <h3 class="content-title-name"><%= @event.title %></h3>
     </div>
-    <% if company_admin_signed_in? && current_company_admin.company_id == @set_company.id %>
-      <%= link_to "編集", edit_public_company_event_path(@set_company.id, @event.id), class:"btn btn-primary content-title-btn" %>
-    <% end %>
+    
+    <div>
+      <%= render "shared/favorite", type: "Event", deliverable: @event %>
+      <% if company_admin_signed_in? && current_company_admin.company_id == @set_company.id %>
+        <%= link_to "編集", edit_public_company_event_path(@set_company.id, @event.id), class:"btn btn-primary content-title-btn" %>
+      <% end %>
+    </div>
     
   </div>
 

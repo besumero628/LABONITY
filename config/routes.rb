@@ -85,6 +85,7 @@ Rails.application.routes.draw do
       resources :user_confernces
       resources :user_books
       resources :relationships, only: [:index]
+      resources :favorites, only: [:index]
     end
   end
 
