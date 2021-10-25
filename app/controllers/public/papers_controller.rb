@@ -10,6 +10,7 @@ class Public::PapersController < ApplicationController
 
   def show
     @paper = Paper.find(params[:id])
+    session[:previous_url] = request.referer
   end
 
   def new

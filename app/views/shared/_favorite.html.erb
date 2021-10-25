@@ -1,0 +1,16 @@
+<div id="favorite">
+  <div>
+    <h5>Bookmark：<%= Favorite.where(deliverable_type: type, deliverable_id: deliverable.id).count %></h5>
+  </div>
+  <% if user_signed_in? %>
+    <% if current_user.favorited_by?(type, deliverable.id) %>
+      <%= link_to public_favorite_path(type: type, id: deliverable.id), method: :delete, class:"favorite-link", remote: true do %>
+        <i class="fas fa-2x fa-heart"></i>
+      <% end %>
+    <% else %>
+      <%= link_to public_favorites_path(type: type, id: deliverable.id), method: :post, class:"favorite-link", remote: true do %>
+        <i class="far fa-2x fa-heart"></i>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

@@ -30,6 +30,25 @@
   </td>
 
   <tr>
+    <td>
+      <h6><i class="far fa-bookmark"></i> BookMark</h6>
+      <div class="flex-type">
+        <h6 class="user-follow follower-count col-12">Paper <%= @favorites.where(deliverable_type: "Paper").count %></h6>
+      </div>
+      <div class="flex-type">
+        <h6 class="user-follow follower-count col-12">Confernce <%= @favorites.where(deliverable_type: "Confernce").count %></h6>
+      </div>
+      <div class="flex-type">
+        <h6 class="user-follow follower-count col-12">Book <%= @favorites.where(deliverable_type: "Book").count %></h6>
+      </div>
+      <div class="flex-type">
+        <h6 class="user-follow follower-count col-12">Event <%= @favorites.where(deliverable_type: "Event").count %></h6>
+      </div>
+      <%= link_to "一覧", public_user_favorites_path(@user.login_id), class:"badge badge-default follow-link col-12" %>
+    </td>
+  </tr>
+
+  <tr>
     <td class="user-show-link">
       <%= link_to edit_user_registration_path(current_user.login_id), class:"btn btn-default btn-lg" do %>
         <i class="fas fa-user-cog"> Setting...</i>
