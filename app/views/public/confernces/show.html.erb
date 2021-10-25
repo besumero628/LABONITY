@@ -14,9 +14,12 @@
     <div class="content-title col-10">
       <h3 class="content-title-name"><%= @confernce.title %></h3>
     </div>
-    <% if user_signed_in? && current_user.user_has_edit_status?(@set_laboratory) %>
-      <%= link_to "編集", edit_public_laboratory_confernce_path(@set_laboratory.id, @confernce.id), class:"btn btn-primary content-title-btn" %>
-    <% end %>
+    <div>
+      <%= render "shared/favorite", type: "Confernce", deliverable: @confernce %>
+      <% if user_signed_in? && current_user.user_has_edit_status?(@set_laboratory) %>
+        <%= link_to "編集", edit_public_laboratory_confernce_path(@set_laboratory.id, @confernce.id), class:"btn btn-primary content-title-btn" %>
+      <% end %>
+    </div>
   </div>
 
   <!--Main-->

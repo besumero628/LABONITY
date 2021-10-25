@@ -49,8 +49,14 @@
             <% end %>
 
           <% when "confernce" %>
-            <td><%= link_to result.title, public_laboratory_confernce_path(result.laboratory_id, result.id) %></td>
-            <td><%= result.name %></td>
+            <% if result.laboratory_id %>
+              <td><%= link_to result.title, public_laboratory_confernce_path(result.laboratory_id, result.id) %></td>
+            <% else %>
+              <% user = User.find(Author.find_by(deliverable_type: "Confernce", deliverable_id: result.id).user_id) %>
+              <td><%= link_to result.title, public_user_user_confernce_path(user.login_id, result.id) %></td>
+            <% end %>
+            
+
 
           <% when "book" %>
             <% user = User.find(Author.find_by(deliverable_type: "Book", deliverable_id: result.id).user_id) %>

@@ -1,0 +1,72 @@
+<!--header設定-->
+<%= render "shared/head" %>
+
+<!--flash設定-->
+<%= render "shared/flash" %>
+
+<!--Favorite Index-->
+<div class="container container-page">
+  <div class="row rowbox content-top">
+    <div class="content-title">
+      <i class="far fa-3x fa-bookmark"></i>
+      <h2 class="content-title-name"> BookMark -<%= link_to @user.family_name + @user.given_name, public_user_path(@user.login_id) %>-</h2>
+    </div>
+  </div>
+
+  <div class="search">
+    <div class="card card-nav-tabs card-plain ">
+      <div class="card-header card-header-danger">
+          <div class="nav-tabs-navigation">
+              <div class="nav-tabs-wrapper">
+                  <ul class="nav nav-tabs" data-tabs="tabs">
+                      <li class="nav-item">
+                        <h6 class="nav-links s-content">Category :</h6>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-links badge badge-info" href="#paper" data-toggle="tab">Paper</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-links badge badge-default" href="#confernce" data-toggle="tab">Confernce</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-links badge badge-default" href="#book" data-toggle="tab">book</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-links badge badge-default" href="#event" data-toggle="tab">event</a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+      <div class="card-body">
+          <div class="tab-content text-center">
+            <div class="tab-pane active" id="paper">
+                <%= render "public/favorites/tips/result", type: "Paper", option: ["abstract"] %>
+            </div>
+            <div class="tab-pane" id="confernce">
+                <%= render "public/favorites/tips/result", type: "Confernce", option: ["abstract"]  %>
+            </div>
+            <div class="tab-pane" id="book">
+                <%= render "public/favorites/tips/result", type: "Book", option: ["abstract"]  %>
+            </div>
+            <div class="tab-pane" id="event">
+                <%= render "public/favorites/tips/result", type: "Event", option: []  %>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+<script>
+  $(function(){
+  $(".badge").on("click", function() {
+  $(this).toggleClass("badge-info");
+  $(this).removeClass('badge-default')
+  $('.badge').not(this).removeClass('badge-info');
+  $('.badge').not(this).addClass('badge-default');
+  });
+  });
+</script>

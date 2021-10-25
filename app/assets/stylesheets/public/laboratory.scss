@@ -121,16 +121,16 @@
 
   .lab-top-link {
     margin-right: 128px;
-    
+
     .item-top {
       display: flex;
       align-items: center;
-      
+
       &-icon {
         color: #FFF;
       }
     }
-    
+
     .nav-link-top {
       font-weight: bold;
     }
@@ -139,8 +139,13 @@
   li {
     margin: 0;
   }
-  
+
   .nav-link {
     color: #FFF;
   }
+}
+
+.favorite-link {
+  display: block;
+  text-align: right;
 }

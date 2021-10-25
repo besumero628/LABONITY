@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_14_150451) do
+ActiveRecord::Schema.define(version: 2021_10_23_123650) do
 
   create_table "accesses", force: :cascade do |t|
     t.string "organization_type", null: false
@@ -180,6 +180,15 @@ ActiveRecord::Schema.define(version: 2021_10_14_150451) do
     t.text "answer", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.string "deliverable_type", null: false
+    t.integer "deliverable_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["deliverable_type", "deliverable_id"], name: "index_favorites_on_deliverable_type_and_deliverable_id"
   end
 
   create_table "lab_images", force: :cascade do |t|

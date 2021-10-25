@@ -1,0 +1,49 @@
+<div class="row rowbox">
+  <table class="table">
+    <thead>
+      <tr>
+        <th width="20%">title</th>
+        <% if type == "Event" %>
+          <th width="80%">company</th>
+        <% else %>
+          <th width="80%">abstract</th>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <% @favorites.where(deliverable_type: type).each do |fav| %>
+      <% deliverable = fav.deliverable_type.constantize.find(fav.deliverable_id) %>
+      <tr>
+        <% case type %>
+        <% when "Paper" %>
+          <% if deliverable.laboratory_id %>
+            <td><%= link_to deliverable.title.truncate(20), public_laboratory_paper_path(deliverable.laboratory_id, deliverable.id) %></td>
+          <% else %>
+            <% user = User.find(Author.find_by(deliverable_type: type, deliverable_id: deliverable.id).user_id) %>
+            <td><%= link_to deliverable.title.truncate(20), public_user_user_paper_path(user.login_id, deliverable.id) %></td>
+          <% end %>
+          <td><%= deliverable.abstract.truncate(80) %></td>
+
+        <% when "Confernce" %>
+          <% if deliverable.laboratory_id %>
+            <td><%= link_to deliverable.title.truncate(20), public_laboratory_confernce_path(deliverable.laboratory_id, deliverable.id) %></td>
+          <% else %>
+            <% user = User.find(Author.find_by(deliverable_type: type, deliverable_id: deliverable.id).user_id) %>
+            <td><%= link_to deliverable.title.truncate(20), public_user_user_confernce_path(user.login_id, deliverable.id) %></td>
+          <% end %>
+          <td><%= deliverable.abstract.truncate(80) %></td>
+
+        <% when "Book" %>
+          <% user = User.find(Author.find_by(deliverable_type: type, deliverable_id: deliverable.id).user_id) %>
+          <td><%= link_to deliverable.title, public_user_user_book_path(user.login_id, deliverable.id) %></td>
+          <td><%= deliverable.abstract.truncate(80) %></td>
+
+        <% when "Event" %>
+            <td><%= link_to deliverable.title, public_company_event_path(deliverable.company_id, deliverable.id) %></td>
+            <td><%= Company.find(deliverable.company_id).name %></td>
+        <% end %>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

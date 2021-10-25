@@ -10,6 +10,7 @@ class Public::UsersController < ApplicationController
     @rsses = User.find(current_user.id).rsses
     @communities = @user.communities
     @search = Paper.search(params[:q])
+    @favorites = Favorite.where(user_id: @user.id)
     have_authenticate?(@user)
   end
 

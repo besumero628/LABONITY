@@ -12,9 +12,13 @@
     <div class="content-title col-10">
       <h3 class="content-title-name"><%= @book.title %></h3>
     </div>
-    <% if @user.id == current_user.id%>
-      <%= link_to "編集", edit_public_user_user_book_path(@user.login_id, @book.id), class:"btn btn-primary content-title-btn" %>
-    <% end %>
+    
+    <div>
+      <%= render "shared/favorite", type: "Book", deliverable: @book %>
+      <% if user_signed_in? && @user.id == current_user.id%>
+        <%= link_to "編集", edit_public_user_user_book_path(@user.login_id, @book.id), class:"btn btn-primary content-title-btn" %>
+      <% end %>
+    </div>
   </div>
 
   <!--Main-->
