@@ -20,7 +20,7 @@ class Public::FavoritesController < ApplicationController
     end
 
     if !@favorite.save
-      flash[:danger] = "不明なエラーです"
+      flash[:danger] = "不明なエラーです!"
       redirect_to session[:previous_url]
     end
   end
