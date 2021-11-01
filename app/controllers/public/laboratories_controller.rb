@@ -1,8 +1,8 @@
 class Public::LaboratoriesController < ApplicationController
-  before_action :set_laboratory, except: [:index, :new]
-  before_action ->{
+  before_action :set_laboratory, except: %i[index new]
+  before_action lambda {
     current_user_have_edit_status_for_this_lab?(Laboratory.find(@set_laboratory.id))
-  }, only: [:edit, :permit]
+  }, only: %i[edit permit]
 
   def index
     @laboratories = Laboratory.all.order(created_at: :desc).page(params[:page])
@@ -28,13 +28,14 @@ class Public::LaboratoriesController < ApplicationController
     @laboratory = Laboratory.new(laboratory_params)
 
     if @laboratory.save
-      @lab_member = LabMember.new(user_id: current_user.id, laboratory_id: @laboratory.id, post_id: current_user.post_id, edit_status: true, permit_status: true)
+      @lab_member = LabMember.new(user_id: current_user.id, laboratory_id: @laboratory.id,
+                                  post_id: current_user.post_id, edit_status: true, permit_status: true)
       @lab_member.save
-      flash[:success] = "研究室を新規登録しました！"
+      flash[:success] = '研究室を新規登録しました！'
       redirect_to public_laboratories_path
     else
-      flash.now[:danger] = "エラーです"
-      render "new"
+      flash.now[:danger] = 'エラーです'
+      render 'new'
     end
   end
 
@@ -42,34 +43,33 @@ class Public::LaboratoriesController < ApplicationController
     @laboratory = Laboratory.find(params[:id])
 
     if @laboratory.update(laboratory_params)
-      flash[:info] = "研究室情報を編集しました！"
+      flash[:info] = '研究室情報を編集しました！'
       redirect_to public_laboratory_path(@set_laboratory.id)
     else
-      render "edit"
+      render 'edit'
     end
   end
 
-  def destroy
-  end
+  def destroy; end
 
   def member
     @lab_members = LabMember.where(laboratory_id: @set_laboratory.id)
   end
-  
+
   def permit
     @lab_member = LabMember.find(params[:key])
     if @lab_member.update(permit_status: true)
-      flash[:info] = "メンバーを許可しました"
+      flash[:info] = 'メンバーを許可しました'
       redirect_to public_laboratory_member_path(@set_laboratory.id)
     else
-      render "member"
+      render 'member'
     end
   end
 
   private
+
   def laboratory_params
     params.require(:laboratory).permit(:name, :introduction, :organization_type, :organization_id,
                                        :major_id, :official_mark_status, :close_status)
   end
-
 end

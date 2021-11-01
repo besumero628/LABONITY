@@ -7,7 +7,7 @@ class Laboratory < ApplicationRecord
   has_many :confernces, dependent: :destroy
   has_many :projects, dependent: :destroy
   has_many :lab_links, dependent: :destroy
-  has_many :schedules, :as => :affiliation, dependent: :destroy
+  has_many :schedules, as: :affiliation, dependent: :destroy
   belongs_to :major, optional: true
   belongs_to :organization, polymorphic: true
 
@@ -15,5 +15,4 @@ class Laboratory < ApplicationRecord
 
   validates :name, presence: true
   validates :introduction, presence: true
-
 end
