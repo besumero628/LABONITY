@@ -1,9 +1,7 @@
 class Public::RelationshipsController < ApplicationController
-  before_action :set_user, only:[:index, :create]
-  
-  def index
-    
-  end
+  before_action :set_user, only: %i[index create]
+
+  def index; end
 
   def create
     @follow_user = User.find(params[:follow_id])

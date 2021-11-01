@@ -15,11 +15,11 @@ module ErrorHandlers
     render 'errors/forbidden', status: :forbidden
   end
 
-  def rescure404(exception)
+  def rescure404(_exception)
     render 'errors/not_found', status: :not_found
   end
 
-  def rescure500(exception)
+  def rescure500(_exception)
     render 'errors/internal_server_error', status: :internal_server_error
   end
 end

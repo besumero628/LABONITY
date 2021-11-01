@@ -4,7 +4,6 @@ class LabImage < ApplicationRecord
   validate :image_presence
 
   def image_presence
-    errors.add(:image, 'ファイルを添付してください') unless self.image.attached?
+    errors.add(:image, 'ファイルを添付してください') unless image.attached?
   end
-
 end

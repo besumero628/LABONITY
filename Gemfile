@@ -75,18 +75,18 @@ gem 'webpacker'
 # 環境変数
 gem 'dotenv-rails'
 
-#管理者画面
+# 管理者画面
 gem 'rails_admin'
 
 gem 'now-ui-kit-rails'
 
-#googlemap
-gem "geocoder"
+# googlemap
+gem 'geocoder'
 
-#calendar
-gem "simple_calendar", "~> 2.0"
+# calendar
+gem 'simple_calendar', '~> 2.0'
 
-#search
+# search
 gem 'ransack'
 
 group :development, :test do
@@ -101,7 +101,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  
+
   # pry
   gem 'pry-byebug'
 end
