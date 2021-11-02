@@ -6,7 +6,7 @@
 
         <% if @papers.size <= 3 %>
         <div class="community-around">
-          <% @papers.each do |paper| %>
+          <% @papers.includes([:figure_attachment]).each do |paper| %>
               <div class="card  community-card" style="width: 20rem;">
                 <div class="card-image">
                   <% if paper.figure.attached? %>
