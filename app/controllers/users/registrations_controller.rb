@@ -18,7 +18,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     yield resource if block_given?
     if resource.persisted?
       if resource.active_for_authentication?
-        flash[:success] = "新規アカウントを作成しました"
+        flash[:success] = '新規アカウントを作成しました'
         sign_up(resource_name, resource)
         respond_with resource, location: after_sign_up_path_for(resource)
       else
@@ -82,7 +82,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   protected
 
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:profile_image, :login_id, :family_name, :given_name, :family_name_kana, :given_name_kana, :email, :post_id])
+    devise_parameter_sanitizer.permit(:account_update,
+                                      keys: %i[profile_image login_id family_name given_name family_name_kana
+                                               given_name_kana email post_id])
   end
 
   def update_resource(resource, params)
@@ -92,6 +94,4 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def after_update_path_for(_resource)
     public_user_path(current_user.login_id)
   end
-
-
 end

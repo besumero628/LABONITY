@@ -8,14 +8,14 @@ module ApplicationHelper
       'LABONITY'
     end
   end
-  
+
   def flash_treatment(message_type)
     if default_message_type?(message_type)
-      return message_type
+      message_type
     elsif message_type == 'notice'
-      return 'info'
+      'info'
     else
-      return 'danger'
+      'danger'
     end
   end
 
@@ -48,14 +48,14 @@ module ApplicationHelper
       'ERROR '
     end
   end
-  
-  private 
+
+  private
+
   def default_message_type?(message_type)
     if (message_type != 'success') && (message_type != 'info') && (message_type != 'warning') && (message_type != 'danger')
-      return false
+      false
     else
-      return true
+      true
     end
   end
-  
 end

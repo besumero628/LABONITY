@@ -5,8 +5,6 @@ class Public::NewsController < ApplicationController
 
   def show
     @news = News.find(params[:id])
-    if Time.current < @news.release_at
-      raise ActiveRecord::RecordNotFound
-    end
+    raise ActiveRecord::RecordNotFound if Time.current < @news.release_at
   end
 end

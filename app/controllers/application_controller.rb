@@ -4,10 +4,10 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   class Forbidden < ActionController::ActionControllerError; end
+
   class IpAddressRejected < ActionController::ActionControllerError; end
 
   include ErrorHandlers if Rails.env.production?
-
 
   def after_sign_in_path_for(resource)
     case resource
@@ -20,23 +20,17 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def have_authenticate?(user) #権限全体
-    if current_user.id != user.id
-      raise Forbidden
-    end
+  def have_authenticate?(user) # 権限全体
+    raise Forbidden if current_user.id != user.id
   end
 
-  def current_user_have_edit_status_for_this_lab?(lab) #lab内ページedit権利
-    if !LabMember.where(laboratory_id: lab.id, edit_status: true).exists?(user_id: current_user.id)
-      raise Forbidden
-    end
+  def current_user_have_edit_status_for_this_lab?(lab) # lab内ページedit権利
+    raise Forbidden unless LabMember.where(laboratory_id: lab.id, edit_status: true).exists?(user_id: current_user.id)
   end
 
   def set_user
     @user = User.find_by(login_id: params[:login_id])
-    if params[:user_login_id]
-      @user = User.find_by(login_id: params[:user_login_id])
-    end
+    @user = User.find_by(login_id: params[:user_login_id]) if params[:user_login_id]
   end
 
   def set_laboratory
@@ -55,7 +49,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-
   private
 
   def set_layout
@@ -67,7 +60,8 @@ class ApplicationController < ActionController::Base
   end
 
   def configure_permitted_parameters
-      devise_parameter_sanitizer.permit(:sign_up,keys:[:login_id, :family_name, :given_name, :family_name_kana, :given_name_kana, :email, :post_id])
+    devise_parameter_sanitizer.permit(:sign_up,
+                                      keys: %i[login_id family_name given_name family_name_kana given_name_kana email
+                                               post_id])
   end
-
 end

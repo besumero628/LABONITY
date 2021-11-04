@@ -22,43 +22,42 @@ class Public::UserConferncesController < ApplicationController
     @confernce = Confernce.new(confernce_params)
 
     if @confernce.save
-      @author = Author.new(deliverable_type: "Confernce", deliverable_id: @confernce.id, user_id: @user.id)
+      @author = Author.new(deliverable_type: 'Confernce', deliverable_id: @confernce.id, user_id: @user.id)
       @author.save
-      flash[:info] = "論文を新規登録しました！"
+      flash[:info] = '論文を新規登録しました！'
       redirect_to public_user_user_confernces_path(@user.login_id)
     else
       set_user
-      render "new"
+      render 'new'
     end
-
   end
-  
+
   def update
     @confernce = Confernce.find(params[:id])
-    
+
     if @confernce.update(confernce_params)
-      flash[:info] = "論文を編集しました！"
+      flash[:info] = '論文を編集しました！'
       redirect_to public_user_user_confernces_path(@user.login_id)
     else
       set_user
-      render "edit"
+      render 'edit'
     end
   end
-  
+
   def destroy
     @confernce = Confernce.find(params[:id])
-    
+
     if @confernce.destroy
-      flash[:info] = "論文を削除しました！"
+      flash[:info] = '論文を削除しました！'
       redirect_to public_user_user_confernces_path(@user.login_id)
     else
-      flash[:danger] = "エラーです。"
-      render "index"
+      flash[:danger] = 'エラーです。'
+      render 'index'
     end
-
   end
 
   private
+
   def confernce_params
     params.require(:confernce).permit(:name, :title, :abstract, :figure, :linkpath)
   end
